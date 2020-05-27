@@ -1,0 +1,21 @@
+{
+  "name": "app-dengue",
+  "version": "1.0.0",
+  "description": "App de denuncias de dengue para a secretaria de saude de mogi mirim",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Renan Andreata Porta",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "consign": "^0.1.6",
+    "express": "4.16.3",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.4"
+  }
+}

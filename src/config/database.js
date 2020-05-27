@@ -8,12 +8,14 @@ class Database {
     }
 
     criarDenuncias() {
-        const sql = `CREATE TABLE IF NOT EXISTS Denuncias (id int NOT NULL AUTO_INCREMENT, 
+        const sql = `CREATE TABLE IF NOT EXISTS denuncias (id int NOT NULL AUTO_INCREMENT, 
                     cidadao varchar(50) NOT NULL, 
                     cpf varchar(11) NOT NULL,
                     telefone varchar(11) NOT NULL,
                     rua varchar(50) NOT NULL,
                     bairro varchar(50) NOT NULL,
+                    imagem varchar(200),
+                    observacoes text,
                     status varchar(20) NOT NULL, PRIMARY KEY(id))`
 
         this.conexao.query(sql, (erro) => {

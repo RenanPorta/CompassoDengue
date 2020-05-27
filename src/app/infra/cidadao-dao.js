@@ -4,13 +4,16 @@ class CidadaoDAO {
     adiciona(cidadao, res) {
         const sql = `INSERT INTO cidadao SET ?`
 
-        conexao.query(sql, cidadao, (erro, resultados) => {
+        const novoCidadao = {nome: cidadao.nome,
+                            cpf: cidadao.cpf,
+                            telefone: cidadao.telefone}
+        conexao.query(sql, novoCidadao, (erro) => {
             if(erro){
                 res.status(400).json(erro);
-                console.log("Erro ao enviar denuncia: "+erro);
+                console.log("Erro ao cadastrar cidadao: "+erro);
             } else {
-                res.status(201).json(resultados);
-                console.log(resultados);
+                res.status(201).json(novoCidadao);
+                console.log(novoCidadao);
             }
         })
     }

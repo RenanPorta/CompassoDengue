@@ -14,13 +14,11 @@ module.exports = (app) => {
     app.post('/cadastro-denuncia', function(req, res) {
         const denuncia = req.body
         DenunciasDAO.adiciona(denuncia, res);
-        console.log('Denuncia enviada!')
     });
 
     app.post('/cadastro-cidadao', function(req, res) {
         const cidadao = req.body
         CidadaoDAO.adiciona(cidadao, res);
-        console.log('Cidadão cadastrado!')
     });
 
 };

@@ -29,6 +29,19 @@ class CidadaoDAO {
         })
 
     }
+
+    buscaPorCPF(cpf, res){
+        const sql = `SELECT * FROM cidadao WHERE cpf=${cpf}`
+        
+        conexao.query(sql, (erro, resultado)=> {
+            const cidadao = resultado[0]
+            if(erro){
+                res.status(400).json(erro);
+            }else{
+                res.status(200).json(cidadao);
+            }
+        })
+    }
 }
 
 module.exports = new CidadaoDAO;

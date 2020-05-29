@@ -11,6 +11,11 @@ module.exports = (app) => {
         CidadaoDAO.lista(res);
     });
 
+    app.get('/cidadao/:cpf', function(req, res) {
+        const cpf = req.params.cpf;
+        CidadaoDAO.buscaPorCPF(cpf, res);
+    });
+
     app.post('/cadastro-denuncia', function(req, res) {
         const denuncia = req.body
         DenunciasDAO.adiciona(denuncia, res);

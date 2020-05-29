@@ -26,4 +26,9 @@ module.exports = (app) => {
         CidadaoDAO.adiciona(cidadao, res);
     });
 
+    app.delete('/cidadao/:cpf', function(req, res) {
+        const cpf = req.params.cpf;
+        CidadaoDAO.deletaPorCPF(cpf, res);
+    });
+
 };

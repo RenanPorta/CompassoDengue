@@ -42,6 +42,17 @@ class CidadaoDAO {
             }
         })
     }
+    deletaPorCPF(cpf, res){
+        const sql = `DELETE FROM cidadao WHERE cpf=${cpf}`
+
+        conexao.query(sql, (erro) => {
+            if(erro){
+                res.status(404).json(erro);
+            }else{
+                res.status(200).send(`Cidadão com CPF: ${cpf} foi excluido com sucesso!`);
+            }
+        })
+    }
 }
 
 module.exports = new CidadaoDAO;

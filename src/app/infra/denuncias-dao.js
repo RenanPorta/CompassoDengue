@@ -5,7 +5,7 @@ class DenunciasDAO {
     adiciona(denuncia, res) {
         const sql = `INSERT INTO denuncias SET ?`
 
-        uploadDeArquivos(denuncia.imagem, denuncia.cidadao, (erro, novoCaminho) => {
+        uploadDeArquivos(denuncia.imagem, denuncia.cpf, (erro, novoCaminho) => {
 
             if(erro){
                 res.status(400).json({ erro });

@@ -6,14 +6,19 @@ class CidadaoDAO {
 
         const novoCidadao = {nome: cidadao.nome,
                             cpf: cidadao.cpf,
-                            telefone: cidadao.telefone}
+                            telefone: cidadao.telefone,
+                            email: cidadao.email,
+                            senha: cidadao.senha }
         conexao.query(sql, novoCidadao, (erro) => {
             if(erro){
                 res.status(400).json(erro);
                 console.log("Erro ao cadastrar cidadao: "+erro);
             } else {
-                res.status(201).json(novoCidadao);
-                console.log(novoCidadao);
+                const exibeCidadao = {nome: cidadao.nome,
+                                cpf: cidadao.cpf,
+                                telefone: cidadao.telefone,
+                                email: cidadao.email}
+                res.status(201).json(exibeCidadao);
             }
         })
     }

@@ -16,8 +16,7 @@ class Database {
                     bairro varchar(50) NOT NULL,
                     imagem varchar(200),
                     observacoes text,
-                    status varchar(20) NOT NULL
-                    senha VARCHAR(40) NOT NULL, PRIMARY KEY(id))`
+                    status varchar(20) NOT NULL, PRIMARY KEY(id))`
 
         this.conexao.query(sql, (erro) => {
             if(erro) {
@@ -32,7 +31,8 @@ class Database {
         const sql = `CREATE TABLE IF NOT EXISTS cidadao (id int NOT NULL AUTO_INCREMENT, 
                     nome varchar(50) NOT NULL, 
                     cpf varchar(11) NOT NULL,
-                    telefone varchar(11) NOT NULL, PRIMARY KEY(id))`
+                    telefone varchar(11) NOT NULL,
+                    senha VARCHAR(40) NOT NULL, PRIMARY KEY(id))`
 
         this.conexao.query(sql, (erro) => {
             if(erro) {

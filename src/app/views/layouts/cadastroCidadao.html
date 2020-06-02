@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Cidadão</title>
+</head>
+
+    <script type="text/javascript">
+        function validar(){
+            var senha = cadastraCidadao.senhaCidadao.value;
+            var confirmaSenha = cadastraCidadao.confirmaSenhaCidadao.value;
+
+            if(senha == "" || senha.length <= 5){
+                alert('Preencha o campo "Senha" com no minímo 6 caracteres');
+                cadastraCidadao.senhaCidadao.focus();
+                return false;
+            }
+
+            if(confirmaSenha == ""){
+                alert('Preencha o campo "Confirmar Senha"');
+                cadastraCidadao.confirmaSenhaCidadao.focus();
+                return false;
+            }
+
+            if(senha != confirmaSenha) {
+                alert('Senhas diferentes!');
+                cadastraCidadao.confirmaSenhaCidadao.focus();
+                return false;
+            }
+        }
+    </script>
+
+<body>
+    <h1>CADASTRO CIDADÃO</h1>
+    <form name="cadastraCidadao" method=POST action="">
+
+        <br></br>
+    <div>
+        <label for="nomeCidadao">Nome:</label>
+        <input type="text" id="nomeCidadao" />
+    </div><br>
+    <div>
+        <label for="cpfCidadao">CPF:</label>
+        <input type="text" id="cpfCidadao" />
+    </div><br>
+    <div>
+        <label for="telefoneCidadao">Telefone:</label>
+        <input type="text" id="telefoneCidadao" />
+    </div><br>
+    <div>
+        <label for="emailCidadao">E-mail:</label>
+        <input type="text" id="emailCidadao" />
+    </div><br>
+    <div>
+        <label for="senhaCidadao">Senha:</label>
+        <input type="password" id="senhaCidadao" />
+    </div><br>
+    <div>
+        <label for="confirmaSenhaCidadao">Confirmar Senha:</label>
+        <input type="password" id="confirmaSenhaCidadao"/>
+    </div><br>
+
+    <input type="submit" value="Cadastrar" onclick="return validar()">
+    
+    </form>
+
+</body>
+
+</html>

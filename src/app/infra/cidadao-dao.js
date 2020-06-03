@@ -1,8 +1,11 @@
 const conexao = require('../../config/conexao/conexaoDatabase');
+const validarCpf = require ('validar-cpf');
 
 class CidadaoDAO {
     adiciona(cidadao, res) {
-        const sql = `INSERT INTO cidadao SET ?`
+        const cpfEhValido = validarCpf(cidadao.cpf);
+        if(cpfEhValido){
+            const sql = `INSERT INTO cidadao SET ?`
 
         const novoCidadao = {nome: cidadao.nome,
                             cpf: cidadao.cpf,
@@ -21,6 +24,12 @@ class CidadaoDAO {
                 res.status(201).json(exibeCidadao);
             }
         })
+        }else{
+            const cpfInvalido = {
+                                    "Erro": "Cpf invalido!"
+                                }
+            res.status(400).json(cpfInvalido);
+        }
     }
     lista(res){
         const sql = `SELECT * FROM cidadao`

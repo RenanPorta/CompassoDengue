@@ -38,7 +38,7 @@ class CidadaoDAO {
             if(erro){
                 res.status(400).json(erro);
             }else{
-                res.marko(require('../views/layouts/listaCidadao.marko'),
+                res.marko(require('../views/layouts/cidadao/listaCidadao.marko'),
                 {
                     cidadaos: resultado
                 })

@@ -21,10 +21,6 @@ module.exports = (app) => {
         DenunciasDAO.adiciona(denuncia, res);
     });
 
-    app.get('/cidadao', function(req, res) {
-        res.sendFile('C:/Users/renan/Documents/1PROJETO-FINAO-COMPASSO-DENGUE/APP-DENGUE/CompassoDengue/src/app/views/layouts/cadastroCidadao.html');
-    });
-
     app.post('/cadastro-cidadao', function(req, res) {
         const cidadao = req.body
         CidadaoDAO.adiciona(cidadao, res);

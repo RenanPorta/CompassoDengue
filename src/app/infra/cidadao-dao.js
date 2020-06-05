@@ -6,7 +6,6 @@ class CidadaoDAO {
         const cpfEhValido = validarCpf(cidadao.cpf);
         if(cpfEhValido){
             const sql = `INSERT INTO cidadao SET ?`
-
         const novoCidadao = {nome: cidadao.nome,
                             cpf: cidadao.cpf,
                             telefone: cidadao.telefone,
@@ -22,6 +21,7 @@ class CidadaoDAO {
                                 telefone: cidadao.telefone,
                                 email: cidadao.email}
                 res.status(201).json(exibeCidadao);
+                console.log(exibeCidadao)
             }
         })
         }else{
@@ -38,7 +38,11 @@ class CidadaoDAO {
             if(erro){
                 res.status(400).json(erro);
             }else{
-                res.status(200).json(resultado)
+                res.marko(require('../views/layouts/listaCidadao.marko'),
+                {
+                    cidadaos: resultado
+                })
+                //res.status(200).json(resultado)
             }
         })
 

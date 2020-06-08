@@ -11,6 +11,7 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     component_globals_tag = marko_loadTag(require("marko/src/components/taglib/component-globals-tag")),
     marko_forEach = marko_helpers.f,
     marko_escapeXml = marko_helpers.x,
+    marko_escapeXmlAttr = marko_helpers.xa,
     init_components_tag = marko_loadTag(require("marko/src/components/taglib/init-components-tag")),
     await_reorderer_tag = marko_loadTag(require("marko/src/taglibs/async/await-reorderer-tag"));
 
@@ -21,14 +22,16 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<h1> Listagem de Cidadãos </h1><table><tr><td>ID</td><td>Nome</td><td>cpf</td><td>telefone</td><td>email</td></tr>");
+  out.w("<h1> Listagem de Cidadãos </h1><table id=\"cidadaos\"><tr><td>ID</td><td>Nome</td><td>cpf</td><td>telefone</td><td>email</td></tr>");
 
   var for__12 = 0;
 
   marko_forEach(data.cidadaos, function(cidadao) {
     var keyscope__13 = "[" + ((for__12++) + "]");
 
-    out.w("<tr><td>" +
+    out.w("<tr id=\"cidadao_" +
+      marko_escapeXmlAttr(cidadao.id) +
+      "\"><td>" +
       marko_escapeXml(cidadao.id) +
       "</td><td>" +
       marko_escapeXml(cidadao.nome) +
@@ -38,14 +41,16 @@ function render(input, out, __component, component, state) {
       marko_escapeXml(cidadao.telefone) +
       "</td><td>" +
       marko_escapeXml(cidadao.email) +
-      "</td></tr>");
+      "</td><td><a href=\"#\">Editar</a></td><td><a href=\"#\" data-ref=\"" +
+      marko_escapeXmlAttr(cidadao.id) +
+      "\" data-type=\"remocao\">Deletar</a></td></tr>");
   });
 
-  out.w("</table> ");
+  out.w("<script src=\"/estatico/js/remove-cidadao.js\">\r\n        </script></table> ");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "20");
+  await_reorderer_tag({}, out, __component, "25");
 
   out.w("</body> </html>");
 }

@@ -61,14 +61,14 @@ class CidadaoDAO {
             }
         })
     }
-    deletaPorCPF(cpf, res){
-        const sql = `DELETE FROM cidadao WHERE cpf=${cpf}`
+    deletaPorId(id, res){
+        const sql = `DELETE FROM cidadao WHERE id=${id}`
 
         conexao.query(sql, (erro) => {
             if(erro){
                 res.status(404).json(erro);
             }else{
-                res.status(200).send(`Cidadão com CPF: ${cpf} foi excluido com sucesso!`);
+                res.status(200).end();
             }
         })
     }

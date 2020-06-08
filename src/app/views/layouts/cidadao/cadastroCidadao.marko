@@ -1,0 +1,62 @@
+<html>
+    <script type="text/javascript">
+        function validar(){
+            var senha = cadastraCidadao.senhaCidadao.value;
+            var confirmaSenha = cadastraCidadao.confirmaSenhaCidadao.value;
+
+            if(senha == "" || senha.length <= 5){
+                alert('Preencha o campo "Senha" com no minímo 6 caracteres');
+                cadastraCidadao.senhaCidadao.focus();
+                return false;
+            }
+
+            if(confirmaSenha == ""){
+                alert('Preencha o campo "Confirmar Senha"');
+                cadastraCidadao.confirmaSenhaCidadao.focus();
+                return false;
+            }
+
+            if(senha != confirmaSenha) {
+                alert('Senhas diferentes!');
+                cadastraCidadao.confirmaSenhaCidadao.focus();
+                return false;
+            }
+        }
+    </script>
+
+    <body>
+        <h1>Cadastro de Cidadao</h1>
+
+         <form name="cadastraCidadao" method="post" action="/cidadao">
+
+            <input type="hidden" id="id" name="id" />
+            <br/>
+            <div>
+                <label for="nomeCidadao">Nome:</label>
+                <input type="text" id="nomeCidadao" name="nomeCidadao" />
+            </div><br/>
+            <div>
+                <label for="cpfCidadao">CPF:</label>
+                <input type="text" id="cpfCidadao" name="cpfCidadao" />
+            </div><br/>
+            <div>
+                <label for="telefoneCidadao">Telefone:</label>
+                <input type="text" id="telefoneCidadao" name="telefoneCidadao" />
+            </div><br/>
+            <div>
+                <label for="emailCidadao">E-mail:</label>
+                <input type="text" id="emailCidadao" name="emailCidadao" />
+            </div><br/>
+            <div>
+                <label for="senhaCidadao">Senha:</label>
+                <input type="password" id="senhaCidadao" name="senhaCidadao" />
+            </div><br/>
+            <div>
+                <label for="confirmaSenhaCidadao">Confirmar Senha:</label>
+                <input type="password" id="confirmaSenhaCidadao" name="confirmaSenhaCidadao"/>
+            </div><br/>
+
+            <input type="submit" value="Cadastrar" onclick="return validar()" />
+        </form>
+    </body>
+</html>

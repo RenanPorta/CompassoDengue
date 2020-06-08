@@ -3,11 +3,11 @@ const CidadaoDAO = require('../infra/cidadao-dao');
 
 module.exports = (app) => {
 
-    app.get('/consulta-denuncia', function(req, res) {
+    app.get('/denuncia-consulta', function(req, res) {
         DenunciasDAO.lista(res);
     });
     
-    app.get('/consulta-cidadao', function(req, res) {
+    app.get('/cidadao-consulta', function(req, res) {
         CidadaoDAO.lista(res);
     });
 
@@ -16,14 +16,17 @@ module.exports = (app) => {
         CidadaoDAO.buscaPorCPF(cpf, res);
     });
 
-    app.post('/cadastro-denuncia', function(req, res) {
+    app.post('/denuncia-cadastro', function(req, res) {
         const denuncia = req.body
         DenunciasDAO.adiciona(denuncia, res);
     });
 
-    app.post('/cadastro-cidadao', function(req, res) {
-        const cidadao = req.body
-        CidadaoDAO.adiciona(cidadao, res);
+    app.get('/cidadao-cadastro', function(req, res) {
+        res.marko(require('../views/layouts/cidadao/cadastroCidadao.marko'));
+    });
+
+    app.post('/cidadao', function(req, res) {
+        CidadaoDAO.adiciona(req.body, res);
     });
 
     app.delete('/cidadao/:cpf', function(req, res) {

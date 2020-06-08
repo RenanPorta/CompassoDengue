@@ -3,24 +3,25 @@ const validarCpf = require ('validar-cpf');
 
 class CidadaoDAO {
     adiciona(cidadao, res) {
-        const cpfEhValido = validarCpf(cidadao.cpf);
+        const cpfEhValido = validarCpf(cidadao.cpfCidadao);
         if(cpfEhValido){
             const sql = `INSERT INTO cidadao SET ?`
-        const novoCidadao = {nome: cidadao.nome,
-                            cpf: cidadao.cpf,
-                            telefone: cidadao.telefone,
-                            email: cidadao.email,
-                            senha: cidadao.senha }
+        const novoCidadao = {nome: cidadao.nomeCidadao,
+                            cpf: cidadao.cpfCidadao,
+                            telefone: cidadao.telefoneCidadao,
+                            email: cidadao.emailCidadao,
+                            senha: cidadao.senhaCidadao }
         conexao.query(sql, novoCidadao, (erro) => {
             if(erro){
                 res.status(400).json(erro);
                 console.log("Erro ao cadastrar cidadao: "+erro);
             } else {
-                const exibeCidadao = {nome: cidadao.nome,
-                                cpf: cidadao.cpf,
-                                telefone: cidadao.telefone,
-                                email: cidadao.email}
-                res.status(201).json(exibeCidadao);
+                const exibeCidadao = {nome: cidadao.nomeCidadao,
+                                    cpf: cidadao.cpfCidadao,
+                                    telefone: cidadao.telefoneCidadao,
+                                    email: cidadao.emailCidadao}
+                res.redirect('/cidadao-consulta');
+                //res.status(201).json(exibeCidadao);
                 console.log(exibeCidadao)
             }
         })

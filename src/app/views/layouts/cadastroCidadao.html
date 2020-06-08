@@ -33,32 +33,32 @@
 
 <body>
     <h1>CADASTRO CIDADÃO</h1>
-    <form name="cadastraCidadao" method=POST action="">
+    <form name="cadastraCidadao" method=POST action="/consulta-cidadao">
 
         <br></br>
     <div>
         <label for="nomeCidadao">Nome:</label>
-        <input type="text" id="nomeCidadao" />
+        <input type="text" id="nomeCidadao" name="nomeCidadao" />
     </div><br>
     <div>
         <label for="cpfCidadao">CPF:</label>
-        <input type="text" id="cpfCidadao" />
+        <input type="text" id="cpfCidadao" name="cpfCidadao" />
     </div><br>
     <div>
         <label for="telefoneCidadao">Telefone:</label>
-        <input type="text" id="telefoneCidadao" />
+        <input type="text" id="telefoneCidadao" name="telefoneCidadao" />
     </div><br>
     <div>
         <label for="emailCidadao">E-mail:</label>
-        <input type="text" id="emailCidadao" />
+        <input type="text" id="emailCidadao" name="emailCidadao" />
     </div><br>
     <div>
         <label for="senhaCidadao">Senha:</label>
-        <input type="password" id="senhaCidadao" />
+        <input type="password" id="senhaCidadao" name="senhaCidadao" />
     </div><br>
     <div>
         <label for="confirmaSenhaCidadao">Confirmar Senha:</label>
-        <input type="password" id="confirmaSenhaCidadao"/>
+        <input type="password" id="confirmaSenhaCidadao" name="confirmaSenhaCidadao"/>
     </div><br>
 
     <input type="submit" value="Cadastrar" onclick="return validar()">

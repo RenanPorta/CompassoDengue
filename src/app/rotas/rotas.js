@@ -16,9 +16,12 @@ module.exports = (app) => {
         CidadaoDAO.buscaPorCPF(cpf, res);
     });
 
-    app.post('/denuncia-cadastro', function(req, res) {
-        const denuncia = req.body
-        DenunciasDAO.adiciona(denuncia, res);
+    app.get('/denuncia-cadastro', function(req, res) {
+        res.marko(require('../views/layouts/denuncias/cadastroDenuncia.marko'));
+    });
+
+    app.post('/denuncia', function(req, res) {
+        DenunciasDAO.adiciona(req.body, res);
     });
 
     app.get('/cidadao-cadastro', function(req, res) {

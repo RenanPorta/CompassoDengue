@@ -1,0 +1,69 @@
+<html>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script>
+        function previewImagem(){
+            var imagem = document.querySelector('input[name=imagemDenuncia]').files[0];
+            var preview = document.querySelector('img')
+
+            var reader = new FileReader();
+
+            reader.onloadend = function(){
+                preview.src = reader.result;
+            }
+
+            if(imagem){
+                reader.readAsDataURL(imagem);
+            }else{
+                preview.src = "";
+            }
+        }
+    </script>
+
+    <body>
+        <h1>Cadastro de Denuncia</h1>
+
+         <form method="post" action="/denuncia">
+
+            <input type="hidden" id="id" name="id" />
+            <br/>
+            <div>
+                <label for="nomeCidadao">Nome:</label>
+                <input type="text" id="nomeCidadao" name="nomeCidadao" />
+            </div><br/>
+            <div>
+                <label for="cpfCidadao">CPF:</label>
+                <input type="text" id="cpfCidadao" name="cpfCidadao" />
+            </div><br/>
+            <div>
+                <label for="telefoneCidadao">Telefone:</label>
+                <input type="text" id="telefoneCidadao" name="telefoneCidadao" />
+            </div><br/>
+
+            <h3>Endereço do local da denuncia</h3>
+
+            <div>
+                <label for="ruaDenuncia">Rua:</label>
+                <input type="text" id="ruaDenuncia" name="ruaDenuncia" />
+            </div><br/>
+            <div>
+                <label for="bairroDenuncia">Bairro:</label>
+                <input type="text" id="bairroDenuncia" name="bairroDenuncia" />
+            </div><br/>
+
+            <h5>Selecionar apenas imagens .jpeg .jpg ou .png</h5>
+
+            <div>
+                <input type="file" name="imagemDenuncia" id="imagemDenuncia" onchange="previewImagem()"/><br/>
+                <img style="width: 300px; height: 300px;"/><br/><br/>
+            </div><br/>
+            <div>
+                <label for="observacoesDenuncia">Observações</label>
+                <textarea id="observacoesDenuncia" name="observacoesDenuncia"></textarea>
+            </div><br/>
+
+            <input type="submit" value="Cadastrar"/>
+        </form>
+    </body>
+</html>

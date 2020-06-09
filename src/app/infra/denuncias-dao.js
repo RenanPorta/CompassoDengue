@@ -3,32 +3,54 @@ const uploadDeArquivos = require('../../arquivos/uploadDeImagens');
 
 class DenunciasDAO {
     adiciona(denuncia, res) {
+        console.log(denuncia);
         const sql = `INSERT INTO denuncias SET ?`
 
-        uploadDeArquivos(denuncia.imagem, denuncia.cpf, (erro, novoCaminho) => {
+        if(denuncia.imagemDenuncia != ''){
+            uploadDeArquivos(denuncia.imagemDenuncia, denuncia.cpfCidadao, (erro, novoCaminho) => {
 
-            if(erro){
-                res.status(400).json({ erro });
-            }else{
-                const novaDenuncia = {cidadao: denuncia.cidadao,
-                                    cpf: denuncia.cpf,
-                                    telefone: denuncia.telefone,
-                                    rua: denuncia.rua,
-                                    bairro: denuncia.bairro,
-                                    imagem: novoCaminho,
-                                    observacoes: denuncia.observacoes,
-                                    status: denuncia.status }
-                conexao.query(sql, novaDenuncia, (erro) => {
-                    if(erro){
-                        res.status(400).json(erro);
-                        console.log("Erro ao enviar denuncia: "+erro);
-                    } else {
-                        res.status(201).json(novaDenuncia);
-                        console.log(novaDenuncia);
-                    }
-                })
-            }
-        })  
+                if(erro){
+                    res.status(400).json({ erro });
+                }else{
+                    const novaDenuncia = {cidadao: denuncia.nomeCidadao,
+                                        cpf: denuncia.cpfCidadao,
+                                        telefone: denuncia.telefoneCidadao,
+                                        rua: denuncia.ruaDenuncia,
+                                        bairro: denuncia.bairroDenuncia,
+                                        imagem: novoCaminho,
+                                        observacoes: denuncia.observacoesDenuncia,
+                                        status: "Pendente" }
+                    console.log(novaDenuncia);
+                    conexao.query(sql, novaDenuncia, (erro) => {
+                        if(erro){
+                            res.status(400).json(erro);
+                            console.log("Erro ao enviar denuncia: "+erro);
+                        } else {
+                            res.status(201).json(novaDenuncia);
+                            console.log(novaDenuncia);
+                        }
+                    });
+                }
+            });
+        }else{
+            const novaDenuncia = {cidadao: denuncia.nomeCidadao,
+                cpf: denuncia.cpfCidadao,
+                telefone: denuncia.telefoneCidadao,
+                rua: denuncia.ruaDenuncia,
+                bairro: denuncia.bairroDenuncia,
+                imagem: denuncia.imagemDenuncia,
+                observacoes: denuncia.observacoesDenuncia,
+                status: "Pendente" }
+            conexao.query(sql, novaDenuncia, (erro) => {
+                if(erro){
+                    res.status(400).json(erro);
+                    console.log("Erro ao enviar denuncia: "+erro);
+                } else {
+                    res.status(201).json(novaDenuncia);
+                    console.log(novaDenuncia);
+                }
+            });  
+        }
     }
     
     lista(res){
@@ -38,7 +60,12 @@ class DenunciasDAO {
             if(erro){
                 res.status(400).json(erro);
             }else{
-                res.status(200).json(resultado)
+                res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
+                {
+                    denuncias: resultado
+                });
+                
+                //res.status(200).json(resultado)
             }
         })
 

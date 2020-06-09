@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1> Listagem de Denuncias </h1>
+
+        <table id="denuncias">
+            
+            <tr>
+                <td>ID</td>
+                <td>Nome Cidadão</td>
+                <td>CPF</td>
+                <td>Telefone</td>
+                <td>Rua</td>
+                <td>Bairro</td>
+                <td>Imagem</td>
+                <td>Observações</td>
+                <td>Status</td>
+
+            </tr>
+            
+            <tr id="denuncia_${denuncia.id}" for (denuncia in data.denuncias)>
+                <td>${denuncia.id}</td>
+                <td>${denuncia.cidadao}</td>
+                <td>${denuncia.cpf}</td>
+                <td>${denuncia.telefone}</td>
+                <td>${denuncia.rua}</td>
+                <td>${denuncia.bairro}</td>
+                <td><a href="#">${denuncia.imagem}</a></td>
+                <td>${denuncia.observacoes}</td>
+                <td>${denuncia.status}</td>
+                <td><a href="#">Editar</a></td>
+            </tr>
+        </table> 
+    </body> 
+</html>

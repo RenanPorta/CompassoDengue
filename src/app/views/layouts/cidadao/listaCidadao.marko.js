@@ -41,7 +41,9 @@ function render(input, out, __component, component, state) {
       marko_escapeXml(cidadao.telefone) +
       "</td><td>" +
       marko_escapeXml(cidadao.email) +
-      "</td><td><a href=\"#\">Editar</a></td><td><a href=\"#\" data-ref=\"" +
+      "</td><td><a href=\"/cidadao-altera/" +
+      marko_escapeXmlAttr(cidadao.id) +
+      "\">Editar</a></td><td><a href=\"#\" data-ref=\"" +
       marko_escapeXmlAttr(cidadao.id) +
       "\" data-type=\"remocao\">Deletar</a></td></tr>");
   });

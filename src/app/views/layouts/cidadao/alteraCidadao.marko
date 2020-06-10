@@ -1,0 +1,26 @@
+<html>
+    <body>
+        <h1>Altera Cidadao</h1>
+
+         <form name="alteraCidadao" method="post" action="/cidadao-altera">
+            
+            <input type="hidden" name="_method" value="PUT">
+            
+            <input type="hidden" id="id" name="id" value="${data.cidadao.id}" />
+            <br/>
+            <div>
+                <label for="nomeCidadao">Nome:</label>
+                <input type="text" id="nomeCidadao" name="nomeCidadao" value="${data.cidadao.nome}" />
+            </div><br/>
+            <div>
+                <label for="telefoneCidadao">Telefone:</label>
+                <input type="text" id="telefoneCidadao" name="telefoneCidadao" value="${data.cidadao.telefone}" />
+            </div><br/>
+            <div>
+                <label for="emailCidadao">E-mail:</label>
+                <input type="text" id="emailCidadao" name="emailCidadao" value="${data.cidadao.email}" />
+            </div><br/>
+            <input type="submit" value="Salvar" />
+        </form>
+    </body>
+</html>

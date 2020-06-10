@@ -32,6 +32,7 @@ class CidadaoDAO {
             res.status(400).json(cpfInvalido);
         }
     }
+
     lista(res){
         const sql = `SELECT * FROM cidadao`
 
@@ -61,6 +62,29 @@ class CidadaoDAO {
             }
         })
     }
+
+    buscaPorId(id, res){
+        const sql = `SELECT * FROM cidadao WHERE id=${id}`
+        
+        conexao.query(sql, (erro, resultado)=> {
+            const cidadao = resultado[0]
+            const novoCidadao = {
+                        id: cidadao.id,
+                        nome: cidadao.nome,
+                        telefone: cidadao.telefone,
+                        email: cidadao.email
+            }
+            if(erro){
+                res.status(400).json(erro);
+            }else{
+                res.marko(require('../views/layouts/cidadao/alteraCidadao.marko'),
+                {
+                    cidadao: novoCidadao
+                });
+            }
+        })
+    }
+
     deletaPorId(id, res){
         const sql = `DELETE FROM cidadao WHERE id=${id}`
 
@@ -71,6 +95,22 @@ class CidadaoDAO {
                 res.status(200).end();
             }
         })
+    }
+
+    altera(cidadao, res){
+        const novoCidadao = {nome: cidadao.nomeCidadao,
+                            telefone: cidadao.telefoneCidadao,
+                            email: cidadao.emailCidadao
+                            }
+        const sql = `UPDATE cidadao SET ? WHERE id=${cidadao.id}`
+
+        conexao.query(sql, novoCidadao, (erro, resultado) => {
+            if(erro){
+                res.status(400).json(erro);
+            }else {
+                res.redirect('/cidadao-consulta');
+            }
+       });
     }
 }
 

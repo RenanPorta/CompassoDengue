@@ -36,11 +36,13 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="cpfCidadao">CPF</label>
-                                <input type="text" class="form-control" id="cpfCidadao" name="cpfCidadao">
+                                <input type="text" class="form-control" id="cpfCidadao" name="cpfCidadao"
+                                placeholder="999.999.999-99" pattern=".{11,}" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="telefoneCidadao">Telefone</label>
-                                <input type="text" class="form-control" id="telefoneCidadao" name="telefoneCidadao">
+                                <input type="text" class="form-control" id="telefoneCidadao" name="telefoneCidadao" 
+                                placeholder="(99)99999-9999" pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}" required>
                             </div>
                         </div>
 
@@ -58,16 +60,21 @@
                         </div>
 
                         <h5 class="mb-3 text-center">Selecionar apenas imagens .jpeg/.jpg ou .png</h5>
+
+
                         <div>
-                            <input type="file" class="btn btn-block" name="imagemDenuncia" id="imagemDenuncia" onchange="previewImagem()"/><br/>
-                            <img style="width: 72vw; height: 20em;"/>
+                            <input type="file" class="btn btn-block" name="imagemDenuncia" id="imagemDenuncia" onchange="previewImagem()">
+                            <img class="fluid" id="preview" style="width: 72vw; height: 20em;"/>
                         </div>
+
+
                         <div>
                             <label for="observacoesDenuncia">Observações</label>
                             <textarea id="observacoesDenuncia" class="form-control" name="observacoesDenuncia" rows="3"></textarea>
                         </div>
                         <br/>
                         <input type="submit" class="btn btn-primary btn-lg btn-block" value="Cadastrar"/>
+
                     </form>
                 </div>
             </div>
@@ -83,11 +90,12 @@
             </div>
         </footer>
 
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>        
         <script>
             function previewImagem(){
                 var imagem = document.querySelector('input[name=imagemDenuncia]').files[0];
-                var preview = document.querySelector('img')
+                var preview = document.querySelector('#preview')
 
                 var reader = new FileReader();
 

@@ -1,6 +1,6 @@
 const app = require('./src/config/custom-express');
 const conexao = require('./src/config/conexao/conexaoDatabase');
-//const Database = require('./src/config/database');
+const Database = require('./src/config/database');
 
 conexao.connect(erro => {
     if(erro){

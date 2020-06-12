@@ -18,16 +18,16 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 function render(input, out, __component, component, state) {
   var data = input;
 
-  out.w("<html><head><meta charset=\"utf-8\"></head><body>");
+  out.w("<html lang=\"pt-br\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/estatico/css/reset.css\"><link rel=\"stylesheet\" href=\"/estatico/css/normalize.css\"><title>Listagem de Denuncias</title><link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css\" integrity=\"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk\" crossorigin=\"anonymous\"><link rel=\"stylesheet\" href=\"/estatico/css/style.css\"></head><body>");
 
   component_globals_tag({}, out);
 
-  out.w("<h1> Listagem de Denuncias </h1><table id=\"denuncias\"><tr><td>ID</td><td>Nome Cidadão</td><td>CPF</td><td>Telefone</td><td>Rua</td><td>Bairro</td><td>Imagem</td><td>Observações</td><td>Status</td></tr>");
+  out.w("<header><nav class=\"navbar navbar-expand-lg navbar-light identidade-visual\"><a class=\"navbar-brand logo\" href=\"#\"><img src=\"/estatico/img/logo.png\" alt=\"\"></a><div class=\"ml-auto\"><a class=\"btn btn-danger text-white\" href=\"index.html\">Voltar</a></div></nav></header><main><div class=\"container-fluid principal\"><div class=\"py-5\"> <h4 class=\"mb-3 text-center\">Listagem de Denuncias</h4><table class=\"table\" id=\"denuncias\"><tr><th>ID</th><th>Nome Cidadão</th><th>CPF</th><th>Telefone</th><th>Rua</th><th>Bairro</th><th>Imagem</th><th>Observações</th><th>Status</th></tr>");
 
-  var for__16 = 0;
+  var for__31 = 0;
 
   marko_forEach(data.denuncias, function(denuncia) {
-    var keyscope__17 = "[" + ((for__16++) + "]");
+    var keyscope__32 = "[" + ((for__31++) + "]");
 
     out.w("<tr id=\"denuncia_" +
       marko_escapeXmlAttr(denuncia.id) +
@@ -52,11 +52,11 @@ function render(input, out, __component, component, state) {
       "</td><td><a href=\"#\">Editar</a></td></tr>");
   });
 
-  out.w("</table> ");
+  out.w("</table></div></div></main><footer><div class=\"jumbotron mb-0 identidade-visual\"><img class=\"logo-footer mx-auto d-block img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"\"><p class=\"copyright text-center mb-0\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p class=\"copyright text-center\">Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer><script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\" integrity=\"sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj\" crossorigin=\"anonymous\"></script><script src=\"https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js\" integrity=\"sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo\" crossorigin=\"anonymous\"></script><script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js\" integrity=\"sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI\" crossorigin=\"anonymous\"></script>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "31");
+  await_reorderer_tag({}, out, __component, "54");
 
   out.w("</body> </html>");
 }

@@ -24,4 +24,16 @@ const app = express();
         .include('/src/app/rotas')
         .into(app);
 
+        app.use(function (req, res, next) {
+          return res.status(404).marko(
+              require('../app/views/layouts/base/erros/404.marko')
+              );
+          });
+          
+        app.use(function (erro, req, res, next) {
+            return res.status(500).marko(
+                require('../app/views/layouts/base/erros/500.marko')
+                );
+          });
+
 module.exports = app;

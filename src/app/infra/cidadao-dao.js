@@ -50,19 +50,6 @@ class CidadaoDAO {
 
     }
 
-    buscaPorCPF(cpf, res){
-        const sql = `SELECT * FROM cidadao WHERE cpf=${cpf}`
-        
-        conexao.query(sql, (erro, resultado)=> {
-            const cidadao = resultado[0]
-            if(erro){
-                res.status(400).json(erro);
-            }else{
-                res.status(200).json(cidadao);
-            }
-        })
-    }
-
     buscaPorId(id, res){
         const sql = `SELECT * FROM cidadao WHERE id=${id}`
         
@@ -75,7 +62,7 @@ class CidadaoDAO {
                         email: cidadao.email
             }
             if(erro){
-                res.status(400).json(erro);
+                res.status(404).json(erro);
             }else{
                 res.marko(require('../views/layouts/cidadao/alteraCidadao.marko'),
                 {

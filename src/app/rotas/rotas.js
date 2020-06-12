@@ -19,11 +19,6 @@ module.exports = (app) => {
         CidadaoDAO.lista(res);
     });
 
-    app.get('/cidadao/:cpf', function(req, res) {
-        const cpf = req.params.cpf;
-        CidadaoDAO.buscaPorCPF(cpf, res);
-    });
-
     app.get('/cidadao-cadastro', function(req, res) {
         res.marko(require('../views/layouts/cidadao/cadastroCidadao.marko'));
     });

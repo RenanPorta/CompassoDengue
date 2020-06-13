@@ -23,33 +23,29 @@
     </header>
 
     <main class="container">
-        <div class="py-5">
+        <div class="py-5 principal">
             <h4 class="text-center">Cadastro de Cidadão</h4>
-
             <form name="cadastraCidadao" method="post" action="/cidadao">
                 <input class="form-control" type="hidden" id="id" name="id" />
-
+                <div class="form-group mb-3">
+                    <label for="nomeCidadao">Nome</label>
+                    <input class="form-control" type="text" id="nomeCidadao" name="nomeCidadao" />
+                </div>
                 <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="nomeCidadao">Nome</label>
-                        <input class="form-control" type="text" id="nomeCidadao" name="nomeCidadao" />
-                    </div>
                     <div class="form-group col-md-6 mb-3">
                         <label for="cpfCidadao">CPF</label>
                         <input class="form-control" type="text" id="cpfCidadao" name="cpfCidadao"
                             placeholder="999.999.999-99" pattern=".{11,}" required>
                     </div>
-                </div>
-                <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="telefoneCidadao">Telefone</label>
                         <input class="form-control" type="text" id="telefoneCidadao" name="telefoneCidadao"
-                            placeholder="(99)99999-9999" pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}" required />
+                            placeholder="(99)99999-9999" pattern="[0-9]{11}" required />
                     </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="emailCidadao">E-mail</label>
-                        <input class="form-control" type="email" id="emailCidadao" name="emailCidadao" />
-                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="emailCidadao">E-mail</label>
+                    <input class="form-control" type="email" id="emailCidadao" name="emailCidadao" />
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
@@ -62,7 +58,8 @@
                             name="confirmaSenhaCidadao" />
                     </div>
                 </div>
-                <button class="btn btn-primary" type="submit" onclick="return validar()">Cadastrar</button>
+                <br/>
+                <input type="submit" class="btn btn-primary btn-lg btn-block" onclick="return validar()" value="Cadastrar"/>
             </form>
         </div>
     </main>

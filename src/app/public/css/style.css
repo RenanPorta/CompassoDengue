@@ -1,8 +1,8 @@
 /*GERAL*/
-
 .identidade-visual {
     background-color: #ffc61c;
 }
+
 
 .logo img {
     max-height: 2em;
@@ -10,15 +10,10 @@
 }
 
 /*INDEX*/
-
 header {
     background: url('./assets/img/banner.jpg');
     background-size: cover;
     background-position: center center;
-}
-
-main{
-    min-height: calc(100vh - 66px - 200px);
 }
 
 .banner {
@@ -32,36 +27,35 @@ main{
     text-shadow: 0px 0px 4px black;
 }
 
-.menu {
+.menu{
     text-align: center;
     padding: 1em 0 1em;
     background-color: whitesmoke;
 }
 
-.menu ul {
+.menu ul{
     display: flex;
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.menu a {
+.menu a{
     text-decoration: none;
     padding: 1em 0.5em;
     color: #000000;
 }
-
-.menu a:hover {
+.menu a:hover{
     background: rgba(0, 0, 0, 0.8);
     color: white;
 }
 
-.img-1 {
+.img-1{
     width: 474px;
     height: 338px;
 }
 
-.img-2 {
+.img-2{
     width: 1100px;
     height: 338px;
 }
@@ -83,36 +77,32 @@ main{
 }
 
 /*LOGIN*/
-
 /*mobile*/
-
 .corFundo {
     display: flex;
     background: #cbcbcb;
 }
-
-.container-xs {
+.container-xs{
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 65vh;
     margin: 2em;
 }
-
-.container-xs h1 {
+.container-xs h1{
     text-align: center;
     padding-bottom: 1em;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 992px) { 
     /*desktop*/
-    .container-xs {
+    .container-xs{
         max-width: 40em;
         margin: 4em auto;
         padding: 3em 6em;
     }
-}
+ }
 
-.principal {
-    min-height: 85vh;
-}
+ .principal{
+     min-height: 85vh;
+ }

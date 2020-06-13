@@ -9,13 +9,13 @@
     <title>Altera Cidadão</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="/estatico/css/style.css" />
+    <link rel="stylesheet" href="/estatico/public/css/style.css" />
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light identidade-visual">
-            <a class="navbar-brand logo" href="#"><img src="/estatico/img/logo.png" alt=""></a>
+            <a class="navbar-brand logo" href="#"><img src="/estatico/public/img/logo.png" alt=""></a>
             <div class="ml-auto">
                 <a class="btn btn-danger text-white" href="index.html">Voltar</a>
             </div>
@@ -23,38 +23,36 @@
     </header>
 
     <main class="container">
-        <div class="py-5 principal">
-            <h4 class="text-center">Altera Cidadão</h4>
+        <h1 class="text-center py-4">Altera Cidadão</h1>
 
-            <form name="alteraCidadao" method="post" action="/cidadao-altera">
+        <form name="alteraCidadao" method="post" action="/cidadao-altera">
 
-                <input class="form-control" type="hidden" name="_method" value="PUT">
-                <input class="form-control" type="hidden" id="id" name="id" value="${data.cidadao.id}" />
+            <input class="form-control" type="hidden" name="_method" value="PUT">
+            <input class="form-control" type="hidden" id="id" name="id" value="${data.cidadao.id}" />
 
-                <div class="form-group">
-                    <label for="nomeCidadao">Nome</label>
-                    <input class="form-control" type="text" id="nomeCidadao" name="nomeCidadao"
-                        value="${data.cidadao.nome}" />
-                </div>
-                <div class="form-group">
-                    <label for="telefoneCidadao">Telefone</label>
-                    <input class="form-control" type="text" id="telefoneCidadao" name="telefoneCidadao"
-                        value="${data.cidadao.telefone}" maxlength="11" />
-                </div>
-                <div class="form-group">
-                    <label for="emailCidadao">E-mail</label>
-                    <input class="form-control" type="email" id="emailCidadao" name="emailCidadao"
-                        value="${data.cidadao.email}" />
-                </div>
-               
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Salvar</button>
-            </form>
-        </div>
+            <div class="form-group">
+                <label for="nomeCidadao">Nome</label>
+                <input class="form-control" type="text" id="nomeCidadao" name="nomeCidadao"
+                    value="${data.cidadao.nome}" />
+            </div>
+            <div class="form-group">
+                <label for="telefoneCidadao">Telefone</label>
+                <input class="form-control" type="text" id="telefoneCidadao" name="telefoneCidadao"
+                    value="${data.cidadao.telefone}" maxlength="11" />
+            </div>
+            <div class="form-group">
+                <label for="emailCidadao">E-mail</label>
+                <input class="form-control" type="email" id="emailCidadao" name="emailCidadao"
+                    value="${data.cidadao.email}" />
+            </div>
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Salvar</button>
+        </form>
     </main>
 
-    <footer>
+    <footer class="pt-3">
         <div class="jumbotron mb-0 identidade-visual">
-            <img class="logo-footer mx-auto d-block img-fluid" src="/estatico/img/logo-2.png" alt="">
+            <img class="logo-footer mx-auto d-block img-fluid" src="/estatico/public/img/logo-2.png" alt="">
 
             <p class="copyright text-center mb-0">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi
                 Mirim.</p>

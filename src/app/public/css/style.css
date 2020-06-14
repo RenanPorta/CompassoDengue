@@ -11,8 +11,8 @@
 
 /*INDEX*/
 
-header {
-    background: url('./assets/img/banner.jpg');
+.img-banner {
+    background: url('/estatico/public/img/banner.jpg');
     background-size: cover;
     background-position: center center;
 }

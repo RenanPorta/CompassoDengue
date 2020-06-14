@@ -1,5 +1,6 @@
 const DenunciasDAO = require('../infra/denuncias-dao');
 const CidadaoDAO = require('../infra/cidadao-dao');
+const VisitaDAO = require('../infra/visita-dao');
 
 module.exports = (app) => {
 
@@ -40,4 +41,23 @@ module.exports = (app) => {
         const id = req.params.id;
         CidadaoDAO.deletaPorId(id, res);
     });
-};
+
+    app.get('/visita-cadastro', function(req, res) {
+        res.marko(require('../views/layouts/visitas/cadastroVisita.marko'));
+    });
+
+    app.post('/visita', function(req, res) {
+        console.log(req.body);
+        VisitaDAO.adiciona(req.body, res);
+    });
+
+    app.get('/home', function(req, res) {
+        res.marko(require('../views/layouts/home/index.marko'));
+    });
+
+    app.get('/login', function(req, res) {
+        res.marko(require('../views/layouts/home/login.marko'));
+    });
+
+
+}

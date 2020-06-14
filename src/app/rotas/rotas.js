@@ -40,4 +40,13 @@ module.exports = (app) => {
         const id = req.params.id;
         CidadaoDAO.deletaPorId(id, res);
     });
-};
+
+    app.get('/visita-cadastro', function(req, res) {
+        res.marko(require('../views/layouts/visitas/cadastroVisita.marko'));
+    });
+
+    app.post('/visita', function(req, res) {
+        console.log(req.body);
+        VisitaDAO.adiciona(req.body, res);
+    });
+}

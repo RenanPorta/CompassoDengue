@@ -22,7 +22,7 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<header><nav class=\"navbar navbar-expand-lg navbar-light identidade-visual\"><a class=\"navbar-brand logo\" href=\"#\"><img src=\"/estatico/img/logo.png\" alt=\"\"></a><div class=\"ml-auto\"><a class=\"btn btn-danger text-white\" href=\"/home\">Voltar</a></div></nav></header><main class=\"container\"><h1 class=\"text-center py-4\">Listagem de Cidadãos</h1><table class=\"table table-bordered table-hover table-responsive-lg\" id=\"cidadaos\"><thead class=\"thead-light\"><tr class=\"text-center\"><th>Nome</th><th>ID</th><th>CPF</th><th>Telefone</th><th>Email</th></tr></thead>");
+  out.w("<header><nav class=\"navbar navbar-expand-lg navbar-light identidade-visual\"><a class=\"navbar-brand logo\" href=\"#\"><img src=\"/estatico/img/logo.png\" alt=\"\"></a><div class=\"ml-auto\"><a class=\"btn btn-danger text-white\" href=\"/home\">Voltar</a></div></nav></header><main class=\"container\"><h1 class=\"text-center display-4 py-4\">Listagem de Cidadãos</h1><table class=\"table table-bordered table-hover table-responsive-lg\" id=\"cidadaos\"><thead class=\"thead-light\"><tr class=\"text-center\"><th>Nome</th><th>ID</th><th>CPF</th><th>Telefone</th><th>Email</th></tr></thead>");
 
   var for__26 = 0;
 

@@ -20,7 +20,7 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<header><nav class=\"navbar navbar-expand-lg navbar-light identidade-visual\"><a class=\"navbar-brand logo\" href=\"#\"><img src=\"/estatico/img/logo.png\" alt=\"\"></a><div class=\"ml-auto\"><a class=\"btn btn-danger text-white\" href=\"/home\">Voltar</a></div></nav></header><main class=\"container\"><h1 class=\"text-center py-4\">Altera Cidadão</h1><form name=\"alteraCidadao\" method=\"post\" action=\"/cidadao-altera\"><input class=\"form-control\" type=\"hidden\" name=\"_method\" value=\"PUT\"><input class=\"form-control\" type=\"hidden\" id=\"id\" name=\"id\" value=\"" +
+  out.w("<header><nav class=\"navbar navbar-expand-lg navbar-light identidade-visual\"><a class=\"navbar-brand logo\" href=\"#\"><img src=\"/estatico/img/logo.png\" alt=\"\"></a><div class=\"ml-auto\"><a class=\"btn btn-danger text-white\" href=\"/home\">Voltar</a></div></nav></header><main class=\"container\"><h1 class=\"text-center display-4 py-4\">Altera Cidadão</h1><form name=\"alteraCidadao\" method=\"post\" action=\"/cidadao-altera\"><input class=\"form-control\" type=\"hidden\" name=\"_method\" value=\"PUT\"><input class=\"form-control\" type=\"hidden\" id=\"id\" name=\"id\" value=\"" +
     marko_escapeXmlAttr(data.cidadao.id) +
     "\"><div class=\"form-group\"><label for=\"nomeCidadao\">Nome</label><input class=\"form-control\" type=\"text\" id=\"nomeCidadao\" name=\"nomeCidadao\" value=\"" +
     marko_escapeXmlAttr(data.cidadao.nome) +

@@ -10,7 +10,6 @@ class Database {
 		this.criarAtividades();
 		this.criarTipoVisita();
 		this.criarMunicipio();
-		this.criarSituacaoImovel();
 		this.criarPendencia();
 		this.criarTipoRecipiente();
 		this.criarRecipiente();
@@ -37,7 +36,6 @@ class Database {
 		//  this.relacionarTabelaMunicipio();
 		//  this.relacionarTabelaPendencia();
 		//  this.relacionarTabelaRecipientes();
-		//  this.relacionarTabelaSituacaoImovel();
 		//  this.relacionarTabelaSituacaoRecipientes();
 		//  this.relacionarTabelaTipoRecipientes();
 		//  this.relacionarTabelaTipoVisita();
@@ -84,7 +82,7 @@ class Database {
 	criarVisitas() {
 		const sql = `CREATE TABLE IF NOT EXISTS visita (
             codVisita INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            cpfAgente VARCHAR(11) NOT NULL,
+            cpfAgente VARCHAR(11),
             codAtividade INT NOT NULL,
             codTipoVisita INT NOT NULL,
             codMunicipio INT NOT NULL,
@@ -97,7 +95,8 @@ class Database {
             numCadOrdem INT NOT NULL,
             endereco VARCHAR(100) NOT NULL,
             numComplemento VARCHAR(50) NOT NULL,
-            codSituacaoImovel INT NOT NULL,
+			Trabalhado TINYINT(1),
+			codPendencia VARCHAR(2),
             codTipoRecipientes VARCHAR(2),
             codSituacaoRecipientes INT,
             contrMecanico TINYINT(1),
@@ -185,22 +184,6 @@ class Database {
 				console.log(erro);
 			} else {
 				console.log("Tabelas Municipio Criada com sucesso");
-			}
-		})
-
-	}
-	criarSituacaoImovel() {
-		const sql = `CREATE TABLE IF NOT EXISTS situacaoImovel(
-					codSituacaoImovel INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-					trabalhado TINYINT(1) NOT NULL,
-					codPendencia VARCHAR(2)
-					)`
-
-		this.conexao.query(sql, (erro) => {
-			if (erro) {
-				console.log(erro);
-			} else {
-				console.log("Tabelas SituaçãoImovel Criada com sucesso");
 			}
 		})
 
@@ -1168,6 +1151,7 @@ class Database {
 		})
 
 	}
+	
 	relacionarTabelaAgente() {
 		const sql = `ALTER TABLE visita ADD CONSTRAINT fk_agente FOREIGN KEY (cpfAgente) REFERENCES agente (cpfAgente)`;
 
@@ -1219,22 +1203,8 @@ class Database {
 
 	}
 
-	relacionarTabelaSituacaoImovel() {
-		const sql = `ALTER TABLE visita ADD CONSTRAINT fk_situacaoImovel FOREIGN KEY (codSituacaoImovel) REFERENCES situacaoImovel (codSituacaoImovel)`;
-
-
-		this.conexao.query(sql, (erro) => {
-			if (erro) {
-				console.log(erro);
-			} else {
-				console.log("Tabelas SituaçãoImovel relacionada com sucesso");
-			}
-		})
-
-	}
-
 	relacionarTabelaPendencia() {
-		const sql = `ALTER TABLE situacaoImovel ADD CONSTRAINT fk_pendencia FOREIGN KEY (codPendencia) REFERENCES pendencia (codPendencia)`;
+		const sql = `ALTER TABLE visita ADD CONSTRAINT fk_pendencia FOREIGN KEY (codPendencia) REFERENCES pendencia (codPendencia)`;
 
 
 		this.conexao.query(sql, (erro) => {

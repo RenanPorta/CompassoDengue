@@ -15,6 +15,22 @@ module.exports = (app) => {
     app.get('/denuncia-consulta', function(req, res) {
         DenunciasDAO.lista(res);
     });
+
+    app.get('/denuncia-visualiza/:id', function(req, res) {
+        const id = req.params.id;
+        DenunciasDAO.buscaPorId(id, res);
+    });
+
+    app.get('/denuncia-altera/:id', function(req, res) {
+        const id = req.params.id;
+        DenunciasDAO.buscaPorIdAlterar(id, res);
+    });
+
+    app.put('/denuncia-altera', function(req, res) {
+        DenunciasDAO.altera(req.body, res);
+    });
+
+// ---------------------------------------------------------------------------------------------------------------------------
     
     app.get('/cidadao-consulta', function(req, res) {
         CidadaoDAO.lista(res);
@@ -42,6 +58,8 @@ module.exports = (app) => {
         CidadaoDAO.deletaPorId(id, res);
     });
 
+// ----------------------------------------------------------------------------------------------
+
     app.get('/visita-cadastro', function(req, res) {
         res.marko(require('../views/layouts/visitas/cadastroVisita.marko'));
     });
@@ -50,6 +68,8 @@ module.exports = (app) => {
         console.log(req.body);
         VisitaDAO.adiciona(req.body, res);
     });
+
+// -----------------------------------------------------------------------------------------------
 
     app.get('/home', function(req, res) {
         res.marko(require('../views/layouts/home/index.marko'));

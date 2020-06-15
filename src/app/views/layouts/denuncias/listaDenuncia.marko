@@ -43,10 +43,15 @@
                             <td>${denuncia.telefone}</td>
                             <td>${denuncia.rua}</td>
                             <td>${denuncia.bairro}</td>
-                            <td><a href="#">${denuncia.imagem}</a></td>
+                            <div if(denuncia.imagem)>
+                            <td><a href="/denuncia-visualiza/${denuncia.id}">Visualizar Imagem</a></td>
+                            </div>
+                            <div if(!denuncia.imagem)>
+                            <td></td>
+                            </div>
                             <td>${denuncia.observacoes}</td>
                             <td>${denuncia.status}</td>
-                            <td><a href="#">Editar</a></td>
+                            <td><a href="/denuncia-altera/${denuncia.id}">Alterar Status</a></td>
                         </tr>
                     </table>
                 </div>

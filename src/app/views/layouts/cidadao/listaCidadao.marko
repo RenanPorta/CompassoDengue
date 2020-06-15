@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Reset -->
     <link rel="stylesheet" href="/estatico/css/reset.css" />
-    <link rel="stylesheet" href="/estatico/css/normalize.css" />
+    <link rel="stylesheet" href="/estatico/css/normalize.css" />    
     <title>Listagem de Cidadãos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="/estatico/css/style.css" />
+    <link rel="stylesheet" href="/estatico/css/style.css" />    
 </head>
 
 <body>
@@ -35,17 +35,18 @@
                     <th>Email</th>
                 </tr>
             </thead>
-
-            <tr class="text-center" id="cidadao_${cidadao.id}" for (cidadao in data.cidadaos)>
-                <td>${cidadao.id}</td>
-                <td>${cidadao.nome}</td>
-                <td>${cidadao.cpf}</td>
-                <td>${cidadao.telefone}</td>
-                <td>${cidadao.email}</td>
-                <td><a href="/cidadao-altera/${cidadao.id}">Editar</a></td>
-                <td><a class="text-danger" href="#" data-ref="${cidadao.id}" data-type="remocao">Deletar</a></td>
-            </tr>
-                        
+            <tbody>
+                <tr class="text-center" id="cidadao_${cidadao.id}" for (cidadao in data.cidadaos)>
+                    <td>${cidadao.id}</td>
+                    <td>${cidadao.nome}</td>
+                    <td>${cidadao.cpf}</td>
+                    <td>${cidadao.telefone}</td>
+                    <td>${cidadao.email}</td>
+                    <td><a href="/cidadao-altera/${cidadao.id}">Editar</a></td>
+                    <td><a class="text-danger" href="#" data-ref="${cidadao.id}" data-type="remocao">Deletar</a></td>
+                </tr>
+            </tbody>
+            
             <script src="/estatico/js/remove-cidadao.js"></script>
 
         </table>

@@ -9,10 +9,9 @@ module.exports = (caminho, nomeDoArquivo, callbackImagemCriada) => {
 
     if(tipoEhValido){
         const novoCaminho = `./src/arquivos/imagens/${nomeDoArquivo}${tipo}`;
-        const novoNomeDoArquivo = `${nomeDoArquivo}${tipo}`;
             fs.createReadStream(caminho)
                 .pipe(fs.createWriteStream(novoCaminho))
-                .on('finish', () => callbackImagemCriada(false, novoCaminho, novoNomeDoArquivo));
+                .on('finish', () => callbackImagemCriada(false, novoCaminho));
     }else{
         const erro = "Tipo é inválido";
         console.log('Erro! Tipo de imagem invalida ');

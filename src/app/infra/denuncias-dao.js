@@ -10,7 +10,7 @@ class DenunciasDAO {
             const sql = `INSERT INTO denuncias SET ?`
 
             if(denuncia.imagemDenuncia != ''){
-                uploadDeArquivos(denuncia.imagemDenuncia, denuncia.cpfCidadao, (erro, novoCaminho, novoNomeDoArquivo) => {
+                uploadDeArquivos(denuncia.imagemDenuncia, denuncia.cpfCidadao, (erro, novoCaminho) => {
     
                     if(erro){
                         res.status(400).json({ erro });
@@ -21,7 +21,6 @@ class DenunciasDAO {
                                             rua: denuncia.ruaDenuncia,
                                             bairro: denuncia.bairroDenuncia,
                                             imagem: novoCaminho,
-                                            nomeImagem: novoNomeDoArquivo,
                                             observacoes: denuncia.observacoesDenuncia,
                                             status: "Pendente" }
                         console.log(novaDenuncia);
@@ -81,75 +80,6 @@ class DenunciasDAO {
         })
 
     }
-    buscaPorId(id, res){
-        const sql = `SELECT * FROM denuncias WHERE id=${id}`
-        
-        conexao.query(sql, (erro, resultado)=> {
-            const denuncia = resultado[0]
-            const novaDenuncia = {
-                        id: denuncia.id,
-                        cidadao: denuncia.cidadao,
-                        cpf: denuncia.cpf,
-                        telefone: denuncia.telefone,
-                        rua: denuncia.rua,
-                        bairro: denuncia.bairro,
-                        nomeImagem: denuncia.nomeImagem,
-                        observacoes: denuncia.observacoes,
-                        status: denuncia.status
-            }
-            console.log(novaDenuncia);
-            if(erro){
-                res.status(404).json(erro);
-            }else{
-                res.marko(require('../views/layouts/denuncias/visualizaDenuncia.marko'),
-                {
-                    denuncia: novaDenuncia
-                });
-            }
-        })
-    }
-    buscaPorIdAlterar(id, res){
-        const sql = `SELECT * FROM denuncias WHERE id=${id}`
-        
-        conexao.query(sql, (erro, resultado)=> {
-            const denuncia = resultado[0]
-            const novaDenuncia = {
-                        id: denuncia.id,
-                        cidadao: denuncia.cidadao,
-                        cpf: denuncia.cpf,
-                        telefone: denuncia.telefone,
-                        rua: denuncia.rua,
-                        bairro: denuncia.bairro,
-                        nomeImagem: denuncia.nomeImagem,
-                        observacoes: denuncia.observacoes,
-                        status: denuncia.status
-            }
-            console.log(novaDenuncia);
-            if(erro){
-                res.status(404).json(erro);
-            }else{
-                res.marko(require('../views/layouts/denuncias/alteraDenuncia.marko'),
-                {
-                    denuncia: novaDenuncia
-                });
-            }
-        })
-    }
-    altera(denuncia, res){
-        const novaDenuncia = {
-                            status: denuncia.status
-                            }
-        const sql = `UPDATE denuncias SET ? WHERE id=${denuncia.id}`
-
-        conexao.query(sql, novaDenuncia, (erro, resultado) => {
-            if(erro){
-                res.status(400).json(erro);
-            }else {
-                res.redirect('/denuncia-consulta');
-            }
-       });
-    }
-    
 }
 
 module.exports = new DenunciasDAO;

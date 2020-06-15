@@ -10,6 +10,7 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_loadTag = marko_helpers.t,
     component_globals_tag = marko_loadTag(require("marko/src/components/taglib/component-globals-tag")),
     marko_escapeXmlAttr = marko_helpers.xa,
+    marko_escapeXml = marko_helpers.x,
     init_components_tag = marko_loadTag(require("marko/src/components/taglib/init-components-tag")),
     await_reorderer_tag = marko_loadTag(require("marko/src/taglibs/async/await-reorderer-tag"));
 
@@ -20,7 +21,7 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<header><nav class=\"navbar navbar-expand-lg navbar-light identidade-visual\"><a class=\"navbar-brand logo\" href=\"#\"><img src=\"/estatico/img/logo.png\" alt=\"\"></a><div class=\"ml-auto\"><a class=\"btn btn-danger text-white\" href=\"/denuncia-consulta\">Voltar</a></div></nav></header><main class=\"container\"><h1 class=\"text-center display-4 py-4\">Altera Status Denuncia</h1><form name=\"alteraCidadao\" method=\"post\" action=\"/denuncia-altera\"><input class=\"form-control\" type=\"hidden\" name=\"_method\" value=\"PUT\"><input class=\"form-control\" type=\"hidden\" id=\"id\" name=\"id\" value=\"" +
+  out.w("<header><nav class=\"navbar navbar-expand-lg navbar-light identidade-visual\"><a class=\"navbar-brand logo\" href=\"#\"><img src=\"/estatico/img/logo.png\" alt=\"\"></a><div class=\"ml-auto\"><a class=\"btn btn-danger text-white\" href=\"/denuncia-consulta\">Voltar</a></div></nav></header><main class=\"container\"><h1 class=\"text-center display-4 py-4\">Altera Status da Denuncia</h1><form name=\"alteraCidadao\" method=\"post\" action=\"/denuncia-altera\"><input class=\"form-control\" type=\"hidden\" name=\"_method\" value=\"PUT\"><input class=\"form-control\" type=\"hidden\" id=\"id\" name=\"id\" value=\"" +
     marko_escapeXmlAttr(data.denuncia.id) +
     "\"><div class=\"mb-3\"><label for=\"nomeCidadao\">Nome</label><input type=\"text\" class=\"form-control\" id=\"nomeCidadao\" name=\"nomeCidadao\" value=\"" +
     marko_escapeXmlAttr(data.denuncia.cidadao) +
@@ -32,13 +33,13 @@ function render(input, out, __component, component, state) {
     marko_escapeXmlAttr(data.denuncia.rua) +
     "\" readonly=\"true\"></div><div class=\"col-md-6 mb-3\"><label for=\"bairroDenuncia\">Bairro</label><input type=\"text\" class=\"form-control\" id=\"bairroDenuncia\" name=\"bairroDenuncia\" value=\"" +
     marko_escapeXmlAttr(data.denuncia.bairro) +
-    "\" readonly=\"true\"></div></div><div class=\"form-group\"><select name=\"status\" value=\"" +
-    marko_escapeXmlAttr(data.denuncia.status) +
-    "\"><option value=\"Pendente\">Pendente</option><option value=\"Em andanmento\">Em andanmento</option><option value=\"Resolvido\">Resolvido</option></select></div><button class=\"btn btn-primary btn-lg btn-block\" type=\"submit\">Salvar</button></form></main><footer class=\"pt-3\"><div class=\"jumbotron mb-0 identidade-visual\"><img class=\"logo-footer mx-auto d-block img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"\"><p class=\"copyright text-center mb-0\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p class=\"copyright text-center\">Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");
+    "\" readonly=\"true\"></div></div><div class=\"form-group\"><select name=\"status\"><option>" +
+    marko_escapeXml(data.denuncia.status) +
+    "</option><option value=\"Pendente\">Pendente</option><option value=\"Em andanmento\">Em andanmento</option><option value=\"Resolvido\">Resolvido</option></select></div><button class=\"btn btn-primary btn-lg btn-block\" type=\"submit\">Salvar</button></form></main><footer class=\"pt-3\"><div class=\"jumbotron mb-0 identidade-visual\"><img class=\"logo-footer mx-auto d-block img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"\"><p class=\"copyright text-center mb-0\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p class=\"copyright text-center\">Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "50");
+  await_reorderer_tag({}, out, __component, "51");
 
   out.w("</body></html>");
 }

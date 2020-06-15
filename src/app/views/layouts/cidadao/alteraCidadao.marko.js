@@ -28,11 +28,11 @@ function render(input, out, __component, component, state) {
     marko_escapeXmlAttr(data.cidadao.telefone) +
     "\" maxlength=\"11\"></div><div class=\"form-group\"><label for=\"emailCidadao\">E-mail</label><input class=\"form-control\" type=\"email\" id=\"emailCidadao\" name=\"emailCidadao\" value=\"" +
     marko_escapeXmlAttr(data.cidadao.email) +
-    "\"></div><button class=\"btn btn-primary btn-lg btn-block\" type=\"submit\">Salvar</button></form></main><footer class=\"pt-3\"><div class=\"jumbotron mb-0 identidade-visual\"><img class=\"logo-footer mx-auto d-block img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"\"><p class=\"copyright text-center mb-0\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p class=\"copyright text-center\">Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");
+    "\"></div><div class=\"row\"><div class=\"col-md-4 col-lg-2\"><button class=\"btn btn-primary btn-lg btn-block\" type=\"submit\">Salvar</button></div></div></form></main><footer class=\"pt-3\"><div class=\"jumbotron mb-0 identidade-visual\"><img class=\"logo-footer mx-auto d-block img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"\"><p class=\"copyright text-center mb-0\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p class=\"copyright text-center\">Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "36");
+  await_reorderer_tag({}, out, __component, "38");
 
   out.w("</body></html>");
 }

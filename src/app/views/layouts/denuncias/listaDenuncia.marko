@@ -41,18 +41,23 @@
             </thead>
 
             <tbody>
-                <tr class="text-center" id="denuncia_${denuncia.id}" for (denuncia in data.denuncias)>
-                    <td>${denuncia.id}</td>
-                    <td>${denuncia.cidadao}</td>
-                    <td>${denuncia.cpf}</td>
-                    <td>${denuncia.telefone}</td>
-                    <td>${denuncia.rua}</td>
-                    <td>${denuncia.bairro}</td>
-                    <td><a href="#">${denuncia.imagem}</a></td>
-                    <td>${denuncia.observacoes}</td>
-                    <td>${denuncia.status}</td>
-                    <td><a href="#">Editar</a></td>
-                </tr>
+                <tr id="denuncia_${denuncia.id}" for (denuncia in data.denuncias)>
+                        <td>${denuncia.id}</td>
+                        <td>${denuncia.cidadao}</td>
+                        <td>${denuncia.cpf}</td>
+                        <td>${denuncia.telefone}</td>
+                        <td>${denuncia.rua}</td>
+                        <td>${denuncia.bairro}</td>
+                        <div if(denuncia.imagem)>
+                        <td><a href="/denuncia-visualiza/${denuncia.id}">Visualizar Imagem</a></td>
+                        </div>
+                        <div if(!denuncia.imagem)>
+                        <td></td>
+                        </div>
+                        <td>${denuncia.observacoes}</td>
+                        <td>${denuncia.status}</td>
+                        <td><a href="/denuncia-altera/${denuncia.id}">Alterar Status</a></td>
+                    </tr>
             </tbody>
         </table>
     </main>

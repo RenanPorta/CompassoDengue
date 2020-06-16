@@ -2,10 +2,12 @@
 
 .identidade-visual {
     background-color: #ffc61c;
+    width: 100%;
+    height: auto;
 }
 
 .logo img {
-    max-height: 2em;
+    max-height: 3.5em;
     max-width: 40vw;
 }
 
@@ -115,4 +117,33 @@ main{
 
 .principal {
     min-height: 85vh;
+}
+
+
+/* estilo das paginas de erro */
+
+.align {
+    text-align: center;
+}
+
+.erro404 {
+    font-size: 8.5em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.erro500 {
+    margin-top: 20px;
+    font-size: 3em;
+    font-family: 'Montserrat', sans-serif;
+    color: red;
+}
+
+.mosquito-png {
+    margin: 20px 0 20px 0;
+    max-width: 250px;
+    max-height: 200px;
+}
+
+.btn-erro {
+    margin: 20px 0 20px 0;
 }

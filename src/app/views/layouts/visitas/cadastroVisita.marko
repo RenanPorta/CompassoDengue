@@ -73,9 +73,9 @@
         <div>
 		<h3>Situação do Imóvel</h3>
         
-		<input type="checkbox" name="trabalhado" value="1">Trabalhado<br>        
+		<input type="checkbox" name="trabalhado" value="Sim">Trabalhado<br>        
         
-        <input type="checkbox" name="trabalhado" value="0">Pendência
+        <input type="checkbox" name="trabalhado" value="Nao">Pendência
             <select name="codPendencia">
                 <option value=""> </option>
                 <option value="F">Fechado</option>
@@ -100,7 +100,7 @@
                     <option value="G">Naturais</option>
                 </select>
 
-                <select name="codSituacaoRecipiente">
+                <select name="codRecipiente">
                     <option value=""> </option>
                     <option value="1">Ligado À Rede</option>
                     <option value="2">Não Ligado A Rede</option>
@@ -156,8 +156,8 @@
 		<br>
         <div>
             <h3>Controle Mecânico</h3>
-			<input type="checkbox" name="contrMecanico" value="1">Sim
-			<input type="checkbox" name="contrMecanico" value="0">Não<br>
+			<input type="checkbox" name="contrMecanico" value="Sim">Sim
+			<input type="checkbox" name="contrMecanico" value="Nao">Não<br>
         </div>
 		<br>
         <div>
@@ -170,8 +170,8 @@
 		<br>
         <div>
             <h3>Amostra</h3>
-            <input type="checkbox" name="amostra" value="1">Sim
-			<input type="checkbox" name="amostra" value="0">Não<br>
+            <input type="checkbox" name="amostra" value="Sim">Sim
+			<input type="checkbox" name="amostra" value="Nao">Não<br>
 
            <p>Larvas
 			<input type="checkbox" name="codLarvas" value="1">Exame
@@ -184,10 +184,27 @@
             <h3>Programar Retorno</h3>
 
 
-            <input type="checkbox" name="progRetorno" value="1">Sim
-			<input type="checkbox" name="progRetorno" value="0">Não<br>
+            <input type="checkbox" name="progRetorno" value="Sim">Sim
+			<input type="checkbox" name="progRetorno" value="Nao">Não<br>
 
         </div>
+		<br>
+         <div>
+            <h3>Laboratório</h3>
+
+            <label for="responsavel">Responsável</label>
+            <input type="text" id="responsavel" />
+            <label for="dataLab">Data</label>
+            <input type="date" id="dataLab" />
+        </div>
+		<br>
+        <div>
+            <h3>Agente</h3>
+
+            <label for="cpfAgente">Agente</label>
+            <input type="text" id="cpfAgente" />
+			
+	    </div>
 		<br>
                
 			 

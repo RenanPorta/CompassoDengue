@@ -20,27 +20,27 @@ class Database {
 		this.criarLaboratorio();
 
 
-		//  this.popularTipoVisita();
-		//  this.popularAtividades();
-		//  this.popularMunicipios();
-		//  this.popularPendencia();
-		//  this.popularRecipientes();
-		//  this.popularTipoRecipientes();
-		//  this.popularSituacaoRecipientes();
-		//  this.popularTratQuimico();
-		//  this.popularLarvas();
+		// this.popularTipoVisita();
+		// this.popularAtividades();
+		// this.popularMunicipios();
+		// this.popularPendencia();
+		// this.popularRecipientes();
+		// this.popularTipoRecipientes();
+		// this.popularSituacaoRecipientes();
+		// this.popularTratQuimico();
+		// this.popularLarvas();
 
-		//  this.relacionarTabelaAgente();
-		//  this.relacionarTabelaAtividades();
-		//  this.relacionarTabelaLaboratorio();
-		//  this.relacionarTabelaLarvas();
-		//  this.relacionarTabelaMunicipio();
-		//  this.relacionarTabelaPendencia();
-		//  this.relacionarTabelaRecipientes();
-		//  this.relacionarTabelaSituacaoRecipientes();
-		//  this.relacionarTabelaTipoRecipientes();
-		//  this.relacionarTabelaTipoVisita();
-		//  this.relacionarTabelaTratQuimico();
+		// this.relacionarTabelaAgente();
+		// this.relacionarTabelaAtividades();
+		// this.relacionarTabelaLaboratorio();
+		// this.relacionarTabelaLarvas();
+		// this.relacionarTabelaMunicipio();
+		// this.relacionarTabelaPendencia();
+		// this.relacionarTabelaRecipientes();
+		// this.relacionarTabelaSituacaoRecipientes();
+		// this.relacionarTabelaTipoRecipientes();
+		// this.relacionarTabelaTipoVisita();
+		// this.relacionarTabelaTratQuimico();
 	}
 
 	criarDenuncias() {
@@ -115,15 +115,16 @@ class Database {
             numCadOrdem INT NOT NULL,
             endereco VARCHAR(100) NOT NULL,
             numComplemento VARCHAR(50) NOT NULL,
-			Trabalhado TINYINT(1),
+			Trabalhado VARCHAR(4),
 			codPendencia VARCHAR(2),
             codTipoRecipientes VARCHAR(2),
-            codSituacaoRecipientes INT,
-            contrMecanico TINYINT(1),
+			codSituacaoRecipientes INT,
+			codRecipiente INT,
+            contrMecanico VARCHAR(4),
             codTratQuimico INT,
-            amostra TINYINT(1),
+            amostra VARCHAR(4),
             codLarvas INT,
-            progRetorno TINYINT(1) NOT NULL,
+            progRetorno VARCHAR(4) NOT NULL,
             codLaboratorio INT
             )`
 
@@ -226,8 +227,7 @@ class Database {
 	criarTipoRecipiente() {
 		const sql = `CREATE TABLE IF NOT EXISTS tipoRecipientes(
 					codTipoRecipientes VARCHAR(2) NOT NULL PRIMARY KEY,
-					tipoRecipiente VARCHAR(30) NOT NULL, 
-					codRecipiente INT
+					tipoRecipiente VARCHAR(30) NOT NULL
 					)`
 
 		this.conexao.query(sql, (erro) => {
@@ -591,7 +591,7 @@ class Database {
 			[3519303, 'Ibaté'],
 			[3519402, 'Ibirá'],
 			[3519501, 'Ibirarema'],
-			[3519600, 'ITINYINT(1)inga'],
+			[3519600, 'Ibtinga'],
 			[3519709, 'Ibiúna'],
 			[3519808, 'Icém'],
 			[3519907, 'Iepê'],
@@ -1024,6 +1024,7 @@ class Database {
 	popularPendencia() {
 		const sql = `INSERT INTO pendencia(codPendencia, pendencia) VALUES ?`;
 		const values = [
+			['', ' '],
 			['F', 'Fechado'],
 			['D', 'Desocupado'],
 			['T', 'Temporada'],
@@ -1099,15 +1100,15 @@ class Database {
 
 	}
 	popularTipoRecipientes() {
-		const sql = `INSERT INTO tipoRecipientes(codTipoRecipientes, tipoRecipiente, codRecipiente) VALUES ?`;
+		const sql = `INSERT INTO tipoRecipientes(codTipoRecipientes, tipoRecipiente) VALUES ?`;
 		const values = [
-			['A', 'Depósito Elevado', 0],
-			['B', 'Depósito Não Elevado', 0],
-			['C', 'Móveis', 0],
-			['D', 'Fixos', 0],
-			['E', 'Pneus', 0],
-			['F', 'Passíveis Remoção I Alteração', 0],
-			['G', 'Naturais', 0]
+			['A', 'Depósito Elevado'],
+			['B', 'Depósito Não Elevado'],
+			['C', 'Móveis'],
+			['D', 'Fixos'],
+			['E', 'Pneus'],
+			['F', 'Passíveis Remoção I Alteração'],
+			['G', 'Naturais']
 		];
 
 		this.conexao.query(sql, [values], (erro) => {
@@ -1265,7 +1266,7 @@ class Database {
 	}
 
 	relacionarTabelaRecipientes() {
-		const sql = `ALTER TABLE tipoRecipientes ADD CONSTRAINT fk_recipientes FOREIGN KEY (codRecipiente) REFERENCES recipientes (codRecipiente)`;
+		const sql = `ALTER TABLE visita ADD CONSTRAINT fk_recipientes FOREIGN KEY (codRecipiente) REFERENCES recipientes (codRecipiente)`;
 
 		this.conexao.query(sql, (erro) => {
 			if (erro) {

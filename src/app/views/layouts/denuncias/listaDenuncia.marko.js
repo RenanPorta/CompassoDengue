@@ -18,11 +18,11 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 function render(input, out, __component, component, state) {
   var data = input;
 
-  out.w("<html lang=\"pt-br\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/estatico/css/reset.css\"><link rel=\"stylesheet\" href=\"/estatico/css/normalize.css\"><title>Listagem de Denuncias</title><link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css\" integrity=\"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk\" crossorigin=\"anonymous\"><link rel=\"stylesheet\" href=\"/estatico/css/style.css\"></head><body>");
+  out.w("<html lang=\"pt-br\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/estatico/css/reset.css\"><link rel=\"stylesheet\" href=\"/estatico/css/normalize.css\"> <title>Listagem de Denuncias</title><link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css\" integrity=\"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk\" crossorigin=\"anonymous\"><link rel=\"stylesheet\" href=\"/estatico/css/style.css\"> </head><body>");
 
   component_globals_tag({}, out);
 
-  out.w("<header><nav class=\"navbar navbar-expand-lg navbar-light identidade-visual\"><a class=\"navbar-brand logo\" href=\"#\"><img src=\"/estatico/img/logo.png\" alt=\"\"></a> <div class=\"ml-auto\"><a class=\"btn btn-danger text-white\" href=\"/home\">Voltar</a></div></nav></header><main class=\"container\"><h1 class=\"text-center display-4 py-4\">Listagem de Denuncias</h1><table class=\"table table-bordered table-hover table-responsive\" id=\"denuncias\"><thead class=\"thead-light\"><tr class=\"text-center\"><th>ID</th><th>Nome Cidadão</th><th>CPF</th><th>Telefone</th><th>Rua</th><th>Bairro</th><th>Imagem</th><th>Observações</th><th>Status</th></tr></thead><tbody>");
+  out.w("<header><nav class=\"navbar navbar-expand-lg navbar-light identidade-visual\"> <a class=\"navbar-brand logo\" href=\"#\"><img src=\"/estatico/img/logo.png\" alt=\"\"></a> <div class=\"ml-auto\"><a class=\"btn btn-danger text-white\" href=\"/home\">Voltar</a></div></nav></header><main class=\"container\"><h1 class=\"text-center display-4 py-4\">Listagem de Denuncias</h1><table class=\"table table-bordered table-hover table-responsive\" id=\"denuncias\"><thead class=\"thead-light\"><tr class=\"text-center\"><th>ID</th><th>Nome Cidadão</th><th>CPF</th><th>Telefone</th><th>Rua</th><th>Bairro</th><th>Imagem</th><th>Observações</th><th>Status</th></tr></thead><tbody>");
 
   var for__31 = 0;
 

@@ -10,4 +10,7 @@ module.exports = (app) => {
         console.log(req.body);
         VisitaDAO.adiciona(req.body, res);
     });
+    app.get('/visita-consulta', function(req, res) {
+        VisitaDAO.lista(res);
+    });
 }

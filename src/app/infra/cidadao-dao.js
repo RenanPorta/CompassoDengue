@@ -26,10 +26,13 @@ class CidadaoDAO {
             }
         })
         }else{
-            const cpfInvalido = {
-                                    "Erro": "Cpf invalido!"
-                                }
-            res.status(400).json(cpfInvalido);
+            const erroCpf = {
+                                erroCpf: "Cpf invalido!"
+                            }
+            res.marko(require('../views/layouts/cidadao/cadastroCidadao.marko'),
+            {
+                erroCpf: erroCpf
+            });
         }
     }
 

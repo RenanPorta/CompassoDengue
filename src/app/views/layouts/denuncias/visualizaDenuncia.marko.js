@@ -35,7 +35,7 @@ function render(input, out, __component, component, state) {
     marko_escapeXmlAttr(data.denuncia.rua) +
     "\" readonly></div><div class=\"col-md-6 mb-3\"><label for=\"bairroDenuncia\">Bairro</label><input type=\"text\" class=\"form-control\" id=\"bairroDenuncia\" name=\"bairroDenuncia\" value=\"" +
     marko_escapeXmlAttr(data.denuncia.bairro) +
-    "\" readonly></div></div><div><img class=\"logo-footer mx-auto d-block img-fluid\" src=\"/src/arquivos/imagens/" +
+    "\" readonly></div></div><div><img class=\"logo-footer mx-auto d-block img-fluid\" src=\"/estatico/imagens/" +
     marko_escapeXmlAttr(data.denuncia.nomeImagem) +
     "\" alt=\"\"></div><div><label for=\"observacoesDenuncia\">Observações</label><textarea id=\"observacoesDenuncia\" class=\"form-control\" name=\"observacoesDenuncia\" rows=\"3\" readonly>" +
     marko_escapeXml(data.denuncia.observacoes) +

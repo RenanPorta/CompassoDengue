@@ -1,0 +1,149 @@
+/*GERAL*/
+
+.identidade-visual {
+    background-color: #ffc61c;
+    width: 100%;
+    height: auto;
+}
+
+.logo img {
+    max-height: 3.5em;
+    max-width: 40vw;
+}
+
+/*INDEX*/
+
+.img-banner {
+    background: url('/estatico/public/img/banner.jpg');
+    background-size: cover;
+    background-position: center center;
+}
+
+main{
+    min-height: calc(100vh - 66px - 200px);
+}
+
+.banner {
+    margin-top: 8vw;
+    height: 5em;
+    max-width: 100%;
+    color: #fff;
+    text-align: center;
+    font-size: 2em;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 4px black;
+}
+
+.menu {
+    text-align: center;
+    padding: 1em 0 1em;
+    background-color: whitesmoke;
+}
+
+.menu ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu a {
+    text-decoration: none;
+    padding: 1em 0.5em;
+    color: #000000;
+}
+
+.menu a:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.img-1 {
+    width: 474px;
+    height: 338px;
+}
+
+.img-2 {
+    width: 1100px;
+    height: 338px;
+}
+
+.jumbotron {
+    align-items: center;
+    height: auto;
+    padding: 1em;
+    border-radius: 0;
+}
+
+.copyright {
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.logo-footer {
+    width: 20em;
+}
+
+/*LOGIN*/
+
+/*mobile*/
+
+.corFundo {
+    display: flex;
+    background: #cbcbcb;
+}
+
+.container-xs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 65vh;
+    margin: 2em;
+}
+
+.container-xs h1 {
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+@media (min-width: 992px) {
+    /*desktop*/
+    .container-xs {
+        max-width: 40em;
+        margin: 4em auto;
+        padding: 3em 6em;
+    }
+}
+
+.principal {
+    min-height: 85vh;
+}
+
+
+/* estilo das paginas de erro */
+
+.align {
+    text-align: center;
+}
+
+.erro404 {
+    font-size: 8.5em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.erro500 {
+    margin-top: 20px;
+    font-size: 3em;
+    font-family: 'Montserrat', sans-serif;
+    color: red;
+}
+
+.mosquito-png {
+    margin: 20px 0 20px 0;
+    max-width: 250px;
+    max-height: 200px;
+}
+
+.btn-erro {
+    margin: 20px 0 20px 0;
+}

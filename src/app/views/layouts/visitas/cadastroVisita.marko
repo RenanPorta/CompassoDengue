@@ -1,216 +1,648 @@
 <html>
- 
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Reset -->
+    <link rel="stylesheet" href="/estatico/css/reset.css" />
+    <link rel="stylesheet" href="/estatico/css/normalize.css" />
+    <title>Altera Cidadão</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/estatico/css/style.css" />
+</head>
+
 <body>
-    <h1>VISITA</h1>
-    <h3>Atividades</h3>
-    <form name="cadastraVisita" method="post" action="/visita">
 
-        <div>
-            <input type="checkbox" name="codAtividade" value="1">PONTO ESTRATÉGICO<br>
-			<input type="checkbox" name="codAtividade" value="2">PESO DE ARMADILHAS<br>
-			<input type="checkbox" name="codAtividade" value="3">DELIMITAÇÃO DE FOCO<br>
-			<input type="checkbox" name="codAtividade" value="4">BLOQUEIO – CONTR. CRIAD.<br>
-			<input type="checkbox" name="codAtividade" value="5">BLOQUEIO – NEBULIZAÇÃO<br>
-			<input type="checkbox" name="codAtividade" value="6">ARRASTÃO<br>
-			<input type="checkbox" name="codAtividade" value="IMOVEIS_ESPECIAS">IMÓVEIS ESPECIAS<br>
-			<input type="checkbox" name="codAtividade" value="8">CRIAD. ESPECIFICOS<br>
-			<input type="checkbox" name="codAtividade" value="9" checked>CASA A CASA – ROTINA<br>
-			<input type="checkbox" name="codAtividade" value="10">CASA A CASA – INTENSIFICAÇÃO<br>
-			<input type="checkbox" name="codAtividade" value="11">OUTROS<br>
-			<input type="checkbox" name="codAtividade" value="12">ADL<br>
-					
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light identidade-visual">
+            <a class="navbar-brand logo" href="#"><img src="/estatico/img/logo.png" alt=""></a>
+            <div class="ml-auto">
+                <a class="btn btn-danger text-white" href="/home">Voltar</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <h1 class="text-center display-4 py-4">Cadastro de Visita</h1>
+
+        <form name="cadastraVisita" method="post" action="/visita">
+            <!-- Atividades -->
+            <section>
+                <h3 class="text-center my-3">Atividades</h3>
+
+                <div class="row justify-content-lg-center">
+                    <div class="col-12 col-md-6 ">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="check1" type="radio" name="codAtividade" value="1">
+                                </div>
+                            </div>
+
+                            <label for="check1" class="form-control">Ponto Estratégico</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="check2" type="radio" name="codAtividade" value="2">
+                                </div>
+                            </div>
+
+                            <label for="check2" class="form-control">Peso de Armadilhas</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+
+                                    <input id="check3" type="radio" name="codAtividade" value="3">
+                                </div>
+                            </div>
+
+                            <label for="check3" class="form-control">Delimitação de Foco</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 ">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="check4" type="radio" name="codAtividade" value="4">
+                                </div>
+                            </div>
+
+                            <label for="check4" class="form-control">Bloqueio – Contr. Criad.</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="check5" type="radio" name="codAtividade" value="5">
+                                </div>
+                            </div>
+
+                            <label for="check5" class="form-control">Bloqueio – Nebulização</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="check6" type="radio" name="codAtividade" value="6">
+                                </div>
+                            </div>
+
+                            <label for="check6" class="form-control">Arrastão</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 ">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="check7" type="radio" name="codAtividade" value="IMOVEIS_ESPECIAS">
+                                </div>
+                            </div>
+
+                            <label for="check7" class="form-control">Imóveis Especiais</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="check8" type="radio" name="codAtividade" value="8">
+                                </div>
+                            </div>
+
+                            <label for="check8" class="form-control">Criad. Especificos</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="check9" type="radio" name="codAtividade" value="9" checked>
+                                </div>
+                            </div>
+
+                            <label for="check9" class="form-control">Casa a Casa – Rotina</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 ">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="check10" type="radio" name="codAtividade" value="10">
+                                </div>
+                            </div>
+
+                            <label for="check10" class="form-control">Casa a Casa – Intensificação</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="check11" type="radio" name="codAtividade" value="11">
+                                </div>
+                            </div>
+
+                            <label for="check11" class="form-control">Outros</label>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="check12" type="radio" name="codAtividade" value="12">
+                                </div>
+                            </div>
+
+                            <label for="check12" class="form-control">ADL</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tipos de Visita -->
+            <section>
+                <h3 class="text-center my-3">Tipo de Visita</h3>
+
+                <div class="row justify-content-md-between">
+                    <div class="col-md-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="tipoVisita1" type="radio" name="codTipoVisita" value="1" checked>
+                                </div>
+                            </div>
+
+                            <label for="tipoVisita1" class="form-control">Rotina</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="tipoVisita2" type="radio" name="codTipoVisita" value="2">
+                                </div>
+                            </div>
+
+                            <label for="tipoVisita2" class="form-control">Pendência</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="tipoVisita3" type="radio" name="codTipoVisita" value="3">
+                                </div>
+                            </div>
+
+                            <label for="tipoVisita3" class="form-control">Demanda</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-6">
+                        <label for="codMunicipio">Código Município</label>
+                        <input required class="form-control" type="text" id="codMunicipio" name="codMunicipio" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="municipio">Município</label>
+                        <input required class="form-control" type="text" id="municipio" name="municipio" />
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-6">
+                        <label for="area">Àrea</label>
+                        <input required class="form-control" type="text" id="area" name="area" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="setorCensitario">Setor Censitário</label>
+                        <input required class="form-control" type="text" id="setorCensitario" name="setorCensitario" />
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-6">
+                        <label for="quarteirao">Quarteirão</label>
+                        <input required class="form-control" type="text" id="quarteirao" name="quarteirao" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="execucao">Execução</label>
+                        <input required class="form-control" type="text" id="execucao" name="execucao" />
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-6">
+                        <label for="dataVisita">Data</label>
+                        <input required class="form-control" type="date" id="dataVisita" name="dataVisita" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="numCadOrdem">CAD ou Nº Ordem</label>
+                        <input required class="form-control" type="text" id="numCadOrdem" name="numCadOrdem" />
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-8">
+                        <label for="endereco">Endereço</label>
+                        <input required class="form-control" id="endereco" name="endereco" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="numComplemento">Numero / Complemento</label>
+                        <input required class="form-control" type="text" id="numComplemento" name="numComplemento" />
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Situaçao do Imóvel -->
+            <section>
+                <h3 class="text-center my-3">Situação do Imóvel</h3>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="situacao1" type="radio" name="trabalhado" value="Sim">
+                                </div>
+                            </div>
+
+                            <label for="situacao1" class="form-control">Trabalhado</label>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="situacao2" type="radio" name="trabalhado" value="Nao">
+                                </div>
+                            </div>
+
+                            <label for="situacao2" class="form-control">Pendência</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <select class="form-control form-group" name="codPendencia">
+                            <option value=""></option>
+                            <option value="F">Fechado</option>
+                            <option value="D">Desocupado</option>
+                            <option value="T">Temporada</option>
+                            <option value="P">Parcial</option>
+                            <option value="R">Recusa</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recipientes -->
+            <section>
+                <h3 class="text-center my-3">Recipientes</h3>
+                <label>Tipo</label>
+
+                <div class="row justify-content-md-between">
+                    <div class="col-md-4">
+                        <select class="form-control form-group" name="codTipoRecipientes">
+                            <option value=""> </option>
+                            <option value="A">Depósito Elevado</option>
+                            <option value="B">Depósito Não Elevado</option>
+                            <option value="C">Móveis</option>
+                            <option value="D">Fixos</option>
+                            <option value="E">Pneus</option>
+                            <option value="F">Passíveis Remoção I Alteração</option>
+                            <option value="G">Naturais</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <select class="form-control form-group" name="codRecipiente">
+                            <option value=""> </option>
+                            <option value="1">Ligado À Rede</option>
+                            <option value="2">Não Ligado A Rede</option>
+                            <option value="3">Ligado A Rede</option>
+                            <option value="4">Não Ligado A Rede</option>
+                            <option value="5">Vaso De Planta Na Água</option>
+                            <option value="6">Vasos De Planta (Diversos)</option>
+                            <option value="7">Prato / Pingadeira</option>
+                            <option value="8">Consumo Animal</option>
+                            <option value="9">Deposito P/ Construção</option>
+                            <option value="10">Depósito P/ Horticultura</option>
+                            <option value="11">Piscina Desmontável</option>
+                            <option value="12">Lata. Frasco. Plástico Utilizáveis</option>
+                            <option value="13">Garrafas Retornáveis</option>
+                            <option value="14">Balde / Regador</option>
+                            <option value="15">Bandeja Geladeira/Ar Cond.</option>
+                            <option value="16">Material De Construção</option>
+                            <option value="17">Outros</option>
+                            <option value="18">Ralo Interno</option>
+                            <option value="19">Talo Externo</option>
+                            <option value="20">Laje</option>
+                            <option value="21">Calha</option>
+                            <option value="22">Vaso Sanitário / Cx.Descarga</option>
+                            <option value="23">Piscina</option>
+                            <option value="24">Depósito P/ Construção</option>
+                            <option value="25">Depósito P/ Horticultura</option>
+                            <option value="26">Consumo Animal</option>
+                            <option value="27">Outros</option>
+                            <option value="28">Pneu</option>
+                            <option value="29">Outros Correlatos</option>
+                            <option value="30">Lata, Frasco, Plástico</option>
+                            <option value="31">Garrafa Descartável</option>
+                            <option value="32">Lona, Encerado, Plástico</option>
+                            <option value="33">Entulho De Construção</option>
+                            <option value="34">Peças / Sucatas</option>
+                            <option value="35">Masseira</option>
+                            <option value="36">Barco</option>
+                            <option value="37">Outros</option>
+                            <option value="38">Oco De Árvore E Bambu</option>
+                            <option value="39">Bromélias</option>
+                            <option value="40">Outros </option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <select class="form-control form-group" name="codSituacaoRecipientes">
+                            <option value=""> </option>
+                            <option value="1">Existente</option>
+                            <option value="2">Com àgua</option>
+                            <option value="3">Com larva</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-2">
+                        <label for="quantidade">Quantidade</label>
+                        <input class="form-control" type="number" id="quantidade" name="quantidade" />
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Controle Mecânico -->
+            <section>
+                <h3 class="text-center my-3">Controle Mecânico</h3>
+
+                <div class="row">
+                    <div class="col-6 col-lg-2">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input required id="controleMecanico1" type="radio" name="contrMecanico"
+                                        value="Sim">
+                                </div>
+                            </div>
+
+                            <label for="controleMecanico1" class="form-control">Sim</label>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-2">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input required id="controleMecanico2" type="radio" name="contrMecanico"
+                                        value="Nao">
+                                </div>
+                            </div>
+
+                            <label for="controleMecanico2" class="form-control">Não</label>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Tratamento Químico -->
+            <section>
+                <h3 class="text-center my-3">Tratamento Químico</h3>
+
+                <div class="row">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="tratQuimico1" type="radio" name="codTratQuimico" value="1">
+                                </div>
+                            </div>
+
+                            <label class="form-control" for="tratQuimico1">Prod. Alter.</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="tratQuimico2" type="radio" name="codTratQuimico" value="2">
+                                </div>
+                            </div>
+
+                            <label class="form-control" for="tratQuimico2">Focal</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="tratQuimico3" type="radio" name="codTratQuimico" value="3">
+                                </div>
+                            </div>
+
+                            <label class="form-control" for="tratQuimico3">Perifocal</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="tratQuimico4" type="radio" name="codTratQuimico" value="4">
+                                </div>
+                            </div>
+
+                            <label class="form-control" for="tratQuimico4">Nebulização</label>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Amostra -->
+            <section>
+                <h3 class="text-center my-3">Amostra</h3>
+
+                <div class="row">
+                    <div class="col-6 col-lg-2">
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="amostra1" type="radio" name="amostra" value="Sim">
+                                </div>
+                            </div>
+
+                            <label class="form-control" for="amostra1">Sim</label>
+                        </div>
+
+                    </div>
+
+                    <div class="col-6 col-lg-2">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input id="amostra2" type="radio" name="amostra" value="Nao">
+                                </div>
+                            </div>
+
+                            <label class="form-control" for="amostra2">Não</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Larvas</label>
+
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input id="larvas1" type="radio" name="codLarvas" value="1">
+                                    </div>
+                                </div>
+
+                                <label class="form-control" for="larvas1">Exame</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input id="larvas2" type="radio" name="codLarvas" value="2">
+                                    </div>
+                                </div>
+
+                                <label class="form-control" for="larvas2">Ae Aegypti</label>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <input id="larvas3" type="radio" name="codLarvas" value="3">
+                                    </div>
+                                </div>
+
+                                <label class="form-control" for="larvas3">Ae Albopictus</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Programar Retorno -->
+            <section>
+                <h3 class="text-center my-3">Programar Retorno</h3>
+
+                <div class="row">
+                    <div class="col-6 col-lg-2">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input required id="progRetorno1" type="radio" name="progRetorno" value="Sim">
+                                </div>
+                            </div>
+                            <label class="form-control" for="progRetorno1">Sim</label>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-lg-2">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <input required id="progRetorno2" type="radio" name="progRetorno" value="Nao">
+                                </div>
+                            </div>
+
+                            <label class="form-control" for="progRetorno2">Não</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Laboratório -->
+            <section>
+                <h3 class="text-center my-3">Laboratório</h3>
+
+                <div class="row">
+                    <div class="col-6 col-md-8">
+                        <div class="form-group">
+                            <label for="responsavel">Responsável</label>
+                            <input class="form-control" type="text" id="responsavel" />
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-4">
+                        <div class="form-group">
+                            <label for="dataLab">Data</label>
+                            <input class="form-control" type="date" id="dataLab" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agente -->
+            <section>
+                <h3 class="text-center my-3">Agente</h3>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="cpfAgente">Agente</label>
+                        <input class="form-control" type="text" id="cpfAgente" />
+                    </div>
+                </div>
+            </section>
+
+            <div class="row">
+                <div class="col-md-4 col-lg-2">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <footer class="pt-3">
+        <div class="jumbotron mb-0 identidade-visual">
+            <img class="logo-footer mx-auto d-block img-fluid" src="/estatico/img/logo-2.png" alt="">
+
+            <p class="copyright text-center mb-0">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi
+                Mirim.</p>
+            <p class="copyright text-center">Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil.
+                Tel.19 3814.1000</p>
         </div>
-
-        <h3>Tipo de Visita</h3>
-
-        <div>
-		    <input type="checkbox" name="codTipoVisita" value="1" checked>ROTINA
-			<input type="checkbox" name="codTipoVisita" value="2" >PENDÊNCIA
-			<input type="checkbox" name="codTipoVisita" value="3" >DEMANDA
-            
-		</div>
-        <br>
-        
-		<div>
-            <label for="codMunicipio">Código Município</label>
-            <input type="text" id="codMunicipio" name="codMunicipio"/>
-
-        
-        </div>
-        <div>
-            <label for="municipio">Município</label>
-            <input type="text" id="municipio" name="municipio"/>
-        </div>
-        <div>
-            <label for="area">Àrea</label>
-            <input type="text" id="area" name="area" />
-
-            <label for="setorCensitario">Setor Censitário</label>
-            <input type="text" id="setorCensitario" name="setorCensitario" />
-        </div>
-        <div>
-            <label for="quarteirao">Quarteirão</label>
-            <input type="text" id="quarteirao" name="quarteirao" />
-
-            <label for="execucao">Execução</label>
-            <input type="text" id="execucao" name="execucao" />
-
-            <label for="dataVisita">Data</label>
-            <input type="date" id="dataVisita" name="dataVisita" />
-        </div>
-		<br>        
-        <div>
-            <label for="numCadOrdem">CAD ou Nº Ordem</label>
-            <input type="text" id="numCadOrdem" name="numCadOrdem" />
-
-            <label for="endereco">Endereço</label>
-            <textarea id="endereco" name="endereco" ></textarea>
-            <label for="numComplemento">Numero / Complemento</label>
-            <input type="text" id="numComplemento" name="numComplemento" />
-
-        </div>
-		<br>
-        <div>
-		<h3>Situação do Imóvel</h3>
-        
-		<input type="checkbox" name="trabalhado" value="Sim">Trabalhado<br>        
-        
-        <input type="checkbox" name="trabalhado" value="Nao">Pendência
-            <select name="codPendencia">
-                <option value=""> </option>
-                <option value="F">Fechado</option>
-                <option value="D">Desocupado</option>
-                <option value="T">Temporada</option>
-                <option value="P">Parcial</option>
-                <option value="R">Recusa</option>
-            </select>
-        </div>
-		<br>
-        <div>
-            <h3>Recipientes</h3>
-            <p>Tipo
-                <select name="codTipoRecipientes">
-                    <option value=""> </option>
-                    <option value="A">Depósito Elevado</option>
-                    <option value="B">Depósito Não Elevado</option>
-                    <option value="C">Móveis</option>
-                    <option value="D">Fixos</option>
-                    <option value="E">Pneus</option>
-                    <option value="F">Passíveis Remoção I Alteração</option>
-                    <option value="G">Naturais</option>
-                </select>
-
-                <select name="codRecipiente">
-                    <option value=""> </option>
-                    <option value="1">Ligado À Rede</option>
-                    <option value="2">Não Ligado A Rede</option>
-                    <option value="3">Ligado A Rede</option>
-                    <option value="4">Não Ligado A Rede</option>
-                    <option value="5">Vaso De Planta Na Água</option>
-                    <option value="6">Vasos De Planta (Diversos)</option>
-                    <option value="7">Prato / Pingadeira</option>
-                    <option value="8">Consumo Animal</option>
-                    <option value="9">Deposito P/ Construção</option>
-                    <option value="10">Depósito P/ Horticultura</option>
-                    <option value="11">Piscina Desmontável</option>
-                    <option value="12">Lata. Frasco. Plástico Utilizáveis</option>
-                    <option value="13">Garrafas Retornáveis</option>
-                    <option value="14">Balde / Regador</option>
-                    <option value="15">Bandeja Geladeira/Ar Cond.</option>
-                    <option value="16">Material De Construção</option>
-                    <option value="17">Outros</option>
-                    <option value="18">Ralo Interno</option>
-                    <option value="19">Talo Externo</option>
-                    <option value="20">Laje</option>
-                    <option value="21">Calha</option>
-                    <option value="22">Vaso Sanitário / Cx.Descarga</option>
-                    <option value="23">Piscina</option>
-                    <option value="24">Depósito P/ Construção</option>
-                    <option value="25">Depósito P/ Horticultura</option>
-                    <option value="26">Consumo Animal</option>
-                    <option value="27">Outros</option>
-                    <option value="28">Pneu</option>
-                    <option value="29">Outros Correlatos</option>
-                    <option value="30">Lata, Frasco, Plástico</option>
-                    <option value="31">Garrafa Descartável</option>
-                    <option value="32">Lona, Encerado, Plástico</option>
-                    <option value="33">Entulho De Construção</option>
-                    <option value="34">Peças / Sucatas</option>
-                    <option value="35">Masseira</option>
-                    <option value="36">Barco</option>
-                    <option value="37">Outros</option>
-                    <option value="38">Oco De Árvore E Bambu</option>
-                    <option value="39">Bromélias</option>
-                    <option value="40">Outros </option>
-                </select>
-                <select name="codSituacaoRecipientes">
-                    <option value=""> </option>
-                    <option value="1">Existente</option>
-                    <option value="2">Com àgua</option>
-                    <option value="3">Com larva</option>
-                </select>
-                <label for="quantidade">Quantidade</label>
-                <input type="number" id="quantidade" name="quantidade" />
-            </p>
-        </div>
-		<br>
-        <div>
-            <h3>Controle Mecânico</h3>
-			<input type="checkbox" name="contrMecanico" value="Sim">Sim
-			<input type="checkbox" name="contrMecanico" value="Nao">Não<br>
-        </div>
-		<br>
-        <div>
-            <h3>Tratamento Químico</h3>
-			<input type="checkbox" name="codTratQuimico" value="1">Prod. Alter.
-            <input type="checkbox" name="codTratQuimico" value="2">Focal
-			<input type="checkbox" name="codTratQuimico" value="3">Perifocal
-			<input type="checkbox" name="codTratQuimico" value="4">Nebulização<br>
-        </div>
-		<br>
-        <div>
-            <h3>Amostra</h3>
-            <input type="checkbox" name="amostra" value="Sim">Sim
-			<input type="checkbox" name="amostra" value="Nao">Não<br>
-
-           <p>Larvas
-			<input type="checkbox" name="codLarvas" value="1">Exame
-			<input type="checkbox" name="codLarvas" value="2">Ae Aegypti
-			<input type="checkbox" name="codLarvas" value="3">Ae Albopictus<br>
-		   </p>
-        </div>
-		<br>
-        <div>
-            <h3>Programar Retorno</h3>
-
-
-            <input type="checkbox" name="progRetorno" value="Sim">Sim
-			<input type="checkbox" name="progRetorno" value="Nao">Não<br>
-
-        </div>
-		<br>
-         <div>
-            <h3>Laboratório</h3>
-
-            <label for="responsavel">Responsável</label>
-            <input type="text" id="responsavel" />
-            <label for="dataLab">Data</label>
-            <input type="date" id="dataLab" />
-        </div>
-		<br>
-        <div>
-            <h3>Agente</h3>
-
-            <label for="cpfAgente">Agente</label>
-            <input type="text" id="cpfAgente" />
-			
-	    </div>
-		<br>
-               
-			 
-	<input type="submit" value="Cadastrar" onclick="Cadastrado com Sucesso!" />
-			 
-    </form>
+    </footer>
 
 </body>
 

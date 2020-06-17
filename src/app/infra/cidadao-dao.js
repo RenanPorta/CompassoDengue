@@ -20,16 +20,18 @@ class CidadaoDAO {
                                     cpf: cidadao.cpfCidadao,
                                     telefone: cidadao.telefoneCidadao,
                                     email: cidadao.emailCidadao}
-                res.redirect('/cidadao-consulta');
-                //res.status(201).json(exibeCidadao);
+                res.redirect('/login');
                 console.log(exibeCidadao)
             }
         })
         }else{
-            const cpfInvalido = {
-                                    "Erro": "Cpf invalido!"
-                                }
-            res.status(400).json(cpfInvalido);
+            const erroCpf = {
+                                erroCpf: "Cpf invalido!"
+                            }
+            res.marko(require('../views/layouts/cidadao/cadastroCidadao.marko'),
+            {
+                erroCpf: erroCpf
+            });
         }
     }
 
@@ -99,6 +101,23 @@ class CidadaoDAO {
             }
        });
     }
+    buscaPorEmail(email) {
+        return new Promise((resolve, reject) => {
+
+            const sql = `SELECT * FROM cidadao WHERE email=?`
+
+            conexao.query(sql, email, (erro, resultado)=> {
+                const cidadao = resultado[0]
+                if(erro){
+                   return reject('Não foi possível encontrar o usuário!');
+                }else{
+                    return resolve(cidadao);
+                }
+            })
+
+        });
+    }
+    
 }
 
 module.exports = new CidadaoDAO;

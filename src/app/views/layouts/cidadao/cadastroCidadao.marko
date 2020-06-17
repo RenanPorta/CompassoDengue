@@ -25,7 +25,14 @@
     <main class="container">
         <h1 class="text-center display-4 py-4">Cadastro de Cidadão</h1>
 
-        <form name="cadastraCidadao" method="post" action="/cidadao">
+        <form name="cadastraCidadao" method="post" action="/cid">
+
+                <div if(data.erroCpf)>
+                    <div>
+                        <label for="cpfInvalido">CPF invalido!</label>
+                    </div>
+                </div>
+
             <input class="form-control" type="hidden" id="id" name="id" />
             <div class="form-group mb-3">
                 <label for="nomeCidadao">Nome</label>

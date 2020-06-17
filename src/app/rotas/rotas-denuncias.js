@@ -2,6 +2,14 @@ const DenunciasDAO = require('../infra/denuncias-dao');
 
 module.exports = (app) => {
 
+    app.use('/denuncia*', function(req, res, next) {
+        if (req.isAuthenticated()) {
+            next();
+        } else {
+            res.redirect('/login');
+        }
+    });
+
     app.get('/denuncia-cadastro', function(req, res) {
         res.marko(require('../views/layouts/denuncias/cadastroDenuncia.marko'));
     });

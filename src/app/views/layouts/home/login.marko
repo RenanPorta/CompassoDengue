@@ -18,7 +18,7 @@
             <a class="navbar-brand logo" href="#"><img src="/estatico/img/logo.png" alt=""></a>
             <div class="ml-auto">
                 <button type="button" class="btn btn-danger m-1"><a class="text-white"
-                        href="index.html">Voltar</a></button>
+                        href="/home">Voltar</a></button>
             </div>
         </nav>
     </header>
@@ -26,17 +26,17 @@
     <main>
         <div class="container-xs">
             <h1>Entrar</h1>
-            <form>
+            <form action="/login" method="post">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="exampleInputPassword1" >
                 </div>
                 <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="exampleCheck1" >
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>

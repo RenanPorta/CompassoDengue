@@ -6,8 +6,15 @@ module.exports = (app) => {
         res.marko(require('../views/layouts/visitas/cadastroVisita.marko'));
     });
 
-    app.post('/visita', function(req, res) {
-        console.log(req.body);
-        VisitaDAO.adiciona(req.body, res);
+    app.post('/visita', function(req, res) {     
+       VisitaDAO.adiciona(req.body, res);    
+    });
+
+    app.get('/visita-consulta', function(req, res) {
+        VisitaDAO.lista(res);
+    });
+
+    app.get('/visita', function(req, res) {
+        res.marko(require('../views/layouts/visitas/visita.marko'));
     });
 }

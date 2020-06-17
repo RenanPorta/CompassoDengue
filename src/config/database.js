@@ -4,8 +4,7 @@ class Database {
 		this.conexao = conexao;
 
 		this.criarDenuncias();
-		this.criarFuncionario();
-		this.criarCidadao();
+		this.criarUsuario();
 		this.criarVisitas();
 		this.criarAgentes();
 		this.criarAtividades();
@@ -64,25 +63,9 @@ class Database {
 		})
 
 	}
-	criarCidadao() {
-		const sql = `CREATE TABLE IF NOT EXISTS cidadao (id int NOT NULL AUTO_INCREMENT, 
-                    nome varchar(50) NOT NULL, 
-                    cpf varchar(11) NOT NULL,
-                    telefone varchar(11) NOT NULL,
-                    email VARCHAR(40) NOT NULL,
-                    senha VARCHAR(40) NOT NULL, PRIMARY KEY(id))`
 
-		this.conexao.query(sql, (erro) => {
-			if (erro) {
-				console.log(erro);
-			} else {
-				console.log("Tabelas Cidadao Criada com sucesso");
-			}
-		})
-	}
-
-	criarFuncionario() {
-		const sql = `CREATE TABLE IF NOT EXISTS funcionario (id int NOT NULL AUTO_INCREMENT, 
+	criarUsuario() {
+		const sql = `CREATE TABLE IF NOT EXISTS usuario (id int NOT NULL AUTO_INCREMENT, 
                     nome varchar(50) NOT NULL, 
                     cpf varchar(11) NOT NULL,
                     telefone varchar(11) NOT NULL,

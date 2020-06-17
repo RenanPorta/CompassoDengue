@@ -1,4 +1,4 @@
-const FuncionarioDAO = require('../infra/funcionario-dao');
+const UsuarioDAO = require('../infra/usuario-dao');
 
 module.exports = (app) => {
 
@@ -12,7 +12,7 @@ module.exports = (app) => {
 
 
     app.get('/funcionario-consulta', function(req, res) {
-        FuncionarioDAO.lista(res);
+        UsuarioDAO.listaFunc(res);
     });
 
     app.get('/funcionario-cadastro', function(req, res) {
@@ -20,20 +20,20 @@ module.exports = (app) => {
     });
 
     app.post('/funcionario', function(req, res) {
-        FuncionarioDAO.adiciona(req.body, res);
+        UsuarioDAO.adicionaFunc(req.body, res);
     });
 
     app.get('/funcionario-altera/:id', function(req, res) {
         const id = req.params.id;
-        FuncionarioDAO.buscaPorId(id, res);
+        UsuarioDAO.buscaPorIdFunc(id, res);
     });
 
     app.put('/funcionario-altera', function(req, res) {
-        FuncionarioDAO.altera(req.body, res);
+        UsuarioDAO.alteraFunc(req.body, res);
     });
 
     app.delete('/funcionario/:id', function(req, res) {
         const id = req.params.id;
-        FuncionarioDAO.deletaPorId(id, res);
+        UsuarioDAO.deletaPorIdFunc(id, res);
     });
 }

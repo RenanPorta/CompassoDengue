@@ -102,6 +102,23 @@ class CidadaoDAO {
             }
        });
     }
+    buscaPorEmail(email) {
+        return new Promise((resolve, reject) => {
+
+            const sql = `SELECT * FROM cidadao WHERE email=?`
+
+            conexao.query(sql, email, (erro, resultado)=> {
+                const cidadao = resultado[0]
+                if(erro){
+                   return reject('Não foi possível encontrar o usuário!');
+                }else{
+                    return resolve(cidadao);
+                }
+            })
+
+        });
+    }
+    
 }
 
 module.exports = new CidadaoDAO;

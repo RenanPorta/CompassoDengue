@@ -20,6 +20,9 @@ const app = express();
         }
       }));
 
+      const sessaoAutenticacao = require('./sessao-autenticacao');
+      sessaoAutenticacao(app);
+
     consign()
         .include('/src/app/rotas')
         .into(app);

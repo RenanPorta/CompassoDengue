@@ -2,6 +2,15 @@ const FuncionarioDAO = require('../infra/funcionario-dao');
 
 module.exports = (app) => {
 
+    app.use('/funcionario*', function(req, res, next) {
+        if (req.isAuthenticated()) {
+            next();
+        } else {
+            res.redirect('/login');
+        }
+    });
+
+
     app.get('/funcionario-consulta', function(req, res) {
         FuncionarioDAO.lista(res);
     });

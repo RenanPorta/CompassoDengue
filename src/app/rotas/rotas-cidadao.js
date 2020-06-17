@@ -2,15 +2,23 @@ const CidadaoDAO = require('../infra/cidadao-dao');
 
 module.exports = (app) => {
 
+    app.use('/cidadao*', function(req, res, next) {
+        if (req.isAuthenticated()) {
+            next();
+        } else {
+            res.redirect('/login');
+        }
+    });
+
     app.get('/cidadao-consulta', function(req, res) {
         CidadaoDAO.lista(res);
     });
 
-    app.get('/cidadao-cadastro', function(req, res) {
+    app.get('/cid-cadastro', function(req, res) {
         res.marko(require('../views/layouts/cidadao/cadastroCidadao.marko'));
     });
 
-    app.post('/cidadao', function(req, res) {
+    app.post('/cid', function(req, res) {
         CidadaoDAO.adiciona(req.body, res);
     });
 

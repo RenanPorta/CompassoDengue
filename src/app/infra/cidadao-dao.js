@@ -20,8 +20,7 @@ class CidadaoDAO {
                                     cpf: cidadao.cpfCidadao,
                                     telefone: cidadao.telefoneCidadao,
                                     email: cidadao.emailCidadao}
-                res.redirect('/cidadao-consulta');
-                //res.status(201).json(exibeCidadao);
+                res.redirect('/login');
                 console.log(exibeCidadao)
             }
         })

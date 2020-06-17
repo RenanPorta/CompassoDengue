@@ -57,8 +57,8 @@ class VisitaDAO {
                     codLarvas: visita.codLarvas,
                     progRetorno: visita.progRetorno
                 }
-                res.status(201).json(exibeVisita);
-                console.log(exibeVisita)
+                // res.status(201).json(exibeVisita);
+                res.marko(require('../views/layouts/visitas/visita.marko'));
             }
         })
 
@@ -92,6 +92,7 @@ class VisitaDAO {
                 JOIN situacaorecipientes
                 ON(visita.codSituacaoRecipientes = situacaoRecipientes.codSituacaoRecipiente)
                 WHERE visita.codVisita > 0
+                ORDER BY visita.codVisita
                 `
 
         conexao.query(sql, res, (erro, resultado) => {

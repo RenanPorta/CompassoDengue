@@ -24,44 +24,70 @@
     
     <main class="container">
         <h1 class="text-center display-4 py-4">Cadastro de Denuncia</h1>
-
-        <form method="post" action="/denuncia">
-
-            <input type="hidden" class="form-control" id="id" name="id" />
-
-            <div class="mb-3">
-                <label for="nomeCidadao">Nome</label>
-                <input type="text" class="form-control" id="nomeCidadao" name="nomeCidadao" required>
+        <form class="needs-validation" method="post" action="/denuncia" novalidate>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="nomeCidadao">Nome</label>
+                    <input type="text" class="form-control" id="nomeCidadao" name="nomeCidadao" 
+                    placeholder="Insira o nome" value="" required>
+                    <div class="valid-feedback">
+                        Validado.
+                    </div>
+                    <div class="invalid-feedback">
+                        Insira um nome.
+                    </div>
+                </div>
             </div>
-
-            <div class="row">
+            <div class="form-row">
                 <div class="col-md-6 mb-3">
                     <label for="cpfCidadao">CPF</label>
-                    <input type="text" class="form-control" id="cpfCidadao" name="cpfCidadao"
-                        placeholder="999.999.999-99" pattern=".{11,}" maxlength="11" required>
+                    <input type="text" class="form-control" id="cpfCidadao" name="cpfCidadao" 
+                    placeholder="999.999.999-99" value="" pattern=".{11,}" maxlength="11" required>
+                    <div class="valid-feedback">
+                        Validado.
+                    </div>
+                    <div class="invalid-feedback">
+                        Insira um CPF Válido.
+                    </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="telefoneCidadao">Telefone</label>
-                    <input type="text" class="form-control" id="telefoneCidadao" name="telefoneCidadao"
-                        placeholder="(99)99999-9999" pattern="[0-9]{11}" maxlength="11" required>
+                    <input type="text" class="form-control" id="telefoneCidadao" name="telefoneCidadao" 
+                    placeholder="(99)99999-9999" value="" pattern="[0-9]{11}" maxlength="11" required>
+                    <div class="valid-feedback">
+                        Validado.
+                    </div>
+                    <div class="invalid-feedback">
+                        Insira um Telefone Válido.
+                    </div>
                 </div>
             </div>
-
-            <h5 class="mb-3 text-center">Endereço do local da denuncia</h5>
-
-            <div class="row">
+                <h5 class="mb-3 text-center">Endereço do local da denuncia</h5>
+            <div class="form-row">
                 <div class="col-md-6 mb-3">
                     <label for="ruaDenuncia">Rua</label>
-                    <input type="text" class="form-control" id="ruaDenuncia" name="ruaDenuncia" required>
+                    <input type="text" class="form-control" id="ruaDenuncia" name="ruaDenuncia" 
+                    placeholder="Insira a Rua" value="" required>
+                    <div class="valid-feedback">
+                        Validado.
+                    </div>
+                    <div class="invalid-feedback">
+                        Insira um nome de rua.
+                    </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="bairroDenuncia">Bairro</label>
-                    <input type="text" class="form-control" id="bairroDenuncia" name="bairroDenuncia" required>
+                    <input type="text" class="form-control" id="bairroDenuncia" name="bairroDenuncia" 
+                    placeholder="Insira o Bairro." value="" required>
+                    <div class="valid-feedback">
+                        Validado.
+                    </div>
+                    <div class="invalid-feedback">
+                        Insira um Bairro.
+                    </div>
                 </div>
             </div>
-
             <h5 class="mb-3 text-center">Selecionar apenas imagens .jpeg/.jpg ou .png</h5>
-
             <div class="row">
                 <div class="col-lg-4 col-lg-2">
                     <div class="custom-file">
@@ -71,7 +97,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="py-3">
                 <img class="img-fluid" id="preview" />
             </div>
@@ -80,13 +105,7 @@
                 <label for="observacoesDenuncia">Observações</label>
                 <textarea id="observacoesDenuncia" class="form-control" name="observacoesDenuncia" rows="3"></textarea>
             </div>
-
-            <div class="row">
-                <div class="col-md-4 col-lg-2">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
-                </div>
-            </div>
-
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Cadastrar</button>
         </form>
     </main>
 
@@ -101,6 +120,7 @@
         </div>
     </footer>
 
+    <script src="/estatico/js/validacao-campos.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>

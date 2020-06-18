@@ -5,6 +5,7 @@ class VisitaDAO {
         const sql = `INSERT INTO visita SET ?`
         const novaVisita = {
             codAtividade: visita.codAtividade,
+            idAgente: visita.idAgente,
             codTipoVisita: visita.codTipoVisita,
             codMunicipio: visita.codMunicipio,
             municipio: visita.municipio,
@@ -35,6 +36,7 @@ class VisitaDAO {
             } else {
                 const exibeVisita = {
                     codAtividade: visita.codAtividade,
+                    idAgente: visita.idAgente, 
                     codTipoVisita: visita.codTipoVisita,
                     codMunicipio: visita.codMunicipio,
                     municipio: visita.municipio,
@@ -64,7 +66,7 @@ class VisitaDAO {
 
     }
     lista(res){
-                const sql = `SELECT visita.codVisita, agente.nomeAgente,visita.dataVisita , atividades.atividade, tipoVisita.tipoVisita, visita.municipio,
+                const sql = `SELECT visita.codVisita, usuario.nome, visita.dataVisita, atividades.atividade, tipoVisita.tipoVisita, visita.municipio,
                 visita.codMunicipio, visita.area, visita.setorCensitario, visita.quarteirao,
                 visita.execucao, visita.numCadOrdem, visita.endereco, visita.numComplemento, 
                 visita.Trabalhado, pendencia.pendencia, tipoRecipientes.tipoRecipiente,  recipientes.recipiente,
@@ -73,6 +75,8 @@ class VisitaDAO {
                 FROM  visita
                 JOIN atividades
                 ON (visita.codAtividade = atividades.codAtividade)
+                JOIN usuario
+                ON(visita.idAgente = usuario.id)
                 JOIN tipovisita
                 ON (visita.codTipoVisita = tipoVisita.codTipoVisita)
                 JOIN pendencia
@@ -87,8 +91,6 @@ class VisitaDAO {
                 ON(visita.codLarvas = larvas.codLarvas)
                 LEFT JOIN laboratorio
                 ON(visita.codLaboratorio = laboratorio.codLaboratorio)
-                LEFT JOIN agente
-                ON(visita.cpfAgente = agente.cpfAgente)
                 JOIN situacaorecipientes
                 ON(visita.codSituacaoRecipientes = situacaoRecipientes.codSituacaoRecipiente)
                 WHERE visita.codVisita > 0

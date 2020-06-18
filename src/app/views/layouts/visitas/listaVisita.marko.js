@@ -34,7 +34,7 @@ function render(input, out, __component, component, state) {
       "\"><td>" +
       marko_escapeXml(visita.codVisita) +
       "</td><td>" +
-      marko_escapeXml(visita.nomeAgente) +
+      marko_escapeXml(visita.nome) +
       "</td><td>" +
       marko_escapeXml(visita.dataVisita) +
       "</td><td>" +

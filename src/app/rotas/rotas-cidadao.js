@@ -1,4 +1,4 @@
-const CidadaoDAO = require('../infra/cidadao-dao');
+const UsuarioDAO = require('../infra/usuario-dao');
 
 module.exports = (app) => {
 
@@ -11,7 +11,7 @@ module.exports = (app) => {
     });
 
     app.get('/cidadao-consulta', function(req, res) {
-        CidadaoDAO.lista(res);
+        UsuarioDAO.listaCid(res);
     });
 
     app.get('/cid-cadastro', function(req, res) {
@@ -19,20 +19,20 @@ module.exports = (app) => {
     });
 
     app.post('/cid', function(req, res) {
-        CidadaoDAO.adiciona(req.body, res);
+        UsuarioDAO.adicionaCid(req.body, res);
     });
 
     app.get('/cidadao-altera/:id', function(req, res) {
         const id = req.params.id;
-        CidadaoDAO.buscaPorId(id, res);
+        UsuarioDAO.buscaPorIdCid(id, res);
     });
 
     app.put('/cidadao-altera', function(req, res) {
-        CidadaoDAO.altera(req.body, res);
+        UsuarioDAO.alteraCid(req.body, res);
     });
 
     app.delete('/cidadao/:id', function(req, res) {
         const id = req.params.id;
-        CidadaoDAO.deletaPorId(id, res);
+        UsuarioDAO.deletaPorIdCid(id, res);
     });
 }

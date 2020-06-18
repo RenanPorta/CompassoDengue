@@ -4,10 +4,8 @@ class Database {
 		this.conexao = conexao;
 
 		this.criarDenuncias();
-		this.criarFuncionario();
-		this.criarCidadao();
+		this.criarUsuario();
 		this.criarVisitas();
-		this.criarAgentes();
 		this.criarAtividades();
 		this.criarTipoVisita();
 		this.criarMunicipio();
@@ -20,27 +18,27 @@ class Database {
 		this.criarLaboratorio();
 
 
-		// this.popularTipoVisita();
-		// this.popularAtividades();
-		// this.popularMunicipios();
-		// this.popularPendencia();
-		// this.popularRecipientes();
-		// this.popularTipoRecipientes();
-		// this.popularSituacaoRecipientes();
-		// this.popularTratQuimico();
-		// this.popularLarvas();
+		//  this.popularTipoVisita();
+		//  this.popularAtividades();
+		//  this.popularMunicipios();
+		//  this.popularPendencia();
+		//  this.popularRecipientes();
+		//  this.popularTipoRecipientes();
+		//  this.popularSituacaoRecipientes();
+		//  this.popularTratQuimico();
+		//  this.popularLarvas();
 
-		// this.relacionarTabelaAgente();
-		// this.relacionarTabelaAtividades();
-		// this.relacionarTabelaLaboratorio();
-		// this.relacionarTabelaLarvas();
-		// this.relacionarTabelaMunicipio();
-		// this.relacionarTabelaPendencia();
-		// this.relacionarTabelaRecipientes();
-		// this.relacionarTabelaSituacaoRecipientes();
-		// this.relacionarTabelaTipoRecipientes();
-		// this.relacionarTabelaTipoVisita();
-		// this.relacionarTabelaTratQuimico();
+		//  this.relacionarTabelaAgente();
+		//  this.relacionarTabelaAtividades();
+		//  this.relacionarTabelaLaboratorio();
+		//  this.relacionarTabelaLarvas();
+		//  this.relacionarTabelaMunicipio();
+		//  this.relacionarTabelaPendencia();
+		//  this.relacionarTabelaRecipientes();
+		//  this.relacionarTabelaSituacaoRecipientes();
+		//  this.relacionarTabelaTipoRecipientes();
+		//  this.relacionarTabelaTipoVisita();
+		//	this.relacionarTabelaTratQuimico();
 	}
 
 	criarDenuncias() {
@@ -64,25 +62,9 @@ class Database {
 		})
 
 	}
-	criarCidadao() {
-		const sql = `CREATE TABLE IF NOT EXISTS cidadao (id int NOT NULL AUTO_INCREMENT, 
-                    nome varchar(50) NOT NULL, 
-                    cpf varchar(11) NOT NULL,
-                    telefone varchar(11) NOT NULL,
-                    email VARCHAR(40) NOT NULL,
-                    senha VARCHAR(40) NOT NULL, PRIMARY KEY(id))`
 
-		this.conexao.query(sql, (erro) => {
-			if (erro) {
-				console.log(erro);
-			} else {
-				console.log("Tabelas Cidadao Criada com sucesso");
-			}
-		})
-	}
-
-	criarFuncionario() {
-		const sql = `CREATE TABLE IF NOT EXISTS funcionario (id int NOT NULL AUTO_INCREMENT, 
+	criarUsuario() {
+		const sql = `CREATE TABLE IF NOT EXISTS usuario (id int NOT NULL AUTO_INCREMENT, 
                     nome varchar(50) NOT NULL, 
                     cpf varchar(11) NOT NULL,
                     telefone varchar(11) NOT NULL,
@@ -102,7 +84,7 @@ class Database {
 	criarVisitas() {
 		const sql = `CREATE TABLE IF NOT EXISTS visita (
             codVisita INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            cpfAgente VARCHAR(11),
+            idAgente INT,
             codAtividade INT NOT NULL,
             codTipoVisita INT NOT NULL,
             codMunicipio INT NOT NULL,
@@ -137,32 +119,6 @@ class Database {
 		})
 
 	}
-	criarAgentes() {
-		const sql = `CREATE TABLE IF NOT EXISTS agente (
-					cpfAgente VARCHAR(11) NOT NULL PRIMARY KEY,
-					nomeAgente VARCHAR(50) NOT NULL,
-					enderecoAgente VARCHAR(100) NOT NULL,
-					bairro VARCHAR(30) NOT NULL,
-					cidade VARCHAR(50) NOT NULL,
-					cep VARCHAR(8) NOT NULL,
-					rg VARCHAR(10) NOT NULL,
-					cargo VARCHAR(30) NOT NULL,
-					email VARCHAR(30) NOT NULL,
-					telefoneCelular VARCHAR(12) NOT NULL,
-					telefoneResidencial VARCHAR(12),
-					senha VARCHAR(40) NOT NULL
-					)`
-
-		this.conexao.query(sql, (erro) => {
-			if (erro) {
-				console.log(erro);
-			} else {
-				console.log("Tabelas Agentes Criada com sucesso");
-			}
-		})
-
-	}
-
 	criarAtividades() {
 		const sql = `CREATE TABLE IF NOT EXISTS atividades(
 					codAtividade INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -1174,7 +1130,7 @@ class Database {
 	}
 	
 	relacionarTabelaAgente() {
-		const sql = `ALTER TABLE visita ADD CONSTRAINT fk_agente FOREIGN KEY (cpfAgente) REFERENCES agente (cpfAgente)`;
+		const sql = `ALTER TABLE visita ADD CONSTRAINT fk_usuario FOREIGN KEY (idAgente) REFERENCES usuario (id)`;
 
 		this.conexao.query(sql, (erro) => {
 			if (erro) {

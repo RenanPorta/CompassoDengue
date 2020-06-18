@@ -3,7 +3,7 @@ const sessao = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-const CidadaoDAO = require('../app/infra/cidadao-dao');
+const UsuarioDAO = require('../app/infra/usuario-dao');
 const db = require('./database');
 
 module.exports = (app) => {
@@ -14,30 +14,30 @@ module.exports = (app) => {
             passwordField: 'exampleInputPassword1'
         },
         (email, senha, done) => {
-            CidadaoDAO.buscaPorEmail(email)
-                .then(cidadao => {
-                    if (!cidadao || senha != cidadao.senha){
+            UsuarioDAO.buscaPorEmail(email)
+                .then(usuario => {
+                    if (!usuario || senha != usuario.senha){
                         return done(null, false, {
                             mensagem: 'Login e Senha incorretos!'
                         })
                     }
-                    return done(null, cidadao);
+                    return done(null, usuario);
                 })
                 .catch(erro => done(erro, false));
         }
     ));
 
-    passport.serializeUser((cidadao, done) => {
-        const cidadaoSessao = {
-            nome: cidadao.nome,
-            email: cidadao.email
+    passport.serializeUser((usuario, done) => {
+        const usuarioSessao = {
+            nome: usuario.nome,
+            email: usuario.email
         };
 
-        done(null, cidadaoSessao);
+        done(null, usuarioSessao);
     });
 
-    passport.deserializeUser((cidadaoSessao, done) => {
-        done(null, cidadaoSessao);
+    passport.deserializeUser((usuarioSessao, done) => {
+        done(null, usuarioSessao);
     });
 
     app.use(sessao({

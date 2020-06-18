@@ -18,27 +18,27 @@ class Database {
 		this.criarLaboratorio();
 
 
-		 		 //  this.popularTipoVisita();
-		 //  this.popularAtividades();
-		 //  this.popularMunicipios();
-		 //  this.popularPendencia();
-		 //  this.popularRecipientes();
-		 //  this.popularTipoRecipientes();
-		 //  this.popularSituacaoRecipientes();
-		 //  this.popularTratQuimico();
-		 //  this.popularLarvas();
+		//  this.popularTipoVisita();
+		//  this.popularAtividades();
+		//  this.popularMunicipios();
+		//  this.popularPendencia();
+		//  this.popularRecipientes();
+		//  this.popularTipoRecipientes();
+		//  this.popularSituacaoRecipientes();
+		//  this.popularTratQuimico();
+		//  this.popularLarvas();
 
-		 //  this.relacionarTabelaAgente();
-		 //  this.relacionarTabelaAtividades();
-		 //  this.relacionarTabelaLaboratorio();
-		 //  this.relacionarTabelaLarvas();
-		 //  this.relacionarTabelaMunicipio();
-		 //  this.relacionarTabelaPendencia();
-		 //  this.relacionarTabelaRecipientes();
-		 //  this.relacionarTabelaSituacaoRecipientes();
-		 //  this.relacionarTabelaTipoRecipientes();
-		 //  this.relacionarTabelaTipoVisita();
-		 //  this.relacionarTabelaTratQuimico();
+		//  this.relacionarTabelaAgente();
+		//  this.relacionarTabelaAtividades();
+		//  this.relacionarTabelaLaboratorio();
+		//  this.relacionarTabelaLarvas();
+		//  this.relacionarTabelaMunicipio();
+		//  this.relacionarTabelaPendencia();
+		//  this.relacionarTabelaRecipientes();
+		//  this.relacionarTabelaSituacaoRecipientes();
+		//  this.relacionarTabelaTipoRecipientes();
+		//  this.relacionarTabelaTipoVisita();
+		//	this.relacionarTabelaTratQuimico();
 	}
 
 	criarDenuncias() {

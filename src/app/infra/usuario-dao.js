@@ -2,7 +2,6 @@ const conexao = require('../../config/conexao/conexaoDatabase');
 const validarCpf = require ('validar-cpf');
 
 class UsuarioDAO {
-
     adicionaCid(cidadao, res) {
 
         const cpfEhValido = validarCpf(cidadao.cpfCidadao);
@@ -166,17 +165,17 @@ class UsuarioDAO {
 
         const sql = `SELECT * FROM usuario WHERE nivelAcesso='Administrador' OR nivelAcesso='Agente de Saúde'`
 
-        conexao.query(sql, res, (erro, resultado) => {
+            conexao.query(sql, res, (erro, resultado) => {
 
-            if(erro){
-                res.status(400).json(erro);
-            }else{
-                res.marko(require('../views/layouts/funcionario/listaFuncionario.marko'),
-                {
-                    funcionarios: resultado
-                })
-            }
-        })
+                if(erro){
+                    res.status(400).json(erro);
+                }else{
+                    res.marko(require('../views/layouts/funcionario/listaFuncionario.marko'),
+                    {
+                        funcionarios: resultado
+                    })
+                }
+            })
     }
 
     buscaPorIdFunc(id, res){

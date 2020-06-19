@@ -4,7 +4,6 @@ const validarCpf = require ('validar-cpf');
 
 class DenunciasDAO {
     adiciona(denuncia, res) {
-        //console.log(denuncia);
         const cpfEhValido = validarCpf(denuncia.cpfCidadao);
         if(cpfEhValido){
             const sql = `INSERT INTO denuncias SET ?`
@@ -56,10 +55,13 @@ class DenunciasDAO {
                 });  
             }
         }else{
-            const cpfInvalido = {
-                "Erro": "Cpf invalido!"
-            }
-            res.status(400).json(cpfInvalido);
+            const erroCpf = {
+                erroCpf: "Cpf invalido!"
+                }
+            res.marko(require('../views/layouts/denuncias/cadastroDenuncia.marko'),
+            {
+                erroCpf: erroCpf
+            });
         }
         
     }
@@ -75,8 +77,6 @@ class DenunciasDAO {
                 {
                     denuncias: resultado
                 });
-                
-                //res.status(200).json(resultado)
             }
         })
 

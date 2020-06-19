@@ -3,10 +3,33 @@ const uploadDeArquivos = require('../../arquivos/uploadDeImagens');
 const validarCpf = require ('validar-cpf');
 
 class DenunciasDAO {
+
+    buscaDadosCidadaoLogado(userEmail ,res){
+
+        const sql = `SELECT * FROM usuario WHERE ?`
+
+        conexao.query(sql, userEmail, (erro, resultado) => {
+            const usuario = resultado[0];
+            const exibeUsuario = {
+                            nome: usuario.nome,
+                            cpf: usuario.cpf,
+                            telefone: usuario.telefone
+            }
+            if(erro){
+                res.status(400).json(erro);
+            }else{
+                res.marko(require('../views/layouts/denuncias/cadastroDenuncia.marko'),
+                {
+                    usuario: exibeUsuario
+                })
+            }
+        })
+
+    }
+
     adiciona(denuncia, res) {
-        const cpfEhValido = validarCpf(denuncia.cpfCidadao);
-        if(cpfEhValido){
-            const sql = `INSERT INTO denuncias SET ?`
+            
+        const sql = `INSERT INTO denuncias SET ?`
 
             if(denuncia.imagemDenuncia != ''){
                 uploadDeArquivos(denuncia.imagemDenuncia, denuncia.cpfCidadao, (erro, novoCaminho, novoNomeDoArquivo) => {
@@ -53,17 +76,7 @@ class DenunciasDAO {
                         console.log(novaDenuncia);
                     }
                 });  
-            }
-        }else{
-            const erroCpf = {
-                erroCpf: "Cpf invalido!"
-                }
-            res.marko(require('../views/layouts/denuncias/cadastroDenuncia.marko'),
-            {
-                erroCpf: erroCpf
-            });
-        }
-        
+            }  
     }
     
     lista(res){
@@ -77,6 +90,8 @@ class DenunciasDAO {
                 {
                     denuncias: resultado
                 });
+                
+                //res.status(200).json(resultado)
             }
         })
 

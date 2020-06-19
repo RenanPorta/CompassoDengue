@@ -11,7 +11,11 @@ module.exports = (app) => {
     });
 
     app.get('/denuncia-cadastro', function(req, res) {
-        res.marko(require('../views/layouts/denuncias/cadastroDenuncia.marko'));
+        const usuario = req.session.passport.user;
+        const userEmail = {
+            email: usuario.email
+        };
+        DenunciasDAO.buscaDadosCidadaoLogado(userEmail, res);
     });
 
     app.post('/denuncia', function(req, res) {

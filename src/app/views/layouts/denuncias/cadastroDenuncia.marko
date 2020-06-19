@@ -25,18 +25,11 @@
     <main class="container">
         <h1 class="text-center display-4 py-4">Cadastro de Denuncia</h1>
         <form class="needs-validation" method="post" action="/denuncia" novalidate>
-
-            <div if(data.erroCpf)>
-                <div>
-                    <h5 class="erroSenhaEmail">CPF invalido!</h5>
-                </div>
-            </div>
-
             <div class="form-row">
                 <div class="col-md-12 mb-3">
                     <label for="nomeCidadao">Nome</label>
                     <input type="text" class="form-control" id="nomeCidadao" name="nomeCidadao" 
-                    placeholder="Insira o nome" value="" required>
+                    placeholder="Insira o nome" value="${data.usuario.nome}" readonly>
                     <div class="valid-feedback">
                         Validado.
                     </div>
@@ -49,7 +42,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="cpfCidadao">CPF</label>
                     <input type="text" class="form-control" id="cpfCidadao" name="cpfCidadao" 
-                    placeholder="999.999.999-99" value="" pattern=".{11,}" maxlength="11" required>
+                    placeholder="999.999.999-99" value="${data.usuario.cpf}" pattern=".{11,}" maxlength="11" readonly>
                     <div class="valid-feedback">
                         Validado.
                     </div>
@@ -60,7 +53,7 @@
                 <div class="col-md-6 mb-3">
                     <label for="telefoneCidadao">Telefone</label>
                     <input type="text" class="form-control" id="telefoneCidadao" name="telefoneCidadao" 
-                    placeholder="(99)99999-9999" value="" pattern="[0-9]{11}" maxlength="11" required>
+                    placeholder="(99)99999-9999" value="${data.usuario.telefone}" pattern="[0-9]{11}" maxlength="11" readonly>
                     <div class="valid-feedback">
                         Validado.
                     </div>

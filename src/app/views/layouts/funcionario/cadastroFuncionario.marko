@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Reset -->
     <link rel="stylesheet" href="/estatico/css/reset.css" />
-    <link rel="stylesheet" href="/estatico/css/normalize.css" />    
+    <link rel="stylesheet" href="/estatico/css/normalize.css" />
     <title>Cadastro de Funcionario</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="/estatico/css/style.css" />    
+    <link rel="stylesheet" href="/estatico/css/style.css" />
 </head>
 
 <body>
@@ -42,12 +42,12 @@
                 <div class="form-group col-md-6 mb-3">
                     <label for="cpfFuncionario">CPF</label>
                     <input class="form-control" type="text" id="cpfFuncionario" name="cpfFuncionario"
-                        placeholder="999.999.999-99" pattern=".{11,}" maxlength="11" required>
+                        placeholder="999.999.999-99" maxlength="11" required>
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label for="telefoneFuncionario">Telefone</label>
                     <input class="form-control" type="text" id="telefoneFuncionario" name="telefoneFuncionario"
-                        placeholder="(99)99999-9999" pattern="[0-9]{11}" maxlength="11" required />
+                        placeholder="(99)99999-9999" maxlength="11" required />
                 </div>
             </div>
             <div class="form-group mb-3">
@@ -61,24 +61,25 @@
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label for="confirmaSenhaFuncionario">Confirmar Senha</label>
-                    <input class="form-control" type="password" id="confirmaSenhaFuncionario" name="confirmaSenhaFuncionario" />
+                    <input class="form-control" type="password" id="confirmaSenhaFuncionario"
+                        name="confirmaSenhaFuncionario" />
                 </div>
                 <div class="form-group col-md-6 mb-3">
-                
+
                     <label for="nivelAcesso">Cargo</label>
-                    <select name="nivelAcesso" required >
+                    <select name="nivelAcesso" required>
                         <option></option>
                         <option value="Administrador">Administrador</option>
                         <option value="Agente de Saúde">Agente de Saúde</option>
                     </select>
-                
+
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-4 col-lg-2">
                     <button type="submit" class="btn btn-primary btn-lg btn-block"
-                        onclick="return validar()">Cadastrar</button>
+                        onclick="return validar(); unmask()">Cadastrar</button>
                 </div>
             </div>
 
@@ -96,7 +97,22 @@
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
     <script type="text/javascript">
+
+        function unmask() {
+            $('#cpfFuncionario').unmask()
+            $('#telefoneFuncionario').unmask()
+        }
+
+        $(function () {
+            $('#cpfFuncionario').mask('000.000.000-00')
+            $('#telefoneFuncionario').mask('(00) 00000-0000')
+        })
+
         function validar() {
             var senha = cadastraFuncionario.senhaFuncionario.value;
             var confirmaSenha = cadastraFuncionario.confirmaSenhaFuncionario.value;
@@ -118,7 +134,7 @@
                 cadastraFuncionario.confirmaSenhaFuncionario.focus();
                 return false;
             }
-        }
+        }        
     </script>
 </body>
 

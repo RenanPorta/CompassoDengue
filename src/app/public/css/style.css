@@ -86,6 +86,10 @@ main{
 
 /*LOGIN*/
 
+.erroSenhaEmail{
+    color: red;
+}
+
 /*mobile*/
 
 .corFundo {

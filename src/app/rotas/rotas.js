@@ -30,4 +30,11 @@ module.exports = (app) => {
             });
         })(req, res, next);
     });
+
+    app.get('/sair', function(req, res) {
+        req.session.destroy(function () {
+            req.logout();
+            res.redirect('/home');              
+        });
+    });
 }

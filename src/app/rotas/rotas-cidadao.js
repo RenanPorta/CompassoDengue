@@ -1,4 +1,5 @@
 const UsuarioDAO = require('../infra/usuario-dao');
+const nivelAcesso = require('../infra/nivelAcesso');
 
 module.exports = (app) => {
 
@@ -11,7 +12,19 @@ module.exports = (app) => {
     });
 
     app.get('/cidadao-consulta', function(req, res) {
-        UsuarioDAO.listaCid(res);
+        const usuario = req.session.passport.user;
+        const userEmail = {
+            email: usuario.email
+        };
+        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+            if(administrador){
+                UsuarioDAO.listaCid(res);
+            }else if(agenteSaude){
+                res.redirect('/home');
+            }else {
+                UsuarioDAO.listaCidadaoLogado(userEmail, res);
+            }
+        })
     });
 
     app.get('/cid-cadastro', function(req, res) {

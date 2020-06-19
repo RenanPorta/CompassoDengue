@@ -51,7 +51,26 @@ class UsuarioDAO {
 
         const sql = `SELECT * FROM usuario WHERE nivelAcesso='Cidadao'`
 
-        conexao.query(sql, res, (erro, resultado) => {
+        conexao.query(sql, (erro, resultado) => {
+
+            if(erro){
+                res.status(400).json(erro);
+            }else{
+                res.marko(require('../views/layouts/cidadao/listaCidadao.marko'),
+                {
+                    cidadaos: resultado
+                })
+            }
+        })
+
+    }
+
+    
+    listaCidadaoLogado(userEmail ,res){
+
+        const sql = `SELECT * FROM usuario WHERE ?`
+
+        conexao.query(sql, userEmail, (erro, resultado) => {
 
             if(erro){
                 res.status(400).json(erro);

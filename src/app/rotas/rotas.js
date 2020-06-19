@@ -14,7 +14,7 @@ module.exports = (app) => {
         const passport = req.passport;
         passport.authenticate('local', (erro, cidadao, info) => {
             if (info) {
-                return res.marko(require('../views/layouts/home/login.marko'));
+                return res.marko(require('../views/layouts/home/loginIncorreto.marko'));
             }
 
             if (erro) {

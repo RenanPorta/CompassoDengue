@@ -154,10 +154,14 @@ class UsuarioDAO {
             }
         });
         }else{
-            const cpfInvalido = {
-                                    "Erro": "Cpf invalido!"
-                                }
-            res.status(400).json(cpfInvalido);
+            const erroCpf = {
+                    erroCpf: "Cpf invalido!"
+                    }
+            res.marko(require('../views/layouts/funcionario/cadastroFuncionario.marko'),
+                {
+                erroCpf: erroCpf
+                }
+            );
         }
     }
 

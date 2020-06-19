@@ -25,6 +25,13 @@
     <main class="container">
         <h1 class="text-center display-4 py-4">Cadastro de Denuncia</h1>
         <form class="needs-validation" method="post" action="/denuncia" novalidate>
+
+            <div if(data.erroCpf)>
+                <div>
+                    <label for="cpfInvalido">CPF invalido!</label>
+                </div>
+            </div>
+
             <div class="form-row">
                 <div class="col-md-12 mb-3">
                     <label for="nomeCidadao">Nome</label>

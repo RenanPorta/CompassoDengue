@@ -32,7 +32,7 @@ class UsuarioDAO {
                                     email: cidadao.emailCidadao
                                     }
 
-                res.redirect('/login');
+                res.redirect('/home');
                 console.log(exibeCidadao)
             }
         })

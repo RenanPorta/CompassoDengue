@@ -142,34 +142,30 @@ class UsuarioDAO {
 // ------------ FUNCIONARIO -------------------
     
     adicionaFunc(funcionario, res) {
+        const cpfSemMacara = funcionario.cpfFuncionario.replace(/[^0-9]+/g,'');
+        const telefoneSemMascara = funcionario.telefoneFuncionario.replace(/[^0-9]+/g,'');
 
-        const cpfEhValido = validarCpf(funcionario.cpfFuncionario);
+        const novoFuncionario = {nome: funcionario.nomeFuncionario,
+            cpf: cpfSemMacara,
+            telefone: telefoneSemMascara,
+            email: funcionario.emailFuncionario,
+            senha: funcionario.senhaFuncionario,
+            nivelAcesso: funcionario.nivelAcesso
+            }
+
+        const cpfEhValido = validarCpf(novoFuncionario.cpf);
 
         if(cpfEhValido){
 
             const sql = `INSERT INTO usuario SET ?`
 
-            const novoFuncionario = {nome: funcionario.nomeFuncionario,
-                                cpf: funcionario.cpfFuncionario,
-                                telefone: funcionario.telefoneFuncionario,
-                                email: funcionario.emailFuncionario,
-                                senha: funcionario.senhaFuncionario,
-                                nivelAcesso: funcionario.nivelAcesso
-                                }
         conexao.query(sql, novoFuncionario, (erro) => {
 
             if(erro){
                 res.status(400).json(erro);
                 console.log("Erro ao cadastrar Funcionario: "+erro);
             } else {
-                const exibeFuncionario = {nome: funcionario.nomeFuncionario,
-                                        cpf: funcionario.cpfFuncionario,
-                                        telefone: funcionario.telefoneFuncionario,
-                                        email: funcionario.emailFuncionario,
-                                        nivelAcesso: funcionario.nivelAcesso
-                                        }
                 res.redirect('/funcionario-consulta');
-                console.log(exibeFuncionario)
             }
         });
         }else{

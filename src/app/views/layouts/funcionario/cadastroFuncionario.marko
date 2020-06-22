@@ -25,7 +25,7 @@
     <main class="container">
         <h1 class="text-center display-4 py-4">Cadastro de Funcionario</h1>
 
-        <form name="cadastraFuncionario" method="post" action="/funcionario">
+        <form name="cadastraFuncionario" method="post" action="/funcionario" onsubmit="unmask()">
 
             <div if(data.erroCpf)>
                 <div>
@@ -42,12 +42,12 @@
                 <div class="form-group col-md-6 mb-3">
                     <label for="cpfFuncionario">CPF</label>
                     <input class="form-control" type="text" id="cpfFuncionario" name="cpfFuncionario"
-                        placeholder="999.999.999-99" maxlength="11" required>
+                        placeholder="999.999.999-99" pattern="[\d{3}\.\d{3}\.\d{3}\-\d{2}$]{14}" required>
                 </div>
                 <div class="form-group col-md-6 mb-3">
                     <label for="telefoneFuncionario">Telefone</label>
                     <input class="form-control" type="text" id="telefoneFuncionario" name="telefoneFuncionario"
-                        placeholder="(99)99999-9999" maxlength="11" required />
+                        placeholder="(99)99999-9999" pattern="[\(\d{2}\)\s\d{4,5}\-\d{4}]{15}" required />
                 </div>
             </div>
             <div class="form-group mb-3">
@@ -79,7 +79,7 @@
             <div class="row">
                 <div class="col-md-4 col-lg-2">
                     <button type="submit" class="btn btn-primary btn-lg btn-block"
-                        onclick="unmask(); return validar()">Cadastrar</button>
+                        onclick="return validar()">Cadastrar</button>
                 </div>
             </div>
 
@@ -105,7 +105,7 @@
 
         function unmask() {
             $('#cpfFuncionario').unmask()
-            $('#telefoneFuncionario').unmask()
+            $('#telefoneFuncionario').unmask()            
         }
 
         $(function () {

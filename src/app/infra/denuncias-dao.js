@@ -1,6 +1,6 @@
 const conexao = require('../../config/conexao/conexaoDatabase');
 const uploadDeArquivos = require('../../arquivos/uploadDeImagens');
-const validarCpf = require ('validar-cpf');
+var crypto = require("crypto");
 
 class DenunciasDAO {
 
@@ -28,11 +28,13 @@ class DenunciasDAO {
     }
 
     adiciona(denuncia, res) {
+
+        var id = crypto.randomBytes(15).toString('hex');
             
         const sql = `INSERT INTO denuncias SET ?`
 
             if(denuncia.imagemDenuncia != ''){
-                uploadDeArquivos(denuncia.imagemDenuncia, denuncia.cpfCidadao, (erro, novoCaminho, novoNomeDoArquivo) => {
+                uploadDeArquivos(denuncia.imagemDenuncia, id, (erro, novoCaminho, novoNomeDoArquivo) => {
     
                     if(erro){
                         res.status(400).json({ erro });
@@ -46,14 +48,12 @@ class DenunciasDAO {
                                             nomeImagem: novoNomeDoArquivo,
                                             observacoes: denuncia.observacoesDenuncia,
                                             status: "Pendente" }
-                        console.log(novaDenuncia);
                         conexao.query(sql, novaDenuncia, (erro) => {
                             if(erro){
                                 res.status(400).json(erro);
                                 console.log("Erro ao enviar denuncia: "+erro);
                             } else {
                                 res.redirect('/denuncia-consulta');
-                                console.log(novaDenuncia);
                             }
                         });
                     }
@@ -73,7 +73,6 @@ class DenunciasDAO {
                         console.log("Erro ao enviar denuncia: "+erro);
                     } else {
                         res.redirect('/denuncia-consulta');
-                        console.log(novaDenuncia);
                     }
                 });  
             }  
@@ -112,7 +111,6 @@ class DenunciasDAO {
                         observacoes: denuncia.observacoes,
                         status: denuncia.status
             }
-            console.log(novaDenuncia);
             if(erro){
                 res.status(404).json(erro);
             }else{
@@ -139,7 +137,6 @@ class DenunciasDAO {
                         observacoes: denuncia.observacoes,
                         status: denuncia.status
             }
-            console.log(novaDenuncia);
             if(erro){
                 res.status(404).json(erro);
             }else{

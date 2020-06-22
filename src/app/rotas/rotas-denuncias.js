@@ -1,4 +1,5 @@
 const DenunciasDAO = require('../infra/denuncias-dao');
+const nivelAcesso = require('../infra/nivelAcesso');
 
 module.exports = (app) => {
 
@@ -33,10 +34,34 @@ module.exports = (app) => {
 
     app.get('/denuncia-altera/:id', function(req, res) {
         const id = req.params.id;
-        DenunciasDAO.buscaPorIdAlterar(id, res);
+        const usuario = req.session.passport.user;
+        const userEmail = {
+            email: usuario.email
+        };
+        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+            if(administrador){
+                DenunciasDAO.buscaPorIdAlterar(id, res);
+            }else if(agenteSaude){
+                DenunciasDAO.buscaPorIdAlterar(id, res);
+            }else{
+                res.redirect('/denuncia-consulta');
+            }
+        })   
     });
 
     app.put('/denuncia-altera', function(req, res) {
-        DenunciasDAO.altera(req.body, res);
+        const usuario = req.session.passport.user;
+        const userEmail = {
+            email: usuario.email
+        };
+        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+            if(administrador){
+                DenunciasDAO.altera(req.body, res);
+            }else if(agenteSaude){
+                DenunciasDAO.altera(req.body, res);
+            }else{
+                res.redirect('/denuncia-consulta');
+            }
+        })   
     });
 }

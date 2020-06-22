@@ -2,6 +2,14 @@ const passport = require('passport');
 
 module.exports = (app) => {
 
+    app.use('/sair*', function(req, res, next) {
+        if (req.isAuthenticated()) {
+            next();
+        } else {
+            res.redirect('/home');
+        }
+    });
+
     app.get('/home', function(req, res) {
         res.marko(require('../views/layouts/home/index.marko'));
     });

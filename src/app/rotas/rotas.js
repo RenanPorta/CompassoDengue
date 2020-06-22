@@ -34,7 +34,7 @@ module.exports = (app) => {
     app.get('/sair', function(req, res) {
         req.session.destroy(function () {
             req.logout();
-            res.redirect('/home');              
+            res.redirect('/login');              
         });
     });
 }

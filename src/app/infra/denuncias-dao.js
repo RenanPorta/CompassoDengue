@@ -30,6 +30,9 @@ class DenunciasDAO {
     adiciona(denuncia, res) {
 
         var id = crypto.randomBytes(15).toString('hex');
+
+        const cpfSemMacara = denuncia.cpfCidadao.replace(/[^0-9]+/g,'');
+        const telefoneSemMascara = denuncia.telefoneCidadao.replace(/[^0-9]+/g,'');
             
         const sql = `INSERT INTO denuncias SET ?`
 
@@ -40,14 +43,15 @@ class DenunciasDAO {
                         res.status(400).json({ erro });
                     }else{
                         const novaDenuncia = {cidadao: denuncia.nomeCidadao,
-                                            cpf: denuncia.cpfCidadao,
-                                            telefone: denuncia.telefoneCidadao,
+                                            cpf: cpfSemMacara,
+                                            telefone: telefoneSemMascara,
                                             rua: denuncia.ruaDenuncia,
                                             bairro: denuncia.bairroDenuncia,
                                             imagem: novoCaminho,
                                             nomeImagem: novoNomeDoArquivo,
                                             observacoes: denuncia.observacoesDenuncia,
-                                            status: "Pendente" }
+                                            status: "Pendente" 
+                                        }
                         conexao.query(sql, novaDenuncia, (erro) => {
                             if(erro){
                                 res.status(400).json(erro);
@@ -60,13 +64,14 @@ class DenunciasDAO {
                 });
             }else{
                 const novaDenuncia = {cidadao: denuncia.nomeCidadao,
-                    cpf: denuncia.cpfCidadao,
-                    telefone: denuncia.telefoneCidadao,
+                    cpf: cpfSemMacara,
+                    telefone: telefoneSemMascara,
                     rua: denuncia.ruaDenuncia,
                     bairro: denuncia.bairroDenuncia,
                     imagem: denuncia.imagemDenuncia,
                     observacoes: denuncia.observacoesDenuncia,
-                    status: "Pendente" }
+                    status: "Pendente" 
+                }
                 conexao.query(sql, novaDenuncia, (erro) => {
                     if(erro){
                         res.status(400).json(erro);
@@ -89,8 +94,6 @@ class DenunciasDAO {
                 {
                     denuncias: resultado
                 });
-                
-                //res.status(200).json(resultado)
             }
         })
 

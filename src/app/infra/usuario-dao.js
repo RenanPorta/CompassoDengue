@@ -4,36 +4,30 @@ const validarCpf = require ('validar-cpf');
 class UsuarioDAO {
     adicionaCid(cidadao, res) {
 
-        const cpfEhValido = validarCpf(cidadao.cpfCidadao);
+        const cpfSemMacara = cidadao.cpfCidadao.replace(/[^0-9]+/g,'');
+        const telefoneSemMascara = cidadao.telefoneCidadao.replace(/[^0-9]+/g,'');
+
+        const novoCidadao = {nome: cidadao.nomeCidadao,
+            cpf: cpfSemMacara,
+            telefone: telefoneSemMascara,
+            email: cidadao.emailCidadao,
+            senha: cidadao.senhaCidadao,
+            nivelAcesso: "Cidadao" 
+            }
+
+        const cpfEhValido = validarCpf(novoCidadao.cpf);
 
         if(cpfEhValido){
 
             const sql = `INSERT INTO usuario SET ?`
 
-            const novoCidadao = {nome: cidadao.nomeCidadao,
-                                cpf: cidadao.cpfCidadao,
-                                telefone: cidadao.telefoneCidadao,
-                                email: cidadao.emailCidadao,
-                                senha: cidadao.senhaCidadao,
-                                nivelAcesso: "Cidadao" 
-                                }
-
         conexao.query(sql, novoCidadao, (erro) => {
 
             if(erro){
-
                 res.status(400).json(erro);
                 console.log("Erro ao cadastrar cidadao: "+erro);
             } else {
-
-                const exibeCidadao = {nome: cidadao.nomeCidadao,
-                                    cpf: cidadao.cpfCidadao,
-                                    telefone: cidadao.telefoneCidadao,
-                                    email: cidadao.emailCidadao
-                                    }
-
                 res.redirect('/home');
-                console.log(exibeCidadao)
             }
         })
         }else{
@@ -124,8 +118,10 @@ class UsuarioDAO {
 
     alteraCid(cidadao, res){
 
+        const telefoneSemMascara = cidadao.telefoneCidadao.replace(/[^0-9]+/g,'');
+
         const novoCidadao = {nome: cidadao.nomeCidadao,
-                            telefone: cidadao.telefoneCidadao,
+                            telefone: telefoneSemMascara,
                             email: cidadao.emailCidadao
                             }
         const sql = `UPDATE usuario SET ? WHERE id=${cidadao.id}`
@@ -237,9 +233,11 @@ class UsuarioDAO {
     }
 
     alteraFunc(funcionario, res){
+
+        const telefoneSemMascara = funcionario.telefoneFuncionario.replace(/[^0-9]+/g,'');
         
         const novoFuncionario = {nome: funcionario.nomeFuncionario,
-                            telefone: funcionario.telefoneFuncionario,
+                            telefone: telefoneSemMascara,
                             email: funcionario.emailFuncionario
                             }
         const sql = `UPDATE usuario SET ? WHERE id=${funcionario.id}`

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Reset -->
     <link rel="stylesheet" href="/estatico/css/reset.css" />
-    <link rel="stylesheet" href="/estatico/css/normalize.css" />    
+    <link rel="stylesheet" href="/estatico/css/normalize.css" />
     <title>Listagem de Visitas</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="/estatico/css/style.css" />    
+    <link rel="stylesheet" href="/estatico/css/style.css" />
 </head>
 
 <body>
@@ -53,9 +53,9 @@
                     <th>Tipo de Larvas</th>
                     <th>Progamar Retorno</th>
                     <th>Laboratório</th>
-
                 </tr>
             </thead>
+
             <tbody>
                 <tr class="text-center" id="visita_${visita.codVisita}" for (visita in data.visita)>
                     <td>${visita.codVisita}</td>
@@ -72,7 +72,7 @@
                     <td>${visita.numCadOrdem}</td>
                     <td>${visita.endereco}</td>
                     <td>${visita.numComplemento}</td>
-                    <td>${visita.Trabalhado}</td>                    
+                    <td>${visita.Trabalhado}</td>
                     <td>${visita.pendencia}</td>
                     <td>${visita.tipoRecipiente}</td>
                     <td>${visita.situacaoRecipiente}</td>
@@ -83,13 +83,9 @@
                     <td>${visita.tiposLarvas}</td>
                     <td>${visita.progRetorno}</td>
                     <td>${visita.laboratorio}</td>
-
-                    
                 </tr>
-
             </tbody>
-            
-              </table>
+        </table>
     </main>
 
     <footer class="pt-3">
@@ -103,4 +99,5 @@
         </div>
     </footer>
 </body>
+
 </html>

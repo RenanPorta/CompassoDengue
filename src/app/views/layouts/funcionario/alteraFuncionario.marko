@@ -15,7 +15,8 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light identidade-visual">
-            <a class="navbar-brand logo" href="#"><img src="/estatico/img/logo.png" alt=""></a>
+            <a class="navbar-brand logo" href="#"><img src="/estatico/img/logo.png"
+                    alt="Logo da prefeitura de Mogi Mirim"></a>
             <div class="ml-auto">
                 <a class="btn btn-danger text-white" href="/funcionario-consulta">Voltar</a>
             </div>
@@ -30,20 +31,24 @@
             <input class="form-control" type="hidden" name="_method" value="PUT">
             <input class="form-control" type="hidden" id="id" name="id" value="${data.funcionario.id}" />
 
-            <div class="form-group">
-                <label for="nomeFuncionario">Nome</label>
-                <input class="form-control" type="text" id="nomeFuncionario" name="nomeFuncionario"
-                    value="${data.funcionario.nome}" required />
-            </div>
-            <div class="form-group">
-                <label for="telefoneFuncionario">Telefone</label>
-                <input class="form-control" type="text" id="telefoneFuncionario" name="telefoneFuncionario"
-                    value="${data.funcionario.telefone}" maxlength="11" required />
-            </div>
-            <div class="form-group">
-                <label for="emailFuncionario">E-mail</label>
-                <input class="form-control" type="email" id="emailFuncionario" name="emailFuncionario"
-                    value="${data.funcionario.email}" required />
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="nomeFuncionario">Nome</label>
+                    <input class="form-control" type="text" id="nomeFuncionario" name="nomeFuncionario"
+                        value="${data.funcionario.nome}" required />
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label for="telefoneFuncionario">Telefone</label>
+                    <input class="form-control" type="text" id="telefoneFuncionario" name="telefoneFuncionario"
+                        value="${data.funcionario.telefone}" maxlength="11" required />
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <label for="emailFuncionario">E-mail</label>
+                    <input class="form-control" type="email" id="emailFuncionario" name="emailFuncionario"
+                        value="${data.funcionario.email}" required />
+                </div>
             </div>
 
             <div class="row">
@@ -51,13 +56,13 @@
                     <button type="submit" class="btn btn-primary btn-lg btn-block" onsubmit="unmask()">Salvar</button>
                 </div>
             </div>
-
         </form>
     </main>
 
-    <footer class="pt-3">
+    <footer>
         <div class="jumbotron mb-0 identidade-visual">
-            <img class="logo-footer mx-auto d-block img-fluid" src="/estatico/img/logo-2.png" alt="">
+            <img class="logo-footer mx-auto d-block img-fluid" src="/estatico/img/logo-2.png"
+                alt="Logo 2 da prefeitura de Mogi Mirim">
 
             <p class="copyright text-center mb-0">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi
                 Mirim.</p>
@@ -71,11 +76,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
     <script>
-        function unmask() {            
+        function unmask() {
             $('#telefoneFuncionario').unmask()
         }
 
-        $(function () {            
+        $(function () {
             $('#telefoneFuncionario').mask('(00) 00000-0000')
         })
     </script>

@@ -1,71 +1,71 @@
-<html>
+<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Reset -->
-    <link rel="stylesheet" href="/estatico/css/reset.css" />
-    <link rel="stylesheet" href="/estatico/css/normalize.css" />
-    <title>Entrar</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="/estatico/css/style.css" />
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Reset -->
+        <link rel="stylesheet" href="/estatico/css/reset.css" />
+        <link rel="stylesheet" href="/estatico/css/normalize.css" />
+        <title>Entrar</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="/estatico/css/style.css" />
+    </head>
 
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light identidade-visual">
-            <a class="navbar-brand logo" href="#"><img src="/estatico/img/logo.png"
-                    alt="Logo da prefeitura de Mogi Mirim"></a>
-            <div class="ml-auto">
-                <button type="button" class="btn btn-danger m-1"><a class="text-white" href="/home">Voltar</a></button>
-            </div>
-        </nav>
-    </header>
-
-    <main class="container">
-        <h1 class="text-center display-4 py-4">Entrar</h1>
-
-        <form action="/login" method="post">
-            <div class="row justify-content-md-center">
-                <div class="col-md-8 col-lg-8 form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1"
-                        aria-describedby="emailHelp">
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light identidade-visual">
+                <a class="navbar-brand logo" href="#"><img src="/estatico/img/logo.png"
+                        alt="Logo da prefeitura de Mogi Mirim"></a>
+                <div class="ml-auto">
+                    <button type="button" class="btn btn-danger m-1"><a class="text-white" href="/home">Voltar</a></button>
                 </div>
+            </nav>
+        </header>
 
-                <div class="col-md-8 col-lg-8 form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="exampleInputPassword1">
-                </div>
+        <main class="container">
+            <h1 class="text-center display-4 py-4">Entrar</h1>
 
-                <div class="col-md-8 col-lg-8 form-group ">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" name="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <form action="/login" method="post">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-8 col-lg-8 form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
+
+                    <div class="col-md-8 col-lg-8 form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="exampleInputPassword1">
+                    </div>
+
+                    <div class="col-md-8 col-lg-8 form-group ">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row justify-content-md-center">
-                <div class="col-md-4 col-lg-4 form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Entrar</button>
+                <div class="row justify-content-md-center">
+                    <div class="col-md-4 col-lg-4 form-group">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Entrar</button>
+                    </div>
                 </div>
+            </form>
+        </main>
+
+        <footer>
+            <div class="jumbotron mb-0 identidade-visual">
+                <img class="logo-footer mx-auto d-block img-fluid" src="/estatico/img/logo-2.png"
+                    alt="Logo 2 da prefeitura de Mogi Mirim">
+
+                <p class="copyright text-center mb-0">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi
+                    Mirim.</p>
+                <p class="copyright text-center">Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil.
+                    Tel.19 3814.1000</p>
             </div>
-        </form>
-    </main>
-
-    <footer>
-        <div class="jumbotron mb-0 identidade-visual">
-            <img class="logo-footer mx-auto d-block img-fluid" src="/estatico/img/logo-2.png"
-                alt="Logo 2 da prefeitura de Mogi Mirim">
-
-            <p class="copyright text-center mb-0">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi
-                Mirim.</p>
-            <p class="copyright text-center">Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil.
-                Tel.19 3814.1000</p>
-        </div>
-    </footer>
-</body>
+        </footer>
+    </body>
 
 </html>

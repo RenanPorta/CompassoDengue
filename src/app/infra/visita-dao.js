@@ -66,7 +66,7 @@ class VisitaDAO {
 
     }
     lista(res){
-                const sql = `SELECT visita.codVisita, usuario.nome, visita.dataVisita, atividades.atividade, tipoVisita.tipoVisita, visita.municipio,
+                const sql = `SELECT visita.codVisita, usuario.nome, DATE_FORMAT(visita.dataVisita, "%d/%m/%Y") as dataVisita, atividades.atividade, tipoVisita.tipoVisita, visita.municipio,
                 visita.codMunicipio, visita.area, visita.setorCensitario, visita.quarteirao,
                 visita.execucao, visita.numCadOrdem, visita.endereco, visita.numComplemento, 
                 visita.Trabalhado, pendencia.pendencia, tipoRecipientes.tipoRecipiente,  recipientes.recipiente,

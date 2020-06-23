@@ -24,15 +24,15 @@ function render(input, out, __component, component, state) {
     marko_escapeXmlAttr(data.funcionario.id) +
     "\"><div class=\"form-group\"><label for=\"nomeFuncionario\">Nome</label><input class=\"form-control\" type=\"text\" id=\"nomeFuncionario\" name=\"nomeFuncionario\" value=\"" +
     marko_escapeXmlAttr(data.funcionario.nome) +
-    "\"></div><div class=\"form-group\"><label for=\"telefoneFuncionario\">Telefone</label><input class=\"form-control\" type=\"text\" id=\"telefoneFuncionario\" name=\"telefoneFuncionario\" value=\"" +
+    "\" required></div><div class=\"form-group\"><label for=\"telefoneFuncionario\">Telefone</label><input class=\"form-control\" type=\"text\" id=\"telefoneFuncionario\" name=\"telefoneFuncionario\" value=\"" +
     marko_escapeXmlAttr(data.funcionario.telefone) +
-    "\" maxlength=\"11\"></div><div class=\"form-group\"><label for=\"emailFuncionario\">E-mail</label><input class=\"form-control\" type=\"email\" id=\"emailFuncionario\" name=\"emailFuncionario\" value=\"" +
+    "\" maxlength=\"11\" required></div><div class=\"form-group\"><label for=\"emailFuncionario\">E-mail</label><input class=\"form-control\" type=\"email\" id=\"emailFuncionario\" name=\"emailFuncionario\" value=\"" +
     marko_escapeXmlAttr(data.funcionario.email) +
-    "\"></div><div class=\"row\"><div class=\"col-md-4 col-lg-2\"><button class=\"btn btn-primary btn-lg btn-block\" type=\"submit\">Salvar</button></div></div></form></main><footer class=\"pt-3\"><div class=\"jumbotron mb-0 identidade-visual\"><img class=\"logo-footer mx-auto d-block img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"\"><p class=\"copyright text-center mb-0\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p class=\"copyright text-center\">Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");
+    "\" required></div><div class=\"row\"><div class=\"col-md-4 col-lg-2\"><button type=\"submit\" class=\"btn btn-primary btn-lg btn-block\" onsubmit=\"unmask()\">Salvar</button></div></div></form></main><footer class=\"pt-3\"><div class=\"jumbotron mb-0 identidade-visual\"><img class=\"logo-footer mx-auto d-block img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"\"><p class=\"copyright text-center mb-0\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p class=\"copyright text-center\">Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer><script src=\"https://code.jquery.com/jquery-3.5.1.min.js\" integrity=\"sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=\" crossorigin=\"anonymous\"></script><script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js\"></script><script>\r\n        function unmask() {            \r\n            $('#telefoneFuncionario').unmask()\r\n        }\r\n\r\n        $(function () {            \r\n            $('#telefoneFuncionario').mask('(00) 00000-0000')\r\n        })\r\n    </script>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "38");
+  await_reorderer_tag({}, out, __component, "41");
 
   out.w("</body></html>");
 }

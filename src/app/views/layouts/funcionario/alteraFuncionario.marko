@@ -33,25 +33,25 @@
             <div class="form-group">
                 <label for="nomeFuncionario">Nome</label>
                 <input class="form-control" type="text" id="nomeFuncionario" name="nomeFuncionario"
-                    value="${data.funcionario.nome}" />
+                    value="${data.funcionario.nome}" required />
             </div>
             <div class="form-group">
                 <label for="telefoneFuncionario">Telefone</label>
                 <input class="form-control" type="text" id="telefoneFuncionario" name="telefoneFuncionario"
-                    value="${data.funcionario.telefone}" maxlength="11" />
+                    value="${data.funcionario.telefone}" maxlength="11" required />
             </div>
             <div class="form-group">
                 <label for="emailFuncionario">E-mail</label>
                 <input class="form-control" type="email" id="emailFuncionario" name="emailFuncionario"
-                    value="${data.funcionario.email}" />
+                    value="${data.funcionario.email}" required />
             </div>
 
             <div class="row">
                 <div class="col-md-4 col-lg-2">
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">Salvar</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" onsubmit="unmask()">Salvar</button>
                 </div>
             </div>
-            
+
         </form>
     </main>
 
@@ -65,6 +65,20 @@
                 Tel.19 3814.1000</p>
         </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <script>
+        function unmask() {            
+            $('#telefoneFuncionario').unmask()
+        }
+
+        $(function () {            
+            $('#telefoneFuncionario').mask('(00) 00000-0000')
+        })
+    </script>
 </body>
 
 </html>

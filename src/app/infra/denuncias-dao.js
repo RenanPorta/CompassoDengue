@@ -1,6 +1,6 @@
 const conexao = require('../../config/conexao/conexaoDatabase');
 const uploadDeArquivos = require('../../arquivos/uploadDeImagens');
-const validarCpf = require ('validar-cpf');
+var crypto = require("crypto");
 
 class DenunciasDAO {
 
@@ -28,52 +28,56 @@ class DenunciasDAO {
     }
 
     adiciona(denuncia, res) {
+
+        var id = crypto.randomBytes(15).toString('hex');
+
+        const cpfSemMacara = denuncia.cpfCidadao.replace(/[^0-9]+/g,'');
+        const telefoneSemMascara = denuncia.telefoneCidadao.replace(/[^0-9]+/g,'');
             
         const sql = `INSERT INTO denuncias SET ?`
 
             if(denuncia.imagemDenuncia != ''){
-                uploadDeArquivos(denuncia.imagemDenuncia, denuncia.cpfCidadao, (erro, novoCaminho, novoNomeDoArquivo) => {
+                uploadDeArquivos(denuncia.imagemDenuncia, id, (erro, novoCaminho, novoNomeDoArquivo) => {
     
                     if(erro){
                         res.status(400).json({ erro });
                     }else{
                         const novaDenuncia = {cidadao: denuncia.nomeCidadao,
-                                            cpf: denuncia.cpfCidadao,
-                                            telefone: denuncia.telefoneCidadao,
+                                            cpf: cpfSemMacara,
+                                            telefone: telefoneSemMascara,
                                             rua: denuncia.ruaDenuncia,
                                             bairro: denuncia.bairroDenuncia,
                                             imagem: novoCaminho,
                                             nomeImagem: novoNomeDoArquivo,
                                             observacoes: denuncia.observacoesDenuncia,
-                                            status: "Pendente" }
-                        console.log(novaDenuncia);
+                                            status: "Pendente" 
+                                        }
                         conexao.query(sql, novaDenuncia, (erro) => {
                             if(erro){
                                 res.status(400).json(erro);
                                 console.log("Erro ao enviar denuncia: "+erro);
                             } else {
                                 res.redirect('/denuncia-consulta');
-                                console.log(novaDenuncia);
                             }
                         });
                     }
                 });
             }else{
                 const novaDenuncia = {cidadao: denuncia.nomeCidadao,
-                    cpf: denuncia.cpfCidadao,
-                    telefone: denuncia.telefoneCidadao,
+                    cpf: cpfSemMacara,
+                    telefone: telefoneSemMascara,
                     rua: denuncia.ruaDenuncia,
                     bairro: denuncia.bairroDenuncia,
                     imagem: denuncia.imagemDenuncia,
                     observacoes: denuncia.observacoesDenuncia,
-                    status: "Pendente" }
+                    status: "Pendente" 
+                }
                 conexao.query(sql, novaDenuncia, (erro) => {
                     if(erro){
                         res.status(400).json(erro);
                         console.log("Erro ao enviar denuncia: "+erro);
                     } else {
                         res.redirect('/denuncia-consulta');
-                        console.log(novaDenuncia);
                     }
                 });  
             }  
@@ -90,8 +94,6 @@ class DenunciasDAO {
                 {
                     denuncias: resultado
                 });
-                
-                //res.status(200).json(resultado)
             }
         })
 
@@ -112,7 +114,6 @@ class DenunciasDAO {
                         observacoes: denuncia.observacoes,
                         status: denuncia.status
             }
-            console.log(novaDenuncia);
             if(erro){
                 res.status(404).json(erro);
             }else{
@@ -139,7 +140,6 @@ class DenunciasDAO {
                         observacoes: denuncia.observacoes,
                         status: denuncia.status
             }
-            console.log(novaDenuncia);
             if(erro){
                 res.status(404).json(erro);
             }else{

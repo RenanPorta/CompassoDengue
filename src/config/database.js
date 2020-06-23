@@ -49,7 +49,7 @@ class Database {
                     rua varchar(50) NOT NULL,
                     bairro varchar(50) NOT NULL,
 					imagem varchar(200),
-					nomeImagem varchar(20),
+					nomeImagem varchar(35),
                     observacoes text,
                     status varchar(20) NOT NULL, PRIMARY KEY(id))`
 

@@ -26,29 +26,28 @@
             <h1 class="text-center display-4 py-4">Cadastro de Denuncia</h1>
 
             <form class="needs-validation" method="post" action="/denuncia" novalidate>
-
+                
                 <div class="form-row">
-                    <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                            <label for="nomeCidadao">Nome</label>
-                            <input type="text" class="form-control" id="nomeCidadao" name="nomeCidadao"
-                                value="${data.usuario.nome}" readonly>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <label for="cpfCidadao">CPF</label>
-                            <input type="text" class="form-control" id="cpfCidadao" name="cpfCidadao"
-                                value="${data.usuario.cpf}" readonly>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="telefoneCidadao">Telefone</label>
-                            <input type="text" class="form-control" id="telefoneCidadao" name="telefoneCidadao"
-                                value="${data.usuario.telefone}" readonly>
-                        </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="nomeCidadao">Nome</label>
+                        <input type="text" class="form-control" id="nomeCidadao" name="nomeCidadao"
+                            value="${data.usuario.nome}" readonly>
                     </div>
                 </div>
+                
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="cpfCidadao">CPF</label>
+                        <input type="text" class="form-control" id="cpfCidadao" name="cpfCidadao"
+                            value="${data.usuario.cpf}" readonly>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="telefoneCidadao">Telefone</label>
+                        <input type="text" class="form-control" id="telefoneCidadao" name="telefoneCidadao"
+                            value="${data.usuario.telefone}" readonly>
+                    </div>
+                </div>
+                
 
                 <h5 class="mb-3 text-center">Endereço do local da denuncia</h5>
 

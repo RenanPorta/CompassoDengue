@@ -1,4 +1,5 @@
 const passport = require('passport');
+const nivelAcesso = require('../infra/nivelAcesso');
 
 module.exports = (app) => {
 
@@ -6,11 +7,33 @@ module.exports = (app) => {
         if (req.isAuthenticated()) {
             next();
         } else {
-            res.redirect('/home');
+            res.redirect('/');
+        }
+    });
+
+    app.use('/home*', function(req, res, next) {
+        if (req.isAuthenticated()) {
+            next();
+        } else {
+            res.redirect('/');
         }
     });
 
     app.get('/home', function(req, res) {
+        const usuario = req.session.passport.user;
+        const userEmail = {
+            email: usuario.email
+        };
+        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+            if(administrador || agenteSaude){
+                res.marko(require('../views/layouts/home/indexFuncionario.marko'));
+            }else{
+                res.marko(require('../views/layouts/home/indexCidadao.marko'));
+            }
+        }) 
+    });
+
+    app.get('/', function(req, res) {
         res.marko(require('../views/layouts/home/index.marko'));
     });
 

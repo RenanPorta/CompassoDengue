@@ -1,9 +1,14 @@
 const VisitaDAO = require('../infra/visita-dao');
+const nivelAcesso = require('../infra/nivelAcesso');
 
 module.exports = (app) => {
 
     app.get('/visita-cadastro', function(req, res) {
-        res.marko(require('../views/layouts/visitas/cadastroVisita.marko'));
+        const usuario = req.session.passport.user;
+        const userEmail = {
+            email: usuario.email
+        };
+        VisitaDAO.buscaDadosUsuarioLogado(userEmail, res);
     });
 
     app.post('/visita', function(req, res) {     

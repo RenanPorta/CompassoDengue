@@ -66,7 +66,7 @@ class VisitaDAO {
 
     }
     lista(res){
-                const sql = `SELECT visita.codVisita, usuario.nome, visita.dataVisita, atividades.atividade, tipoVisita.tipoVisita, visita.municipio,
+                const sql = `SELECT visita.codVisita, usuario.nome, DATE_FORMAT(visita.dataVisita, "%d/%m/%Y") as dataVisita, atividades.atividade, tipoVisita.tipoVisita, visita.municipio,
                 visita.codMunicipio, visita.area, visita.setorCensitario, visita.quarteirao,
                 visita.execucao, visita.numCadOrdem, visita.endereco, visita.numComplemento, 
                 visita.Trabalhado, pendencia.pendencia, tipoRecipientes.tipoRecipiente,  recipientes.recipiente,
@@ -75,23 +75,23 @@ class VisitaDAO {
                 FROM  visita
                 JOIN atividades
                 ON (visita.codAtividade = atividades.codAtividade)
-                JOIN usuario
+                LEFT JOIN usuario
                 ON(visita.idAgente = usuario.id)
                 JOIN tipovisita
                 ON (visita.codTipoVisita = tipoVisita.codTipoVisita)
-                JOIN pendencia
+                LEFT JOIN pendencia
                 ON (visita.codPendencia = pendencia.codPendencia)
-                JOIN tipoRecipientes
+				LEFT JOIN tipoRecipientes
                 ON (visita.codTipoRecipientes = tipoRecipientes.codTipoRecipientes)
-                JOIN recipientes
+                LEFT JOIN recipientes
                 ON (visita.codRecipiente = recipientes.codRecipiente)
-                JOIN tratamentoQuimico
+                LEFT JOIN tratamentoQuimico
                 ON(visita.codTratQuimico = tratamentoQuimico.codTratQuimico)
                 LEFT JOIN larvas
                 ON(visita.codLarvas = larvas.codLarvas)
                 LEFT JOIN laboratorio
                 ON(visita.codLaboratorio = laboratorio.codLaboratorio)
-                JOIN situacaorecipientes
+                LEFT JOIN situacaorecipientes
                 ON(visita.codSituacaoRecipientes = situacaoRecipientes.codSituacaoRecipiente)
                 WHERE visita.codVisita > 0
                 ORDER BY visita.codVisita

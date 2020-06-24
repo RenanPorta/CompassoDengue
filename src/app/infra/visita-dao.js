@@ -2,7 +2,7 @@ const conexao = require('../../config/conexao/conexaoDatabase');
 
 class VisitaDAO {
 
-    buscaDadosUsuarioLogado(userEmail ,res){
+    PreencheDadosAutomaticoUsuario(userEmail ,res){
 
         const sql = `SELECT * FROM usuario WHERE ?`
 

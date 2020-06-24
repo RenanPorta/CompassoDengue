@@ -61,6 +61,7 @@ module.exports = (app) => {
             });
         })(req, res, next);
     });
+    
     app.get('/comoDenun', function(req, res) {
         res.marko(require('../views/layouts/home/comoDenun.marko'));
     });

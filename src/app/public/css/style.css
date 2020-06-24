@@ -186,7 +186,11 @@ main {
 
 @media screen and (min-width: 0) {
     .font {
-        font-size: 8vw;
+        font-size: 7vw;
+    }
+
+    p.font {
+        font-size: 6vw;
     }
 }
 
@@ -194,10 +198,28 @@ main {
     .font {
         font-size: 5vw;
     }
+
+    p.font {
+        font-size: 4vw;
+    }
 }
 
 @media screen and (min-width: 992px) {
     .font {
         font-size: 5vw;
+    }
+
+    p.font {
+        font-size: 4vw;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .font {
+        font-size: 4vw;
+    }
+    
+    p.font {
+        font-size: 3vw;
     }
 }

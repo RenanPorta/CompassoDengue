@@ -32,6 +32,11 @@
                         <h5 class="erroSenhaEmail">CPF invalido!</h5>
                     </div>
                 </div>
+                <div if(data.erro)>
+                    <div>
+                        <h5 class="erroSenhaEmail">${data.erro.erro}</h5>
+                    </div>
+                </div>
 
                 <input class="form-control" type="hidden" id="id" name="id" />
                 

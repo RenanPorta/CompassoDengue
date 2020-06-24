@@ -1,5 +1,5 @@
 const VisitaDAO = require('../infra/visita-dao');
-const nivelAcesso = require('../infra/nivelAcesso');
+const nivelAcesso = require('../verificacoes/nivelAcesso');
 
 module.exports = (app) => {
 

@@ -9,6 +9,7 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_helpers = require("marko/src/runtime/html/helpers"),
     marko_loadTag = marko_helpers.t,
     component_globals_tag = marko_loadTag(require("marko/src/components/taglib/component-globals-tag")),
+    marko_escapeXml = marko_helpers.x,
     init_components_tag = marko_loadTag(require("marko/src/components/taglib/init-components-tag")),
     await_reorderer_tag = marko_loadTag(require("marko/src/taglibs/async/await-reorderer-tag"));
 
@@ -25,11 +26,17 @@ function render(input, out, __component, component, state) {
     out.w("<div><div><h5 class=\"erroSenhaEmail\">CPF invalido!</h5></div></div>");
   }
 
+  if (data.erro) {
+    out.w("<div><div><h5 class=\"erroSenhaEmail\">" +
+      marko_escapeXml(data.erro.erro) +
+      "</h5></div></div>");
+  }
+
   out.w("<input class=\"form-control\" type=\"hidden\" id=\"id\" name=\"id\"><div class=\"form-row\"><div class=\"col-md-12 mb-3\"><label for=\"nomeCidadao\">Nome</label><input type=\"text\" class=\"form-control\" id=\"nomeCidadao\" name=\"nomeCidadao\" placeholder=\"Insira o nome\" value=\"\" required><div class=\"valid-feedback\">Validado.</div><div class=\"invalid-feedback\">Insira um nome.</div></div></div><div class=\"form-row\"><div class=\"col-md-6 mb-3\"><label for=\"cpfCidadao\">CPF</label><input type=\"text\" class=\"form-control\" id=\"cpfCidadao\" name=\"cpfCidadao\" placeholder=\"999.999.999-99\" value=\"\" pattern=\".{14}\" required> </div><div class=\"col-md-6 mb-3\"><label for=\"telefoneCidadao\">Telefone</label><input type=\"text\" class=\"form-control\" id=\"telefoneCidadao\" name=\"telefoneCidadao\" placeholder=\"(99)99999-9999\" value=\"\" pattern=\".{15}\" required><div class=\"valid-feedback\">Validado.</div><div class=\"invalid-feedback\">Insira um Telefone Válido.</div></div></div><div class=\"form-row\"><div class=\"col-md-12 mb-3\"><label for=\"emailCidadao\">E-mail</label><input type=\"email\" class=\"form-control\" id=\"emailCidadao\" name=\"emailCidadao\" placeholder=\"Insira o E-mail\" value=\"\" required><div class=\"valid-feedback\">Validado.</div><div class=\"invalid-feedback\">Insira um E-mail válido.</div></div></div><div class=\"row\"><div class=\"form-group col-md-6 mb-3\"><label for=\"senhaCidadao\">Senha</label><input class=\"form-control\" type=\"password\" minlength=\"6\" id=\"senhaCidadao\" name=\"senhaCidadao\"></div><div class=\"form-group col-md-6 mb-3\"><label for=\"confirmaSenhaCidadao\">Confirmar Senha</label><input class=\"form-control\" type=\"password\" minlength=\"6\" id=\"confirmaSenhaCidadao\" name=\"confirmaSenhaCidadao\"></div></div><div class=\"row\"><div class=\"col-md-4 col-lg-2\"><button type=\"submit\" class=\"btn btn-primary btn-lg btn-block\" onclick=\"return validar()\" onsubmit=\"unmask()\">Cadastrar</button></div></div></form></main><footer class=\"pt-3\"><div class=\"jumbotron mb-0 identidade-visual\"><img class=\"logo-footer mx-auto d-block img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"Logo 2 da prefeitura de Mogi Mirim\"><p class=\"copyright text-center mb-0\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p class=\"copyright text-center\">Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer><script src=\"/estatico/js/validacao-campos.js\"></script><script src=\"https://code.jquery.com/jquery-3.5.1.min.js\" integrity=\"sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=\" crossorigin=\"anonymous\"></script><script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js\"></script><script type=\"text/javascript\">\r\n            function unmask() {\r\n                $('#cpfCidadao').unmask()\r\n                $('#telefoneCidadao').unmask()\r\n            }\r\n\r\n            $(function () {\r\n                $('#cpfCidadao').mask('000.000.000-00')\r\n                $('#telefoneCidadao').mask('(00) 00000-0000')\r\n            })\r\n\r\n            function validar() {\r\n                var senha = cadastraCidadao.senhaCidadao.value;\r\n                var confirmaSenha = cadastraCidadao.confirmaSenhaCidadao.value;\r\n\r\n                if (senha == \"\" || senha.length <= 5) {\r\n                    alert('Preencha o campo \"Senha\" com no minímo 6 caracteres');\r\n                    cadastraCidadao.senhaCidadao.focus();\r\n                    return false;\r\n                }\r\n\r\n                if (confirmaSenha == \"\") {\r\n                    alert('Preencha o campo \"Confirmar Senha\"');\r\n                    cadastraCidadao.confirmaSenhaCidadao.focus();\r\n                    return false;\r\n                }\r\n\r\n                if (senha != confirmaSenha) {\r\n                    alert('Senhas diferentes!');\r\n                    cadastraCidadao.confirmaSenhaCidadao.focus();\r\n                    return false;\r\n                }\r\n            }\r\n        </script>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "63");
+  await_reorderer_tag({}, out, __component, "66");
 
   out.w("</body></html>");
 }

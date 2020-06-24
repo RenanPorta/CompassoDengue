@@ -1,5 +1,5 @@
 const passport = require('passport');
-const nivelAcesso = require('../infra/nivelAcesso');
+const nivelAcesso = require('../verificacoes/nivelAcesso');
 
 module.exports = (app) => {
 

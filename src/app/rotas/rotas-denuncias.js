@@ -1,5 +1,5 @@
 const DenunciasDAO = require('../infra/denuncias-dao');
-const nivelAcesso = require('../infra/nivelAcesso');
+const nivelAcesso = require('../verificacoes/nivelAcesso');
 
 module.exports = (app) => {
 

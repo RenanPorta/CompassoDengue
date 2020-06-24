@@ -1,5 +1,35 @@
 /*GERAL*/
 
+.caixa {
+    background-color: #fff;
+    color: #343a40;
+    font-weight: bold;
+    margin-right: 1px;
+    padding: 20px 15px;
+    text-transform: uppercase;
+    transition: .3s;
+}
+
+.caixa.active {
+    background-color: #f05555;
+    color: #fff;
+    text-decoration: none;
+}
+
+.caixa:hover {
+    background-color: #f05555;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-principal {
+    color: #444;
+}
+.btn-principal:hover {
+    color: #f05555;
+    text-decoration: none;
+}
+
 .identidade-visual {
     background-color: #ffc61c;
     width: 100%;
@@ -14,12 +44,13 @@
 /*INDEX*/
 
 .img-banner {
-    background: url('/estatico/img/banner.jpg');
+    /* background: url('/estatico/img/banner.jpg'); */
+    background: url('../img/banner.jpg');
     background-size: cover;
     background-position: center center;
 }
 
-main{
+main {
     min-height: calc(100vh - 66px - 200px);
 }
 
@@ -86,7 +117,7 @@ main{
 
 /*LOGIN*/
 
-.erroSenhaEmail{
+.erroSenhaEmail {
     color: red;
 }
 
@@ -122,7 +153,6 @@ main{
 .principal {
     min-height: 85vh;
 }
-
 
 /* estilo das paginas de erro */
 

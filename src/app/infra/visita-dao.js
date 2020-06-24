@@ -1,6 +1,27 @@
 const conexao = require('../../config/conexao/conexaoDatabase');
 
 class VisitaDAO {
+
+    PreencheDadosAutomaticoUsuario(userEmail ,res){
+
+        const sql = `SELECT * FROM usuario WHERE ?`
+
+        conexao.query(sql, userEmail, (erro, resultado) => {
+            const usuario = resultado[0];
+            const exibeUsuario = {
+                            id: usuario.id
+            }
+            if(erro){
+                res.status(400).json(erro);
+            }else{
+                res.marko(require('../views/layouts/visitas/cadastroVisita.marko'),
+                {
+                    usuario: exibeUsuario
+                })
+            }
+        })
+    }
+
     adiciona(visita, res) {
         const sql = `INSERT INTO visita SET ?`
         const novaVisita = {

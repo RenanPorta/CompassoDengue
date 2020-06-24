@@ -1,20 +1,69 @@
 const VisitaDAO = require('../infra/visita-dao');
+const nivelAcesso = require('../infra/nivelAcesso');
 
 module.exports = (app) => {
 
-    app.get('/visita-cadastro', function(req, res) {
-        res.marko(require('../views/layouts/visitas/cadastroVisita.marko'));
+    app.use('/visita*', function(req, res, next) {
+        if (req.isAuthenticated()) {
+            next();
+        } else {
+            res.redirect('/home');
+        }
     });
 
-    app.post('/visita', function(req, res) {     
-       VisitaDAO.adiciona(req.body, res);    
+    app.get('/visita-cadastro', function(req, res) {
+        const usuario = req.session.passport.user;
+        const userEmail = {
+            email: usuario.email
+        };
+        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+            if(administrador || agenteSaude){
+                VisitaDAO.PreencheDadosAutomaticoUsuario(userEmail, res);
+            }else{
+                res.redirect('/home');
+            }
+        })
+    });
+
+    app.post('/visita', function(req, res) {
+        const usuario = req.session.passport.user;
+        const userEmail = {
+            email: usuario.email
+        };
+        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+            if(administrador || agenteSaude){
+                VisitaDAO.adiciona(req.body, res);
+            }else{
+                res.redirect('/home');
+            }
+        })        
     });
 
     app.get('/visita-consulta', function(req, res) {
-        VisitaDAO.lista(res);
+        const usuario = req.session.passport.user;
+        const userEmail = {
+            email: usuario.email
+        };
+        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+            if(administrador || agenteSaude){
+                VisitaDAO.lista(res);
+            }else{
+                res.redirect('/home');
+            }
+        })  
     });
 
     app.get('/visita', function(req, res) {
-        res.marko(require('../views/layouts/visitas/visita.marko'));
+        const usuario = req.session.passport.user;
+        const userEmail = {
+            email: usuario.email
+        };
+        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+            if(administrador || agenteSaude){
+                res.marko(require('../views/layouts/visitas/visita.marko'));
+            }else{
+                res.redirect('/home');
+            }
+        }) 
     });
 }

@@ -21,10 +21,10 @@ module.exports = (app) => {
 
     app.get('/home', function(req, res) {
         const usuario = req.session.passport.user;
-        const userEmail = {
-            email: usuario.email
-        };
-        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
             if(administrador || agenteSaude){
                 res.marko(require('../views/layouts/home/indexFuncionario.marko'));
             }else{

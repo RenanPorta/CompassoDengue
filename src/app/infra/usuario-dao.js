@@ -95,11 +95,11 @@ class UsuarioDAO {
     }
 
     
-    listaCidadaoLogado(userEmail ,res){
+    listaCidadaoLogado(userId ,res){
 
         const sql = `SELECT * FROM usuario WHERE ?`
 
-        conexao.query(sql, userEmail, (erro, resultado) => {
+        conexao.query(sql, userId, (erro, resultado) => {
 
             if(erro){
                 res.status(400).json(erro);

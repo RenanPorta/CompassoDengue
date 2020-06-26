@@ -1,11 +1,11 @@
 const conexao = require('../../config/conexao/conexaoDatabase');
 
-module.exports = (userEmail, callbackVerificado) => {
+module.exports = (userId, callbackVerificado) => {
 
     
     const sqlUsuario = `SELECT * FROM usuario WHERE ?`
 
-    conexao.query(sqlUsuario, userEmail, (erro, resultadoUsuario) => {
+    conexao.query(sqlUsuario, userId, (erro, resultadoUsuario) => {
 
         const usuario = resultadoUsuario[0];
         if(erro){

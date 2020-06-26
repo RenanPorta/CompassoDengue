@@ -38,6 +38,7 @@ module.exports = (app) => {
 
     passport.serializeUser((usuario, done) => {
         const usuarioSessao = {
+            id: usuario.id,
             nome: usuario.nome,
             email: usuario.email
         };

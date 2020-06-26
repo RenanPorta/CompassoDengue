@@ -4,11 +4,11 @@ var crypto = require("crypto");
 
 class DenunciasDAO {
 
-    buscaDadosCidadaoLogado(userEmail ,res){
+    buscaDadosCidadaoLogado(userId ,res){
 
         const sql = `SELECT * FROM usuario WHERE ?`
 
-        conexao.query(sql, userEmail, (erro, resultado) => {
+        conexao.query(sql, userId, (erro, resultado) => {
             const usuario = resultado[0];
             const exibeUsuario = {
                             nome: usuario.nome,

@@ -13,10 +13,10 @@ module.exports = (app) => {
 
     app.get('/denuncia-cadastro', function(req, res) {
         const usuario = req.session.passport.user;
-        const userEmail = {
-            email: usuario.email
-        };
-        DenunciasDAO.buscaDadosCidadaoLogado(userEmail, res);
+        const userId = {
+            id: usuario.id
+        }
+        DenunciasDAO.buscaDadosCidadaoLogado(userId, res);
     });
 
     app.post('/denuncia', function(req, res) {
@@ -35,10 +35,10 @@ module.exports = (app) => {
     app.get('/denuncia-altera/:id', function(req, res) {
         const id = req.params.id;
         const usuario = req.session.passport.user;
-        const userEmail = {
-            email: usuario.email
-        };
-        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
             if(administrador){
                 DenunciasDAO.buscaPorIdAlterar(id, res);
             }else if(agenteSaude){
@@ -51,10 +51,10 @@ module.exports = (app) => {
 
     app.put('/denuncia-altera', function(req, res) {
         const usuario = req.session.passport.user;
-        const userEmail = {
-            email: usuario.email
-        };
-        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
             if(administrador){
                 DenunciasDAO.altera(req.body, res);
             }else if(agenteSaude){

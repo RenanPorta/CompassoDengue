@@ -15,10 +15,10 @@ module.exports = (app) => {
 
     app.get('/funcionario-consulta', function(req, res) {
         const usuario = req.session.passport.user;
-        const userEmail = {
-            email: usuario.email
-        };
-        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
             if(administrador){
                 UsuarioDAO.listaFunc(res);
             }else{
@@ -29,10 +29,10 @@ module.exports = (app) => {
 
     app.get('/funcionario-cadastro', function(req, res) {
         const usuario = req.session.passport.user;
-        const userEmail = {
-            email: usuario.email
-        };
-        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
             if(administrador){
                 res.marko(require('../views/layouts/funcionario/cadastroFuncionario.marko'));
             }else{
@@ -43,10 +43,10 @@ module.exports = (app) => {
 
     app.post('/funcionario', function(req, res) {
         const usuario = req.session.passport.user;
-        const userEmail = {
-            email: usuario.email
-        };
-        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
             if(administrador){
                 UsuarioDAO.adicionaFunc(req.body, res);
             }else{
@@ -57,10 +57,10 @@ module.exports = (app) => {
 
     app.get('/funcionario-altera/:id', function(req, res) {
         const usuario = req.session.passport.user;
-        const userEmail = {
-            email: usuario.email
-        };
-        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
             if(administrador){
                 const id = req.params.id;
                 UsuarioDAO.buscaPorIdFunc(id, res);
@@ -72,10 +72,10 @@ module.exports = (app) => {
 
     app.put('/funcionario-altera', function(req, res) {
         const usuario = req.session.passport.user;
-        const userEmail = {
-            email: usuario.email
-        };
-        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
             if(administrador){
                 UsuarioDAO.alteraFunc(req.body, res);
             }else{
@@ -86,10 +86,10 @@ module.exports = (app) => {
 
     app.delete('/funcionario/:id', function(req, res) {
         const usuario = req.session.passport.user;
-        const userEmail = {
-            email: usuario.email
-        };
-        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
             if(administrador){
                 const id = req.params.id;
                 UsuarioDAO.deletaPorIdFunc(id, res);

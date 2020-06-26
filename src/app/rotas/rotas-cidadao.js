@@ -13,16 +13,16 @@ module.exports = (app) => {
 
     app.get('/cidadao-consulta', function(req, res) {
         const usuario = req.session.passport.user;
-        const userEmail = {
-            email: usuario.email
-        };
-        nivelAcesso(userEmail, (administrador, agenteSaude) => {
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
             if(administrador){
                 UsuarioDAO.listaCid(res);
             }else if(agenteSaude){
                 res.redirect('/home');
             }else {
-                UsuarioDAO.listaCidadaoLogado(userEmail, res);
+                UsuarioDAO.listaCidadaoLogado(userId, res);
             }
         })
     });

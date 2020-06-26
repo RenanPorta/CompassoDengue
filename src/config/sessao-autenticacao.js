@@ -2,9 +2,9 @@ const uuid = require('uuid/v4');
 const sessao = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
 
 const UsuarioDAO = require('../app/infra/usuario-dao');
-const db = require('./database');
 
 module.exports = (app) => {
 
@@ -16,19 +16,29 @@ module.exports = (app) => {
         (email, senha, done) => {
             UsuarioDAO.buscaPorEmail(email)
                 .then(usuario => {
-                    if (!usuario || senha != usuario.senha){
+                    if(usuario){
+                        bcrypt.compare(senha, usuario.senha, function(err, result) {
+                            if(!result){
+                                return done(null, false, {
+                                mensagem: 'Login e Senha incorretos!'
+                                })
+                            }else{
+                                return done(null, usuario);
+                            }
+                        })    
+                    }else{
                         return done(null, false, {
                             mensagem: 'Login e Senha incorretos!'
                         })
                     }
-                    return done(null, usuario);
-                })
-                .catch(erro => done(erro, false));
+                })  
+            .catch(erro => done(erro, false));  
         }
     ));
 
     passport.serializeUser((usuario, done) => {
         const usuarioSessao = {
+            id: usuario.id,
             nome: usuario.nome,
             email: usuario.email
         };

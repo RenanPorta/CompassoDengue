@@ -20,7 +20,7 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<header><nav class=\"navbar navbar-expand-lg navbar-light identidade-visual\"><a class=\"navbar-brand logo\" href=\"#\"><img src=\"/estatico/img/logo.png\" alt=\"Logo da prefeitura de Mogi Mirim\"></a><div class=\"ml-auto\"><a class=\"btn btn-danger text-white\" href=\"/home\">Voltar</a></div></nav></header><main class=\"container\"><h1 class=\"text-center display-4 py-4\">Cadastro de Funcionario</h1><form name=\"cadastraFuncionario\" method=\"post\" action=\"/funcionario\">");
+  out.w("<header><nav class=\"navbar navbar-expand-lg navbar-light identidade-visual\"><a class=\"navbar-brand logo\" href=\"#\"><img src=\"/estatico/img/logo.png\" alt=\"Logo da prefeitura de Mogi Mirim\"></a><div class=\"ml-auto\"><a class=\"btn btn-danger text-white\" href=\"/home\">Voltar</a></div></nav></header><main class=\"container\"><h1 class=\"text-center display-4 py-4\">Cadastro de Funcionario</h1><form class=\"needs-validation\" name=\"cadastraFuncionario\" method=\"post\" action=\"/funcionario\" novalidate>");
 
   if (data.erroCpf) {
     out.w("<div><div><h5 class=\"erroSenhaEmail\">CPF invalido!</h5></div></div>");

@@ -68,8 +68,8 @@ class Database {
                     nome varchar(50) NOT NULL, 
                     cpf varchar(11) NOT NULL,
                     telefone varchar(11) NOT NULL,
-                    email VARCHAR(40) NOT NULL,
-					senha VARCHAR(40) NOT NULL,
+                    email VARCHAR(70) NOT NULL,
+					senha VARCHAR(70) NOT NULL,
 					nivelAcesso VARCHAR(40) NOT NULL, PRIMARY KEY(id))`
 
 		this.conexao.query(sql, (erro) => {

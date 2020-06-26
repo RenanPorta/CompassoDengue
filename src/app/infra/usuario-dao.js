@@ -2,6 +2,8 @@ const conexao = require('../../config/conexao/conexaoDatabase');
 const validarCpf = require('validar-cpf');
 const buscaCpfCadastrado = require('../verificacoes/buscaCpfCadastrado');
 const buscaEmailCadastrado = require('../verificacoes/buscaEmailCadastrado');
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 class UsuarioDAO {
     adicionaCid(cidadao, res) {
@@ -9,60 +11,67 @@ class UsuarioDAO {
         const cpfSemMacara = cidadao.cpfCidadao.replace(/[^0-9]+/g,'');
         const telefoneSemMascara = cidadao.telefoneCidadao.replace(/[^0-9]+/g,'');
 
-        const novoCidadao = {nome: cidadao.nomeCidadao,
-            cpf: cpfSemMacara,
-            telefone: telefoneSemMascara,
-            email: cidadao.emailCidadao,
-            senha: cidadao.senhaCidadao,
-            nivelAcesso: "Cidadao" 
-            }
-        buscaCpfCadastrado(novoCidadao.cpf, (cpfExiste) => {
-            if(cpfExiste){
-                const cadastrado = {
-                    erro: "CPF já cadastrado!"
-                    }
-                res.marko(require('../views/layouts/cidadao/cadastroCidadao.marko'),
-                {
-                    erro: cadastrado
-                });
+        bcrypt.hash(cidadao.senhaCidadao, saltRounds, function(err, hash) {
+            if(err){
+                console.log(err)
+                res.status(400).json(err);
             }else{
-                buscaEmailCadastrado(novoCidadao.email, (emailExiste) => {
-                    if(emailExiste){
+                const novoCidadao = {nome: cidadao.nomeCidadao,
+                    cpf: cpfSemMacara,
+                    telefone: telefoneSemMascara,
+                    email: cidadao.emailCidadao,
+                    senha: hash,
+                    nivelAcesso: "Cidadao" 
+                    }
+                buscaCpfCadastrado(novoCidadao.cpf, (cpfExiste) => {
+                    if(cpfExiste){
                         const cadastrado = {
-                            erro: "E-mail já cadastrado!"
-                        }
+                            erro: "CPF já cadastrado!"
+                            }
                         res.marko(require('../views/layouts/cidadao/cadastroCidadao.marko'),
                         {
                             erro: cadastrado
                         });
                     }else{
-                        const cpfEhValido = validarCpf(novoCidadao.cpf);
-    
-                        if(cpfEhValido){
-    
-                            const sql = `INSERT INTO usuario SET ?`
-    
-                            conexao.query(sql, novoCidadao, (erro) => {
-    
-                            if(erro){
-                                res.status(400).json(erro);
-                                console.log("Erro ao cadastrar cidadao: "+erro);
-                            } else {
-                                res.redirect('/home');
+                        buscaEmailCadastrado(novoCidadao.email, (emailExiste) => {
+                            if(emailExiste){
+                                const cadastrado = {
+                                    erro: "E-mail já cadastrado!"
+                                }
+                                res.marko(require('../views/layouts/cidadao/cadastroCidadao.marko'),
+                                {
+                                    erro: cadastrado
+                                });
+                            }else{
+                                const cpfEhValido = validarCpf(novoCidadao.cpf);
+            
+                                if(cpfEhValido){
+            
+                                    const sql = `INSERT INTO usuario SET ?`
+            
+                                    conexao.query(sql, novoCidadao, (erro) => {
+            
+                                    if(erro){
+                                        res.status(400).json(erro);
+                                        console.log("Erro ao cadastrar cidadao: "+erro);
+                                    } else {
+                                        res.redirect('/home');
+                                    }
+                                })
+                                }else{
+                                const erroCpf = {
+                                            erroCpf: "Cpf invalido!"
+                                        }
+                                res.marko(require('../views/layouts/cidadao/cadastroCidadao.marko'),
+                                {
+                                    erroCpf: erroCpf
+                                });
+                                }
                             }
                         })
-                        }else{
-                        const erroCpf = {
-                                    erroCpf: "Cpf invalido!"
-                                }
-                        res.marko(require('../views/layouts/cidadao/cadastroCidadao.marko'),
-                        {
-                            erroCpf: erroCpf
-                        });
-                        }
+                        
                     }
-                })
-                
+                });
             }
         });   
     }
@@ -164,61 +173,70 @@ class UsuarioDAO {
 // ------------ FUNCIONARIO -------------------
     
     adicionaFunc(funcionario, res) {
+
         const cpfSemMacara = funcionario.cpfFuncionario.replace(/[^0-9]+/g,'');
         const telefoneSemMascara = funcionario.telefoneFuncionario.replace(/[^0-9]+/g,'');
 
-        const novoFuncionario = {nome: funcionario.nomeFuncionario,
-            cpf: cpfSemMacara,
-            telefone: telefoneSemMascara,
-            email: funcionario.emailFuncionario,
-            senha: funcionario.senhaFuncionario,
-            nivelAcesso: funcionario.nivelAcesso
-            }
-        
-        buscaCpfCadastrado(novoFuncionario.cpf, (cpfExiste) => {
-            if(cpfExiste){
-                const cadastrado = {
-                    erro: "CPF já cadastrado!"
-                    }
-                res.marko(require('../views/layouts/funcionario/cadastroFuncionario.marko'),
-                {
-                    erro: cadastrado
-                });
+        bcrypt.hash(funcionario.senhaFuncionario, saltRounds, function(err, hash) {
+            if(err){
+                console.log(err);
+                res.status(400).json(err);
             }else{
-                buscaEmailCadastrado(novoFuncionario.email, (emailExiste) => {
-                    if(emailExiste){
+                
+                const novoFuncionario = {nome: funcionario.nomeFuncionario,
+                    cpf: cpfSemMacara,
+                    telefone: telefoneSemMascara,
+                    email: funcionario.emailFuncionario,
+                    senha: hash,
+                    nivelAcesso: funcionario.nivelAcesso
+                    }
+                
+                buscaCpfCadastrado(novoFuncionario.cpf, (cpfExiste) => {
+                    if(cpfExiste){
                         const cadastrado = {
-                            erro: "E-mail já cadastrado!"
+                            erro: "CPF já cadastrado!"
                             }
                         res.marko(require('../views/layouts/funcionario/cadastroFuncionario.marko'),
                         {
                             erro: cadastrado
                         });
                     }else{
-                        const cpfEhValido = validarCpf(novoFuncionario.cpf);
-
-                        if(cpfEhValido){
-
-                        const sql = `INSERT INTO usuario SET ?`
-
-                        conexao.query(sql, novoFuncionario, (erro) => {
-
-                            if(erro){
-                                res.status(400).json(erro);
-                                console.log("Erro ao cadastrar Funcionario: "+erro);
-                            } else {
-                                res.redirect('/funcionario-consulta');
+                        buscaEmailCadastrado(novoFuncionario.email, (emailExiste) => {
+                            if(emailExiste){
+                                const cadastrado = {
+                                    erro: "E-mail já cadastrado!"
+                                    }
+                                res.marko(require('../views/layouts/funcionario/cadastroFuncionario.marko'),
+                                {
+                                    erro: cadastrado
+                                });
+                            }else{
+                                const cpfEhValido = validarCpf(novoFuncionario.cpf);
+        
+                                if(cpfEhValido){
+        
+                                const sql = `INSERT INTO usuario SET ?`
+        
+                                conexao.query(sql, novoFuncionario, (erro) => {
+        
+                                    if(erro){
+                                        res.status(400).json(erro);
+                                        console.log("Erro ao cadastrar Funcionario: "+erro);
+                                    } else {
+                                        res.redirect('/funcionario-consulta');
+                                    }
+                                });
+                                }else{
+                                    const erroCpf = {
+                                        erroCpf: "Cpf invalido!"
+                                        }
+                                    res.marko(require('../views/layouts/funcionario/cadastroFuncionario.marko'),
+                                    {
+                                        erroCpf: erroCpf
+                                    });
+                                }
                             }
                         });
-                        }else{
-                            const erroCpf = {
-                                erroCpf: "Cpf invalido!"
-                                }
-                            res.marko(require('../views/layouts/funcionario/cadastroFuncionario.marko'),
-                            {
-                                erroCpf: erroCpf
-                            });
-                        }
                     }
                 });
             }

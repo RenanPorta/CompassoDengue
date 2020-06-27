@@ -1,0 +1,22 @@
+.align {
+    text-align: center;
+}
+
+.erro404 {
+    font-size: 8.5em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.erro500 {
+    margin-top: 20px;
+    font-size: 3em;
+    font-family: 'Montserrat', sans-serif;
+    color: red;
+}
+
+.mosquito-png {
+    margin: 20px 0 20px 0;
+    max-width: 250px;
+    max-height: 200px;
+}
+

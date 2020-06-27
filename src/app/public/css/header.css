@@ -1,5 +1,5 @@
 .logo-header {
-    width: 15em;   
+    width: 12em;   
 }
 
 .btn-principal {
@@ -60,6 +60,10 @@
 }
 
 @media screen and (min-width: 576px){
+    .logo-header {
+        width: 15em;   
+    }
+
     .menu{
         text-align: left;
         background-color: whitesmoke;   

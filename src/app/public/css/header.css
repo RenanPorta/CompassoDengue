@@ -1,0 +1,95 @@
+.logo-header {
+    width: 12em;   
+}
+
+.btn-principal {
+    padding-right: 20px;
+}
+
+.btn-principal:hover {
+    color: #f05555;
+    text-decoration: none;
+}
+
+.btn-custom {
+    color: #fff;
+    background-color: #f05555;
+}
+
+
+.img-banner {
+    background: url('/estatico/img/banner.jpg');    
+    background-size: cover;
+    background-position: center center;
+}
+
+.banner {
+    margin-top: 8vw;
+    height: 5em;
+    max-width: 100%;
+    color: #fff;
+    text-align: center;
+    font-size: 2em;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 4px black;
+}
+
+.menu{
+    text-align: center;      
+}
+
+.menu ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.caixa {
+    color: #343a40;
+    font-weight: bold;
+    padding: 20px 15px;
+    text-transform: uppercase;
+    display: block;
+    background-color: whitesmoke;
+}
+
+.caixa.active {
+    background-color: #f05555;
+    color: #fff;
+    text-decoration: none;
+}
+
+@media screen and (min-width: 576px){
+    .logo-header {
+        width: 15em;   
+    }
+
+    .menu{
+        text-align: left;
+        background-color: whitesmoke;   
+    }
+
+    .menu ul{
+        display: flex; 
+        margin-left: 8vw;
+    }
+
+    .lista-menu{
+        display: inline-block;
+    }
+
+    .caixa {
+        color: #343a40;
+        font-weight: bold;
+        margin-right: 0;
+        padding: 1.2em 1em;
+        text-transform: uppercase;
+        transition: .3s;
+    }
+
+    .caixa:hover {
+        background-color: #f05555;
+        color: #fff;
+        text-decoration: none;
+    }
+}

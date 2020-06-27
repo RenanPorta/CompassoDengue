@@ -18,16 +18,16 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
 function render(input, out, __component, component, state) {
   var data = input;
 
-  out.w("<html lang=\"pt-br\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/estatico/css/reset.css\"><link rel=\"stylesheet\" href=\"/estatico/css/normalize.css\"><title>Listagem de Visitas</title><link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css\" integrity=\"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk\" crossorigin=\"anonymous\"><link rel=\"stylesheet\" href=\"/estatico/css/style.css\"></head><body>");
+  out.w("<html lang=\"pt-br\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link rel=\"stylesheet\" href=\"/estatico/css/reset.css\"><link rel=\"stylesheet\" href=\"/estatico/css/normalize.css\"><title>Listagem de Visitas</title><link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css\" integrity=\"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk\" crossorigin=\"anonymous\"><link rel=\"stylesheet\" href=\"/estatico/css/cor-principal.css\"><link rel=\"stylesheet\" href=\"/estatico/css/header.css\"><link rel=\"stylesheet\" href=\"/estatico/css/footer.css\"><link rel=\"stylesheet\" href=\"/estatico/css/main.css\"></head><body>");
 
   component_globals_tag({}, out);
 
-  out.w("<header><nav class=\"navbar navbar-expand-lg navbar-light identidade-visual\"><a class=\"navbar-brand logo\" href=\"#\"><img src=\"/estatico/img/logo.png\" alt=\"\"></a><div class=\"ml-auto\"><a class=\"btn btn-danger text-white\" href=\"/visita\">Voltar</a></div></nav></header><main class=\"container\"><h1 class=\"text-center display-4 py-4\">Listagem de Visitas</h1><table class=\"table table-bordered table-hover table-responsive\" id=\"visita\"><thead class=\"thead-light\"><tr class=\"text-center\"><th>Nº Visita</th><th>Agente</th><th>Data</th><th>Atividade</th><th>Tipo Visita</th><th>Código do Munícipio</th><th>Munícipio</th><th>Area</th><th>Setor Censitário</th><th>Quarteirão</th><th>Execução</th><th>CAD ou Nº Ordem</th><th>Endereço</th><th>Numero / Complemento</th><th>Trabalhado</th><th>Pendência</th><th>Tipo de Recipiente</th><th>Situação do Recipiente</th><th>Recipiente</th><th>Controle Mecânico</th><th>Tratamento Químico</th><th>Amostra</th><th>Tipo de Larvas</th><th>Progamar Retorno</th><th>Laboratório</th></tr></thead><tbody>");
+  out.w("<header><nav class=\"color nav navbar-expand-md justify-content-between\"><img class=\"logo-header rounded p-3\" src=\"/estatico/img/logo.png\" alt=\"Logo da prefeitura de Mogi Mirim\"><div class=\"nav justify-content-center align-self-center\"><a class=\"btn-principal nav-item btn m-1\" href=\"/visita\">Voltar</a> </div> </nav></header><main class=\"container\"><h1 class=\"font text-center display-4 py-4\">Listagem de Visitas</h1><table class=\"table table-bordered table-hover table-responsive\" id=\"visita\"><thead class=\"thead-light\"><tr class=\"text-center\"><th>Nº Visita</th><th>Agente</th><th>Data</th><th>Atividade</th><th>Tipo Visita</th><th>Código do Munícipio</th><th>Munícipio</th><th>Area</th><th>Setor Censitário</th><th>Quarteirão</th><th>Execução</th><th>CAD ou Nº Ordem</th><th>Endereço</th><th>Numero / Complemento</th><th>Trabalhado</th><th>Pendência</th><th>Tipo de Recipiente</th><th>Situação do Recipiente</th><th>Recipiente</th><th>Controle Mecânico</th><th>Tratamento Químico</th><th>Amostra</th><th>Tipo de Larvas</th><th>Progamar Retorno</th><th>Laboratório</th></tr></thead><tbody>");
 
-  var for__47 = 0;
+  var for__49 = 0;
 
   marko_forEach(data.visita, function(visita) {
-    var keyscope__48 = "[" + ((for__47++) + "]");
+    var keyscope__50 = "[" + ((for__49++) + "]");
 
     out.w("<tr class=\"text-center\" id=\"visita_" +
       marko_escapeXmlAttr(visita.codVisita) +
@@ -84,11 +84,11 @@ function render(input, out, __component, component, state) {
       "</td></tr>");
   });
 
-  out.w("</tbody></table></main><footer class=\"pt-3\"><div class=\"jumbotron mb-0 identidade-visual\"><img class=\"logo-footer mx-auto d-block img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"\"><p class=\"copyright text-center mb-0\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p class=\"copyright text-center\">Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");
+  out.w("</tbody></table></main><footer><div class=\"container-fluid color text-center p-3\"><img class=\"logo-footer rounded img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"Logo 2 da prefeitura de Mogi Mirim\"><p class=\"mb-1\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p>Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "80");
+  await_reorderer_tag({}, out, __component, "82");
 
   out.w("</body></html>");
 }

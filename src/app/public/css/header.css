@@ -45,6 +45,7 @@
     text-transform: uppercase;
     display: block;
     background-color: whitesmoke;
+    margin: 0 2px;
 }
 
 .caixa.active {

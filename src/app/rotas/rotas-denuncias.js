@@ -1,5 +1,18 @@
 const DenunciasDAO = require('../infra/denuncias-dao');
 const nivelAcesso = require('../verificacoes/nivelAcesso');
+const multer = require('multer')
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/')
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now()+'-'+file.originalname)
+    }
+})
+
+const upload = multer({ storage })
+
 
 module.exports = (app) => {
 
@@ -19,8 +32,11 @@ module.exports = (app) => {
         DenunciasDAO.buscaDadosCidadaoLogado(userId, res);
     });
 
-    app.post('/denuncia', function(req, res) {
-        DenunciasDAO.adiciona(req.body, res);
+    app.post('/denuncia', upload.single('imagemDenuncia'), function(req, res) {
+        const caminhoImagem = {
+            caminho: req.file.path
+        }
+        DenunciasDAO.adiciona(req.body, caminhoImagem, res);
     });
 
     app.get('/denuncia-consulta', function(req, res) {

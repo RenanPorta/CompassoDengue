@@ -11,12 +11,6 @@
     text-decoration: none;
 }
 
-.btn-custom {
-    color: #fff;
-    background-color: #f05555;
-}
-
-
 .img-banner {
     background: url('/estatico/img/banner.jpg');    
     background-size: cover;

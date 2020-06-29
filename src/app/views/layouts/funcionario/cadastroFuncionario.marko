@@ -46,7 +46,7 @@
                 <div class="form-row">
                     <div class="col-md-12 mb-3">
                         <label for="nomeFuncionario">Nome</label>
-                        <input type="text" class="form-control" id="nomeFuncionario" name="nomeFuncionario" 
+                        <input type="text" class="form-control input-form" id="nomeFuncionario" name="nomeFuncionario" 
                         placeholder="Insira o nome" value="" required>
                         <div class="valid-feedback">
                             Validado.
@@ -59,12 +59,12 @@
                  <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="cpfFuncionario">CPF</label>
-                        <input type="text" class="form-control" id="cpfFuncionario" name="cpfFuncionario" 
+                        <input type="text" class="form-control input-form" id="cpfFuncionario" name="cpfFuncionario" 
                         placeholder="999.999.999-99" value="" pattern=".{14}" required> 
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="telefoneFuncionario">Telefone</label>
-                        <input type="text" class="form-control" id="telefoneFuncionario" name="telefoneFuncionario" 
+                        <input type="text" class="form-control input-form" id="telefoneFuncionario" name="telefoneFuncionario" 
                         placeholder="(99) 99999-9999" value="" pattern=".{15}" required>
                         <div class="valid-feedback">
                             Validado.
@@ -77,7 +77,7 @@
                 <div class="form-row">
                     <div class="col-md-12 mb-3">
                         <label for="emailFuncionario">E-mail</label>
-                        <input type="email" class="form-control" id="emailFuncionario" name="emailFuncionario" 
+                        <input type="email" class="form-control input-form" id="emailFuncionario" name="emailFuncionario" 
                         placeholder="Insira o E-mail" value="" required>
                         <div class="valid-feedback">
                             Validado.
@@ -90,17 +90,17 @@
                 <div class="row">
                     <div class="form-group col-md-6 mb-3">
                         <label for="senhaFuncionario">Senha</label>
-                        <input class="form-control" type="password" minlength="6" id="senhaFuncionario" name="senhaFuncionario" />
+                        <input class="form-control input-form" type="password" minlength="6" id="senhaFuncionario" name="senhaFuncionario" />
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <label for="confirmaSenhaFuncionario">Confirmar Senha</label>
-                        <input class="form-control" type="password" minlength="6" id="confirmaSenhaFuncionario"
+                        <input class="form-control input-form" type="password" minlength="6" id="confirmaSenhaFuncionario"
                             name="confirmaSenhaFuncionario" />
                     </div>
 
                     <div class="form-group col-md-4 mb3">
                         <label for="nivelAcesso">Cargo</label>
-                        <select id="nivelAcesso" name="nivelAcesso" class="form-control">
+                        <select id="nivelAcesso" name="nivelAcesso" class="form-control input-form">
                         <option readonly>Selecione...</option>
                         <option value="Administrador">Administrador</option>
                         <option value="Agente de Saúde">Agente de Saúde</option>
@@ -108,9 +108,9 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-4 col-lg-2">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="return validar()"
+                <div class="row justify-content-center">
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <button type="submit" class="btn btn-custom btn-lg btn-block" onclick="return validar()"
                             onsubmit="unmask()">Cadastrar</button>
                     </div>
                 </div>

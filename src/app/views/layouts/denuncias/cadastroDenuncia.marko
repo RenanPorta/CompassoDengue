@@ -33,7 +33,7 @@
                 <div class="form-row">
                     <div class="col-md-12 mb-3">
                         <label for="nomeCidadao">Nome</label>
-                        <input type="text" class="form-control" id="nomeCidadao" name="nomeCidadao"
+                        <input type="text" class="form-control input-form" id="nomeCidadao" name="nomeCidadao"
                             value="${data.usuario.nome}" readonly>
                     </div>
                 </div>
@@ -41,12 +41,12 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="cpfCidadao">CPF</label>
-                        <input type="text" class="form-control" id="cpfCidadao" name="cpfCidadao"
+                        <input type="text" class="form-control input-form" id="cpfCidadao" name="cpfCidadao"
                             value="${data.usuario.cpf}" readonly>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="telefoneCidadao">Telefone</label>
-                        <input type="text" class="form-control" id="telefoneCidadao" name="telefoneCidadao"
+                        <input type="text" class="form-control input-form" id="telefoneCidadao" name="telefoneCidadao"
                             value="${data.usuario.telefone}" readonly>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="ruaDenuncia">Rua</label>
-                        <input type="text" class="form-control" id="ruaDenuncia" name="ruaDenuncia"
+                        <input type="text" class="form-control input-form" id="ruaDenuncia" name="ruaDenuncia"
                             placeholder="Insira a Rua" value="" required>
                         <div class="valid-feedback">
                             Validado.
@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="bairroDenuncia">Bairro</label>
-                        <input type="text" class="form-control" id="bairroDenuncia" name="bairroDenuncia"
+                        <input type="text" class="form-control input-form" id="bairroDenuncia" name="bairroDenuncia"
                             placeholder="Insira o Bairro." value="" required>
                         <div class="valid-feedback">
                             Validado.
@@ -100,9 +100,9 @@
                     <textarea id="observacoesDenuncia" class="form-control" name="observacoesDenuncia" rows="3"></textarea>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-4 col-lg-2">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block"
+                <div class="row justify-content-center">
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <button type="submit" class="btn btn-custom btn-lg btn-block"
                             onsubmit="unmask()">Cadastrar</button>
                     </div>
                 </div>

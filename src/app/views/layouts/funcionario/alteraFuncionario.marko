@@ -37,26 +37,26 @@
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="nomeFuncionario">Nome</label>
-                        <input class="form-control" type="text" id="nomeFuncionario" name="nomeFuncionario"
+                        <input class="form-control input-form" type="text" id="nomeFuncionario" name="nomeFuncionario"
                             value="${data.funcionario.nome}" required />
                     </div>
 
                     <div class="col-md-6 form-group">
                         <label for="telefoneFuncionario">Telefone</label>
-                        <input class="form-control" type="text" id="telefoneFuncionario" name="telefoneFuncionario"
+                        <input class="form-control input-form" type="text" id="telefoneFuncionario" name="telefoneFuncionario"
                             value="${data.funcionario.telefone}" maxlength="11" required />
                     </div>
 
                     <div class="col-md-6 form-group">
                         <label for="emailFuncionario">E-mail</label>
-                        <input class="form-control" type="email" id="emailFuncionario" name="emailFuncionario"
+                        <input class="form-control input-form" type="email" id="emailFuncionario" name="emailFuncionario"
                             value="${data.funcionario.email}" required />
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-4 col-lg-2">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block" onsubmit="unmask()">Salvar</button>
+                <div class="row justify-content-center">
+                    <div class="col-sm-6 col-md-6 col-lg-4">
+                        <button type="submit" class="btn btn-custom btn-lg btn-block" onsubmit="unmask()">Salvar</button>
                     </div>
                 </div>
             </form>

@@ -1,6 +1,7 @@
 main {
     min-height: calc(100vh - 66px - 200px);
 }
+
 .img-1 {
     width: 474px;
     height: 338px;
@@ -11,22 +12,42 @@ main {
     height: 338px;
 }
 
-
 @media screen and (min-width: 0) {
     .font {
         font-size: 7.5vw;
     }
-
     p.font {
         font-size: 6vw;
     }
+}
+
+.input-form {
+    border: 0;
+    border-radius: 0;
+    border-left: 3px solid lightblue;
+    transition: .4s;
+}
+
+.input-form:focus {
+    outline: 0 !important;
+    box-shadow: none;
+    border-left: 3px solid blue;
+}
+
+.btn-custom {
+    background-color: #f05555;
+    border-radius: 0;
+    color: #fff;
+}
+
+.btn-custom:hover {
+    background-color: #952323;
 }
 
 @media screen and (min-width: 768px) {
     .font {
         font-size: 5vw;
     }
-
     p.font {
         font-size: 4vw;
     }
@@ -36,7 +57,6 @@ main {
     .font {
         font-size: 5vw;
     }
-
     p.font {
         font-size: 4vw;
     }
@@ -46,7 +66,6 @@ main {
     .font {
         font-size: 4vw;
     }
-    
     p.font {
         font-size: 3vw;
     }

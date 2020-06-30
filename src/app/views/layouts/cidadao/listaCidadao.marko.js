@@ -43,9 +43,9 @@ function render(input, out, __component, component, state) {
       marko_escapeXml(cidadao.email) +
       "</td><td><a href=\"/cidadao-altera/" +
       marko_escapeXmlAttr(cidadao.id) +
-      "\">Editar</a></td><td><a class=\"text-danger\" href=\"#\" data-ref=\"" +
+      "\">Editar</a></td><td><a class=\"text-danger\" href=\"/cidadao-inativa/" +
       marko_escapeXmlAttr(cidadao.id) +
-      "\" data-type=\"remocao\">Deletar</a></td></tr>");
+      "\">inativar</a></td></tr>");
   });
 
   out.w("</tbody><script src=\"/estatico/js/remove-cidadao.js\"></script></table></main><footer><div class=\"container-fluid color text-center p-3\"><img class=\"logo-footer rounded img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"Logo 2 da prefeitura de Mogi Mirim\"><p class=\"mb-1\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p>Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");

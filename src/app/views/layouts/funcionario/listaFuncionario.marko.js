@@ -45,7 +45,9 @@ function render(input, out, __component, component, state) {
       marko_escapeXml(funcionario.nivelAcesso) +
       "</td><td><a href=\"/funcionario-altera/" +
       marko_escapeXmlAttr(funcionario.id) +
-      "\">Editar</a></td><td><a class=\"text-danger\" href=\"#\" data-ref=\"" +
+      "\">Editar</a></td><td><a class=\"text-danger\" href=\"/funcionario-inativa/" +
+      marko_escapeXmlAttr(funcionario.id) +
+      "\">inativar</a></td><td><a class=\"text-danger\" href=\"#\" data-ref=\"" +
       marko_escapeXmlAttr(funcionario.id) +
       "\" data-type=\"remocao\">Deletar</a></td></tr>");
   });
@@ -54,7 +56,7 @@ function render(input, out, __component, component, state) {
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "49");
+  await_reorderer_tag({}, out, __component, "51");
 
   out.w("</body></html>");
 }

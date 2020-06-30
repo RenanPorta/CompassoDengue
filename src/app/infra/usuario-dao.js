@@ -78,7 +78,7 @@ class UsuarioDAO {
 
     listaCid(res){
 
-        const sql = `SELECT * FROM usuario WHERE nivelAcesso='Cidadao'`
+        const sql = `SELECT * FROM usuario WHERE nivelAcesso='Cidadao' and senha<>'INATIVO'`
 
         conexao.query(sql, (erro, resultado) => {
 
@@ -97,7 +97,7 @@ class UsuarioDAO {
     
     listaCidadaoLogado(userId ,res){
 
-        const sql = `SELECT * FROM usuario WHERE ?`
+        const sql = `SELECT * FROM usuario WHERE ? and senha<>'INATIVO'`
 
         conexao.query(sql, userId, (erro, resultado) => {
 
@@ -169,6 +169,19 @@ class UsuarioDAO {
             }
        });
     }
+    inativaPorIdCid(id, res){
+
+        const sql = `UPDATE usuario SET senha='INATIVO' WHERE id=${id}`
+
+        conexao.query(sql, (erro) => {
+            if(erro){
+                res.status(400).json(erro);
+            }else{
+                res.redirect('/cidadao-consulta');
+            }
+        });
+    }
+    
 
 // ------------ FUNCIONARIO -------------------
     
@@ -245,7 +258,7 @@ class UsuarioDAO {
 
     listaFunc(res){
 
-        const sql = `SELECT * FROM usuario WHERE nivelAcesso='Administrador' OR nivelAcesso='Agente de Saúde'`
+        const sql = `SELECT * FROM usuario WHERE nivelAcesso='Administrador' OR nivelAcesso='Agente de Saúde' and senha<>'INATIVO'`
 
             conexao.query(sql, res, (erro, resultado) => {
 
@@ -301,21 +314,28 @@ class UsuarioDAO {
 
     alteraFunc(funcionario, res){
 
-        const telefoneSemMascara = funcionario.telefoneFuncionario.replace(/[^0-9]+/g,'');
-        
-        const novoFuncionario = {nome: funcionario.nomeFuncionario,
-                            telefone: telefoneSemMascara,
-                            email: funcionario.emailFuncionario
-                            }
+    
         const sql = `UPDATE usuario SET ? WHERE id=${funcionario.id}`
 
-        conexao.query(sql, novoFuncionario, (erro, resultado) => {
+        conexao.query(sql, (erro) => {
             if(erro){
                 res.status(400).json(erro);
             }else {
                 res.redirect('/funcionario-consulta');
             }
        });
+    }
+    inativaPorIdFunc(id, res){
+
+        const sql = `UPDATE usuario SET senha='INATIVO' WHERE id=${id}`
+
+        conexao.query(sql, (erro) => {
+            if(erro){
+                res.status(400).json(erro);
+            }else{
+                res.redirect('/funcionario-consulta');
+            }
+        });
     }
 
 // ----------------------- FUNÇÃO PARA VERIFICAR SE O USUARIO ESTA CADASTRADO -------------------------

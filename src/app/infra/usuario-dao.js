@@ -314,10 +314,16 @@ class UsuarioDAO {
 
     alteraFunc(funcionario, res){
 
+        const telefoneSemMascara = funcionario.telefoneFuncionario.replace(/[^0-9]+/g,'');
+
+        const novoFuncionario = {nome: funcionario.nomeFuncionario,
+                            telefone: telefoneSemMascara,
+                            email: funcionario.emailFuncionario
+                            }
     
         const sql = `UPDATE usuario SET ? WHERE id=${funcionario.id}`
 
-        conexao.query(sql, (erro) => {
+        conexao.query(sql, novoFuncionario, (erro) => {
             if(erro){
                 res.status(400).json(erro);
             }else {
@@ -325,6 +331,7 @@ class UsuarioDAO {
             }
        });
     }
+
     inativaPorIdFunc(id, res){
 
         const sql = `UPDATE usuario SET senha='INATIVO' WHERE id=${id}`

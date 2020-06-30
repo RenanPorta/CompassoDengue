@@ -1,30 +1,51 @@
-const CidadaoDAO = require('../infra/cidadao-dao');
+const UsuarioDAO = require('../infra/usuario-dao');
+const nivelAcesso = require('../verificacoes/nivelAcesso');
 
 module.exports = (app) => {
 
-    app.get('/cidadao-consulta', function(req, res) {
-        CidadaoDAO.lista(res);
+    app.use('/cidadao*', function(req, res, next) {
+        if (req.isAuthenticated()) {
+            next();
+        } else {
+            res.redirect('/login');
+        }
     });
 
-    app.get('/cidadao-cadastro', function(req, res) {
+    app.get('/cidadao-consulta', function(req, res) {
+        const usuario = req.session.passport.user;
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
+            if(administrador){
+                UsuarioDAO.listaCid(res);
+            }else if(agenteSaude){
+                res.redirect('/home');
+            }else {
+                UsuarioDAO.listaCidadaoLogado(userId, res);
+            }
+        })
+    });
+
+    app.get('/cid-cadastro', function(req, res) {
         res.marko(require('../views/layouts/cidadao/cadastroCidadao.marko'));
     });
 
-    app.post('/cidadao', function(req, res) {
-        CidadaoDAO.adiciona(req.body, res);
+    app.post('/cid', function(req, res) {
+        UsuarioDAO.adicionaCid(req.body, res);
     });
 
     app.get('/cidadao-altera/:id', function(req, res) {
         const id = req.params.id;
-        CidadaoDAO.buscaPorId(id, res);
+        UsuarioDAO.buscaPorIdCid(id, res);
     });
 
     app.put('/cidadao-altera', function(req, res) {
-        CidadaoDAO.altera(req.body, res);
+        UsuarioDAO.alteraCid(req.body, res);
     });
 
     app.delete('/cidadao/:id', function(req, res) {
         const id = req.params.id;
-        CidadaoDAO.deletaPorId(id, res);
+        UsuarioDAO.deletaPorIdCid(id, res);
     });
 }

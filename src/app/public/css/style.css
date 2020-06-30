@@ -1,9 +1,39 @@
 /*GERAL*/
 
-.identidade-visual {
+.caixa {
+    background-color: #fff;
+    color: #343a40;
+    font-weight: bold;
+    margin-right: 1px;
+    padding: 20px 15px;
+    text-transform: uppercase;
+    transition: .3s;
+}
+
+.caixa.active {
+    background-color: #f05555;
+    color: #fff;
+    text-decoration: none;
+}
+
+.caixa:hover {
+    background-color: #f05555;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-principal {
+    padding-right: 20px;
+    color: #444;
+}
+
+.btn-principal:hover {
+    color: #f05555;
+    text-decoration: none;
+}
+
+.color {
     background-color: #ffc61c;
-    width: 100%;
-    height: auto;
 }
 
 .logo img {
@@ -11,15 +41,32 @@
     max-width: 40vw;
 }
 
+.logo-header {
+    width: 15em;
+}
+
+.logo-footer {
+    width: 20em;
+}
+
+.navbar-collapse {
+    flex-grow: 0;
+}
+
+.btn-custom {
+    color: #fff;
+    background-color: #f05555;
+}
+
 /*INDEX*/
 
 .img-banner {
-    background: url('/estatico/public/img/banner.jpg');
+    background: url('/estatico/img/banner.jpg');    
     background-size: cover;
     background-position: center center;
 }
 
-main{
+main {
     min-height: calc(100vh - 66px - 200px);
 }
 
@@ -34,30 +81,6 @@ main{
     text-shadow: 0px 0px 4px black;
 }
 
-.menu {
-    text-align: center;
-    padding: 1em 0 1em;
-    background-color: whitesmoke;
-}
-
-.menu ul {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.menu a {
-    text-decoration: none;
-    padding: 1em 0.5em;
-    color: #000000;
-}
-
-.menu a:hover {
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-}
-
 .img-1 {
     width: 474px;
     height: 338px;
@@ -68,23 +91,11 @@ main{
     height: 338px;
 }
 
-.jumbotron {
-    align-items: center;
-    height: auto;
-    padding: 1em;
-    border-radius: 0;
-}
-
-.copyright {
-    text-align: center;
-    color: #FFFFFF;
-}
-
-.logo-footer {
-    width: 20em;
-}
-
 /*LOGIN*/
+
+.erroSenhaEmail {
+    color: red;
+}
 
 /*mobile*/
 
@@ -106,19 +117,9 @@ main{
     padding-bottom: 1em;
 }
 
-@media (min-width: 992px) {
-    /*desktop*/
-    .container-xs {
-        max-width: 40em;
-        margin: 4em auto;
-        padding: 3em 6em;
-    }
-}
-
 .principal {
     min-height: 85vh;
 }
-
 
 /* estilo das paginas de erro */
 
@@ -146,4 +147,53 @@ main{
 
 .btn-erro {
     margin: 20px 0 20px 0;
+}
+
+@media (min-width: 992px) {
+    /*desktop*/
+    .container-xs {
+        max-width: 40em;
+        margin: 4em auto;
+        padding: 3em 6em;
+    }
+}
+
+@media screen and (min-width: 0) {
+    .font {
+        font-size: 7.5vw;
+    }
+
+    p.font {
+        font-size: 6vw;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .font {
+        font-size: 5vw;
+    }
+
+    p.font {
+        font-size: 4vw;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .font {
+        font-size: 5vw;
+    }
+
+    p.font {
+        font-size: 4vw;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .font {
+        font-size: 4vw;
+    }
+    
+    p.font {
+        font-size: 3vw;
+    }
 }

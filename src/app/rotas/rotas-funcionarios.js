@@ -84,6 +84,36 @@ module.exports = (app) => {
         })
     });
 
+    app.get('/funcionario-inativa/:id', function(req, res) {
+        const usuario = req.session.passport.user;
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
+            if(administrador){
+                const id = req.params.id;
+                UsuarioDAO.inativaPorIdFunc(id, res);
+                }else{
+                res.redirect('/home');
+            }
+        })  
+    });
+
+    app.put('/funcionario-inativa', function(req, res) {
+        const usuario = req.session.passport.user;
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
+            if(administrador){
+                const id = req.params.id;
+                UsuarioDAO.inativaPorIdFunc(id, res);
+            }else{
+                res.redirect('/home');
+            }
+        })
+    });
+
     app.delete('/funcionario/:id', function(req, res) {
         const usuario = req.session.passport.user;
         const userId = {

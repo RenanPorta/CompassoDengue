@@ -28,10 +28,6 @@
     text-shadow: 0px 0px 4px black;
 }
 
-.menu{
-    text-align: center;      
-}
-
 .menu ul{
     margin: 0;
     padding: 0;
@@ -44,8 +40,8 @@
     padding: 20px 15px;
     text-transform: uppercase;
     display: block;
-    background-color: whitesmoke;
-    margin: 0 2px;
+    margin: 3px;
+    background-color: whitesmoke;    
 }
 
 .caixa.active {
@@ -65,8 +61,7 @@
     }
 
     .menu ul{
-        display: flex; 
-        margin-left: 8vw;
+        display: flex;         
     }
 
     .lista-menu{

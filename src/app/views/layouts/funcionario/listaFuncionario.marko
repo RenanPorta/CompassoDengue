@@ -49,7 +49,17 @@
                         <td>${funcionario.email}</td>
                         <td>${funcionario.nivelAcesso}</td>
                         <td><a href="/funcionario-altera/${funcionario.id}">Editar</a></td>
-                        <td><a class="text-danger" href="/funcionario-inativa/${funcionario.id}">Inativar</a></td>
+                        <td><a class="text-danger" href="#" onclick="inativar();">Inativar</a></td>
+                            <script>
+                            function inativar(){
+                                var resp= window.confirm("Deseja Inativar esse Usuário?");
+                                if(resp){
+                                    window.alert("Inativado com sucesso");
+
+                                    window.location.href="/funcionario-inativa/${funcionario.id}";
+                                }
+                            }
+                            </script>
                         
                     </tr>
                 </tbody>

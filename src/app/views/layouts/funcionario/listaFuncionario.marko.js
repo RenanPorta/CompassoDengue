@@ -12,6 +12,7 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_forEach = marko_helpers.f,
     marko_escapeXml = marko_helpers.x,
     marko_escapeXmlAttr = marko_helpers.xa,
+    marko_escapeScript = marko_helpers.xs,
     init_components_tag = marko_loadTag(require("marko/src/components/taglib/init-components-tag")),
     await_reorderer_tag = marko_loadTag(require("marko/src/taglibs/async/await-reorderer-tag"));
 
@@ -45,16 +46,16 @@ function render(input, out, __component, component, state) {
       marko_escapeXml(funcionario.nivelAcesso) +
       "</td><td><a href=\"/funcionario-altera/" +
       marko_escapeXmlAttr(funcionario.id) +
-      "\">Editar</a></td><td><a class=\"text-danger\" href=\"/funcionario-inativa/" +
-      marko_escapeXmlAttr(funcionario.id) +
-      "\">Inativar</a></td></tr>");
+      "\">Editar</a></td><td><a class=\"text-danger\" href=\"#\" onclick=\"inativar();\">Inativar</a></td><script>\r\n                            function inativar(){\r\n                                var resp= window.confirm(\"Deseja Inativar esse Usuário?\");\r\n                                if(resp){\r\n                                    window.alert(\"Inativado com sucesso\");\r\n\r\n                                    window.location.href=\"/funcionario-inativa/" +
+      marko_escapeScript(funcionario.id) +
+      "\";\r\n                                }\r\n                            }\r\n                            </script></tr>");
   });
 
   out.w("</tbody><script src=\"/estatico/js/remove-funcionario.js\"></script></table></main><footer><div class=\"container-fluid color text-center p-3\"><img class=\"logo-footer rounded img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"Logo 2 da prefeitura de Mogi Mirim\"><p class=\"mb-1\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p>Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "49");
+  await_reorderer_tag({}, out, __component, "50");
 
   out.w("</body></html>");
 }

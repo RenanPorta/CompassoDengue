@@ -44,6 +44,31 @@ main {
     background-color: #952323;
 }
 
+.imgMosquito {
+    max-width: 390px;
+}
+
+p.p-sintomas {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.sintomas {
+    font-size: 1.5em;
+    margin-left: 50px;
+}
+
+.img-doente {
+    width: 450px;
+    height: 338px;
+}
+
+.img-banner-dengue {
+    margin: 25px;
+    width: 600px;
+    height: 275px;
+}
+
 @media screen and (min-width: 768px) {
     .font {
         font-size: 5vw;

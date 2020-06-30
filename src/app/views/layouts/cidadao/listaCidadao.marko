@@ -47,7 +47,17 @@
                         <td>${cidadao.telefone}</td>
                         <td>${cidadao.email}</td>
                         <td><a href="/cidadao-altera/${cidadao.id}">Editar</a></td>
-                        <td><a class="text-danger" href="/cidadao-inativa/${cidadao.id}">Inativar</a></td>
+                        <td><a class="text-danger" href="#" onclick="inativar();">Inativar</a></td>
+                                <script>
+                                function inativar(){
+                                    var resp= window.confirm("Deseja Inativar esse Usuário?");
+                                    if(resp){
+                                        window.alert("Inativado com sucesso");
+
+                                        window.location.href="/cidadao-inativa/${cidadao.id}";
+                                    }
+                                }
+                                </script>
                     </tr>
                 </tbody>
                 

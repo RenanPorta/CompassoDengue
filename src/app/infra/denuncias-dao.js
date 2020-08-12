@@ -1,6 +1,7 @@
 const conexao = require('../../config/conexao/conexaoDatabase');
 const uploadDeArquivos = require('../../arquivos/uploadDeImagens');
 var crypto = require("crypto");
+//Teste
 
 class DenunciasDAO {
 

@@ -4,7 +4,7 @@ const multer = require('multer')
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/')
+        cb(null, './src/app/public/imgDenuncias/')
     },
     filename: (req, file, cb) => {
         cb(null, Date.now()+'-'+file.originalname)
@@ -33,10 +33,11 @@ module.exports = (app) => {
     });
 
     app.post('/denuncia', upload.single('imagemDenuncia'), function(req, res) {
-        const caminhoImagem = {
-            caminho: req.file.path
+        const imagem = {
+            caminho: req.file.path,
+            nome: req.file.filename
         }
-        DenunciasDAO.adiciona(req.body, caminhoImagem, res);
+        DenunciasDAO.adiciona(req.body, imagem, res);
     });
 
     app.get('/denuncia-consulta', function(req, res) {

@@ -1,7 +1,5 @@
 const conexao = require('../../config/conexao/conexaoDatabase');
-const uploadDeArquivos = require('../../arquivos/uploadDeImagens');
-var crypto = require("crypto");
-//Teste
+const varificaImagens = require('../../arquivos/varificaImagens');
 
 class DenunciasDAO {
 
@@ -30,19 +28,17 @@ class DenunciasDAO {
 
     adiciona(denuncia, imagem, res) {
 
-        var id = crypto.randomBytes(15).toString('hex');
-
         const cpfSemMacara = denuncia.cpfCidadao.replace(/[^0-9]+/g,'');
         const telefoneSemMascara = denuncia.telefoneCidadao.replace(/[^0-9]+/g,'');
             
         const sql = `INSERT INTO denuncias SET ?`
 
-                uploadDeArquivos(imagem.caminho, id, (erro, novoCaminho, novoNomeDoArquivo) => {
+        varificaImagens(imagem.caminho, imagem.nome, (erro, novoCaminho, novoNomeDoArquivo) => {
     
-                    if(erro){
-                        res.status(400).json({ erro });
-                    }else{
-                        const novaDenuncia = {cidadao: denuncia.nomeCidadao,
+                if(erro){
+                    res.status(400).json({ erro });
+                }else{
+                    const novaDenuncia = {cidadao: denuncia.nomeCidadao,
                                             cpf: cpfSemMacara,
                                             telefone: telefoneSemMascara,
                                             rua: denuncia.ruaDenuncia,
@@ -52,16 +48,16 @@ class DenunciasDAO {
                                             observacoes: denuncia.observacoesDenuncia,
                                             status: "Pendente" 
                                         }
-                        conexao.query(sql, novaDenuncia, (erro) => {
-                            if(erro){
-                                res.status(400).json(erro);
-                                console.log("Erro ao enviar denuncia: "+erro);
-                            } else {
-                                res.redirect('/denuncia-consulta');
-                            }
-                        });
-                    }
-                });
+                    conexao.query(sql, novaDenuncia, (erro) => {
+                        if(erro){
+                            res.status(400).json(erro);
+                            console.log("Erro ao enviar denuncia: "+erro);
+                        } else {
+                            res.redirect('/denuncia-consulta');                            
+                        }
+                    });
+                }
+            });
     }
     
     lista(res){

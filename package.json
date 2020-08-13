@@ -19,7 +19,7 @@
     "marko": "4.13.4-1",
     "method-override": "3.0.0",
     "multer": "^1.4.2",
-    "mysql": "^2.17.1",
+    "mysql": "^2.18.1",
     "passport": "0.4.0",
     "passport-local": "1.0.0",
     "uuid": "3.3.2",

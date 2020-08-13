@@ -47,14 +47,14 @@
                         <td>${cidadao.telefone}</td>
                         <td>${cidadao.email}</td>
                         <td><a href="/cidadao-altera/${cidadao.id}">Editar</a></td>
-                        <td><a class="text-danger" href="#" onclick="inativar();">Inativar</a></td>
+                        <td><a class="text-danger" href="#" onclick="inativar();" data-ref="${cidadao.id}" data-type="remocao">Deletar Conta</a></td>
                                 <script>
                                 function inativar(){
-                                    var resp= window.confirm("Deseja Inativar esse Usuário?");
+                                    var resp= window.confirm("Deseja deletar sua conta?");
                                     if(resp){
-                                        window.alert("Inativado com sucesso");
+                                        window.alert("Conta deletada com sucesso");
 
-                                        window.location.href="/cidadao-inativa/${cidadao.id}";
+                                        window.location.href="/sair";
                                     }
                                 }
                                 </script>

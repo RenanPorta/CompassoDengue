@@ -146,7 +146,7 @@ class UsuarioDAO {
             if(erro){
                 res.status(404).json(erro);
             }else{
-                res.status(200).end();
+                res.redirect("/sair");
             }
         })
     }
@@ -169,19 +169,6 @@ class UsuarioDAO {
             }
        });
     }
-    inativaPorIdCid(id, res){
-
-        const sql = `UPDATE usuario SET senha='INATIVO' WHERE id=${id}`
-
-        conexao.query(sql, (erro) => {
-            if(erro){
-                res.status(400).json(erro);
-            }else{
-                res.redirect('/cidadao-consulta');
-            }
-        });
-    }
-    
 
 // ------------ FUNCIONARIO -------------------
     
@@ -295,19 +282,6 @@ class UsuarioDAO {
                 {
                     funcionario: novoFuncionario
                 });
-            }
-        })
-    }
-
-    deletaPorIdFunc(id, res){
-
-        const sql = `DELETE FROM usuario WHERE id=${id}`
-
-        conexao.query(sql, (erro) => {
-            if(erro){
-                res.status(404).json(erro);
-            }else{
-                res.status(200).end();
             }
         })
     }

@@ -44,36 +44,6 @@ module.exports = (app) => {
         UsuarioDAO.alteraCid(req.body, res);
     });
 
-    app.get('/cidadao-inativa/:id', function(req, res) {
-        const usuario = req.session.passport.user;
-        const userId = {
-            id: usuario.id
-        }
-        nivelAcesso(userId, (administrador, agenteSaude) => {
-            if(administrador){
-                const id = req.params.id;
-                UsuarioDAO.inativaPorIdCid(id, res);
-                }else{
-                res.redirect('/home');
-            }
-        })  
-    });
-
-    app.put('/cidadao-inativa', function(req, res) {
-        const usuario = req.session.passport.user;
-        const userId = {
-            id: usuario.id
-        }
-        nivelAcesso(userId, (administrador, agenteSaude) => {
-            if(administrador){
-                const id = req.params.id;
-                UsuarioDAO.inativaPorIdCid(id, res);
-            }else{
-                res.redirect('/home');
-            }
-        })
-    });
-
     app.delete('/cidadao/:id', function(req, res) {
         const id = req.params.id;
         UsuarioDAO.deletaPorIdCid(id, res);

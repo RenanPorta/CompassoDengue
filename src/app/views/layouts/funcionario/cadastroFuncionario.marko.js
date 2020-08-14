@@ -22,10 +22,6 @@ function render(input, out, __component, component, state) {
 
   out.w("<header><nav class=\"color nav navbar-expand-md justify-content-between\"><img class=\"logo-header rounded p-3\" src=\"/estatico/img/logo.png\" alt=\"Logo da prefeitura de Mogi Mirim\"><div class=\"nav justify-content-center align-self-center\"><a class=\"btn-principal nav-item btn m-1\" href=\"/home\">Voltar</a> </div> </nav></header><main class=\"container\"><h1 class=\"text-center display-4 py-4\">Cadastro de Funcionário</h1><form class=\"needs-validation\" name=\"cadastraFuncionario\" method=\"post\" action=\"/funcionario\" novalidate>");
 
-  if (data.erroCpf) {
-    out.w("<div><div><h5 class=\"erroSenhaEmail\">CPF invalido!</h5></div></div>");
-  }
-
   if (data.erro) {
     out.w("<div><div><h5 class=\"erroSenhaEmail\">" +
       marko_escapeXml(data.erro.erro) +
@@ -36,7 +32,7 @@ function render(input, out, __component, component, state) {
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "74");
+  await_reorderer_tag({}, out, __component, "71");
 
   out.w("</body></html>");
 }

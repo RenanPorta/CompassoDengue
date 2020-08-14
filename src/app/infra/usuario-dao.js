@@ -25,22 +25,22 @@ class UsuarioDAO {
                     }
                 buscaCpfCadastrado(novoCidadao.cpf, (cpfExiste) => {
                     if(cpfExiste){
-                        const cadastrado = {
+                        const message = {
                             erro: "CPF já cadastrado!"
                             }
                         res.marko(require('../views/layouts/cidadao/cadastroCidadao.marko'),
                         {
-                            erro: cadastrado
+                            erro: message
                         });
                     }else{
                         buscaEmailCadastrado(novoCidadao.email, (emailExiste) => {
                             if(emailExiste){
-                                const cadastrado = {
+                                const message = {
                                     erro: "E-mail já cadastrado!"
                                 }
                                 res.marko(require('../views/layouts/cidadao/cadastroCidadao.marko'),
                                 {
-                                    erro: cadastrado
+                                    erro: message
                                 });
                             }else{
                                 const cpfEhValido = validarCpf(novoCidadao.cpf);
@@ -59,12 +59,12 @@ class UsuarioDAO {
                                     }
                                 })
                                 }else{
-                                const erroCpf = {
-                                            erroCpf: "Cpf invalido!"
+                                const message = {
+                                            erro: "Cpf invalido!"
                                         }
                                 res.marko(require('../views/layouts/cidadao/cadastroCidadao.marko'),
                                 {
-                                    erroCpf: erroCpf
+                                    erro: message
                                 });
                                 }
                             }
@@ -193,22 +193,22 @@ class UsuarioDAO {
                 
                 buscaCpfCadastrado(novoFuncionario.cpf, (cpfExiste) => {
                     if(cpfExiste){
-                        const cadastrado = {
+                        const message = {
                             erro: "CPF já cadastrado!"
                             }
                         res.marko(require('../views/layouts/funcionario/cadastroFuncionario.marko'),
                         {
-                            erro: cadastrado
+                            erro: message
                         });
                     }else{
                         buscaEmailCadastrado(novoFuncionario.email, (emailExiste) => {
                             if(emailExiste){
-                                const cadastrado = {
+                                const message = {
                                     erro: "E-mail já cadastrado!"
                                     }
                                 res.marko(require('../views/layouts/funcionario/cadastroFuncionario.marko'),
                                 {
-                                    erro: cadastrado
+                                    erro: message
                                 });
                             }else{
                                 const cpfEhValido = validarCpf(novoFuncionario.cpf);
@@ -227,12 +227,12 @@ class UsuarioDAO {
                                     }
                                 });
                                 }else{
-                                    const erroCpf = {
-                                        erroCpf: "Cpf invalido!"
+                                    const message = {
+                                        erro: "Cpf invalido!"
                                         }
                                     res.marko(require('../views/layouts/funcionario/cadastroFuncionario.marko'),
                                     {
-                                        erroCpf: erroCpf
+                                        erro: message
                                     });
                                 }
                             }

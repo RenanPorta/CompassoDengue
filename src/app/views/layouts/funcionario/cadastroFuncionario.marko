@@ -30,11 +30,6 @@
 
             <form class="needs-validation" name="cadastraFuncionario" method="post" action="/funcionario" novalidate>
 
-                <div if(data.erroCpf)>
-                    <div>
-                        <h5 class="erroSenhaEmail">CPF invalido!</h5>
-                    </div>
-                </div>
                 <div if(data.erro)>
                     <div>
                         <h5 class="erroSenhaEmail">${data.erro.erro}</h5>

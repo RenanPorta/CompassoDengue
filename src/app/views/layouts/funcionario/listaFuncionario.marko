@@ -49,19 +49,12 @@
                         <td>${funcionario.email}</td>
                         <td>${funcionario.nivelAcesso}</td>
                         <td><a href="/funcionario-altera/${funcionario.id}">Editar</a></td>
-                        <td><a class="text-danger" href="#" onclick="inativar();">Inativar</a></td>
-                            <script>
-                            function inativar(){
-                                var resp= window.confirm("Deseja Inativar esse Funcionário?");
-                                if(resp){
-                                    window.alert("Inativado com sucesso");
-
-                                    window.location.href="/funcionario-inativa/${funcionario.id}";
-                                }
-                            }
-                            </script>
+                        <td><a class="text-danger" data-ref="${funcionario.id}" data-type="inativar">Inativar</a></td>
                     </tr>
                 </tbody>
+
+                <script src="/estatico/js/inativa-funcionarios.js"></script>
+
             </table>
         </main>
 

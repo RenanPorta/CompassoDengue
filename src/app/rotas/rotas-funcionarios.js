@@ -84,7 +84,7 @@ module.exports = (app) => {
         })
     });
 
-    app.get('/funcionario-inativa/:id', function(req, res) {
+    app.put('/funcionario-inativa/:id', function(req, res) {
         const usuario = req.session.passport.user;
         const userId = {
             id: usuario.id

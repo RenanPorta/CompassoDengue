@@ -9,6 +9,7 @@ var marko_template = module.exports = require("marko/src/html").t(__filename),
     marko_helpers = require("marko/src/runtime/html/helpers"),
     marko_loadTag = marko_helpers.t,
     component_globals_tag = marko_loadTag(require("marko/src/components/taglib/component-globals-tag")),
+    marko_escapeXml = marko_helpers.x,
     init_components_tag = marko_loadTag(require("marko/src/components/taglib/init-components-tag")),
     await_reorderer_tag = marko_loadTag(require("marko/src/taglibs/async/await-reorderer-tag"));
 
@@ -19,11 +20,19 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<header><nav class=\"color nav navbar-expand-md justify-content-between\"><img class=\"logo-header rounded p-3\" src=\"/estatico/img/logo.png\" alt=\"Logo da prefeitura de Mogi Mirim\"><div class=\"nav justify-content-center align-self-center\"><a class=\"btn-principal nav-item btn m-1\" href=\"/home\">Voltar</a></div></nav></header><main class=\"container\"><h1 class=\"font text-center display-4 py-4\">Entrar</h1><form action=\"/login\" method=\"post\"><div class=\"row justify-content-md-center\"><div class=\"col-md-8 col-lg-8 form-group\"><label for=\"exampleInputEmail1\">E-mail</label><input type=\"email\" class=\"form-control input-form\" id=\"exampleInputEmail1\" name=\"exampleInputEmail1\" aria-describedby=\"emailHelp\" required></div><div class=\"col-md-8 col-lg-8 form-group\"><label for=\"exampleInputPassword1\">Senha</label><input type=\"password\" class=\"form-control input-form\" id=\"exampleInputPassword1\" name=\"exampleInputPassword1\" required></div></div><div class=\"row justify-content-center\"><div class=\"col-sm-6 col-md-6 col-lg-4\"><button type=\"submit\" class=\"btn btn-custom btn-lg btn-block\">Entrar</button></div></div></form></main><footer><div class=\"container-fluid color text-center p-3\"><img class=\"logo-footer rounded img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"Logo 2 da prefeitura de Mogi Mirim\"><p class=\"mb-1\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p>Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");
+  out.w("<header><nav class=\"color nav navbar-expand-md justify-content-between\"><img class=\"logo-header rounded p-3\" src=\"/estatico/img/logo.png\" alt=\"Logo da prefeitura de Mogi Mirim\"><div class=\"nav justify-content-center align-self-center\"><a class=\"btn-principal nav-item btn m-1\" href=\"/home\">Voltar</a></div></nav></header><main class=\"container\"><h1 class=\"font text-center display-4 py-4\">Entrar</h1><form action=\"/login\" method=\"post\">");
+
+  if (data.mensagem) {
+    out.w("<div><div class=\"text-center\"><h5 class=\"erroSenhaEmail\">" +
+      marko_escapeXml(data.mensagem.mensagem) +
+      "</h5></div></div>");
+  }
+
+  out.w("<div class=\"row justify-content-md-center\"><div class=\"col-md-8 col-lg-8 form-group\"><label for=\"exampleInputEmail1\">E-mail</label><input type=\"email\" class=\"form-control input-form\" id=\"exampleInputEmail1\" name=\"exampleInputEmail1\" aria-describedby=\"emailHelp\" required></div><div class=\"col-md-8 col-lg-8 form-group\"><label for=\"exampleInputPassword1\">Senha</label><input type=\"password\" class=\"form-control input-form\" id=\"exampleInputPassword1\" name=\"exampleInputPassword1\" required></div></div><div class=\"row justify-content-center\"><div class=\"col-sm-6 col-md-6 col-lg-4\"><button type=\"submit\" class=\"btn btn-custom btn-lg btn-block\">Entrar</button></div></div></form></main><footer><div class=\"container-fluid color text-center p-3\"><img class=\"logo-footer rounded img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"Logo 2 da prefeitura de Mogi Mirim\"><p class=\"mb-1\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p>Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "36");
+  await_reorderer_tag({}, out, __component, "39");
 
   out.w("</body></html>");
 }

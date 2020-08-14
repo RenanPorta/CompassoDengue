@@ -44,7 +44,9 @@ module.exports = (app) => {
     app.post('/login', function(req, res, next) {
         passport.authenticate('local', (erro, cidadao, info) => {
             if (info) {
-                return res.marko(require('../views/layouts/home/loginIncorreto.marko'));
+                return res.marko(require('../views/layouts/home/login.marko'), {
+                    mensagem: info
+                });
             }
 
             if (erro) {

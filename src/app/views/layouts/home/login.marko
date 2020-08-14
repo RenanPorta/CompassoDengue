@@ -29,7 +29,15 @@
 
     <main class="container">
         <h1 class="font text-center display-4 py-4">Entrar</h1>
+        
         <form action="/login" method="post">
+        
+            <div if(data.mensagem)>
+                <div class="text-center">
+                    <h5 class="erroSenhaEmail">${data.mensagem.mensagem}</h5>
+                </div>
+            </div>
+        
             <div class="row justify-content-md-center">
                 <div class="col-md-8 col-lg-8 form-group">
                     <label for="exampleInputEmail1">E-mail</label>

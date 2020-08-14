@@ -20,7 +20,7 @@ module.exports = (app) => {
                         bcrypt.compare(senha, usuario.senha, function(err, result) {
                             if(!result){
                                 return done(null, false, {
-                                mensagem: 'Login e Senha incorretos!'
+                                    mensagem: 'Credencias inválidas!'
                                 })
                             }else{
                                 return done(null, usuario);
@@ -28,7 +28,7 @@ module.exports = (app) => {
                         })    
                     }else{
                         return done(null, false, {
-                            mensagem: 'Login e Senha incorretos!'
+                            mensagem: 'Credencias inválidas!'
                         })
                     }
                 })  

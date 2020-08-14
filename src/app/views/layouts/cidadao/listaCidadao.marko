@@ -28,7 +28,7 @@
 
         <main class="container">
             <h1 class="font text-center display-4 py-4">Listagem de Cidadãos</h1>
-
+            <div if(data.adm)>
             <table class="table table-bordered table-hover table-responsive-lg" id="cidadaos">
                 <thead class="thead-light">
                     <tr class="text-center">
@@ -47,23 +47,38 @@
                         <td>${cidadao.telefone}</td>
                         <td>${cidadao.email}</td>
                         <td><a href="/cidadao-altera/${cidadao.id}">Editar</a></td>
-                        <td><a class="text-danger" href="#" onclick="inativar();" data-ref="${cidadao.id}" data-type="remocao">Deletar Conta</a></td>
-                                <script>
-                                function inativar(){
-                                    var resp= window.confirm("Deseja deletar sua conta?");
-                                    if(resp){
-                                        window.alert("Conta deletada com sucesso");
-
-                                        window.location.href="/sair";
-                                    }
-                                }
-                                </script>
+                        <td><a class="text-danger" data-ref="${cidadao.id}" data-type="remocao">Deletar Conta</a></td>
                     </tr>
                 </tbody>
-                
                 <script src="/estatico/js/remove-cidadao.js"></script>
-
             </table>
+            </div>
+
+            <div if(!data.adm)>
+            <table class="table table-bordered table-hover table-responsive-lg" id="cidadaos">
+                <thead class="thead-light">
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center" id="cidadao_${cidadao.id}" for (cidadao in data.cidadaos)>
+                        <td>${cidadao.id}</td>
+                        <td>${cidadao.nome}</td>
+                        <td>${cidadao.cpf}</td>
+                        <td>${cidadao.telefone}</td>
+                        <td>${cidadao.email}</td>
+                        <td><a href="/cidadao-altera/${cidadao.id}">Editar</a></td>
+                        <td><a class="text-danger" href="/sair" data-ref="${cidadao.id}" data-type="remocao">Deletar Conta</a></td>
+                    </tr>
+                </tbody>
+                <script src="/estatico/js/remove-cidadao.js"></script>
+            </table>
+            </div>
         </main>
 
         <footer>

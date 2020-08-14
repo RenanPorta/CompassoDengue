@@ -22,37 +22,73 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<header><nav class=\"color nav navbar-expand-md justify-content-between\"><img class=\"logo-header rounded p-3\" src=\"/estatico/img/logo.png\" alt=\"Logo da prefeitura de Mogi Mirim\"><div class=\"nav justify-content-center align-self-center\"><a class=\"btn-principal nav-item btn m-1\" href=\"/home\">Voltar</a> </div> </nav></header><main class=\"container\"><h1 class=\"font text-center display-4 py-4\">Listagem de Cidadãos</h1><table class=\"table table-bordered table-hover table-responsive-lg\" id=\"cidadaos\"><thead class=\"thead-light\"><tr class=\"text-center\"><th>ID</th><th>Nome</th><th>CPF</th><th>Telefone</th><th>Email</th></tr></thead><tbody>");
+  out.w("<header><nav class=\"color nav navbar-expand-md justify-content-between\"><img class=\"logo-header rounded p-3\" src=\"/estatico/img/logo.png\" alt=\"Logo da prefeitura de Mogi Mirim\"><div class=\"nav justify-content-center align-self-center\"><a class=\"btn-principal nav-item btn m-1\" href=\"/home\">Voltar</a> </div> </nav></header><main class=\"container\"><h1 class=\"font text-center display-4 py-4\">Listagem de Cidadãos</h1>");
 
-  var for__29 = 0;
+  if (data.adm) {
+    out.w("<div><table class=\"table table-bordered table-hover table-responsive-lg\" id=\"cidadaos\"><thead class=\"thead-light\"><tr class=\"text-center\"><th>ID</th><th>Nome</th><th>CPF</th><th>Telefone</th><th>Email</th></tr></thead><tbody>");
 
-  marko_forEach(data.cidadaos, function(cidadao) {
-    var keyscope__30 = "[" + ((for__29++) + "]");
+    var for__30 = 0;
 
-    out.w("<tr class=\"text-center\" id=\"cidadao_" +
-      marko_escapeXmlAttr(cidadao.id) +
-      "\"><td>" +
-      marko_escapeXml(cidadao.id) +
-      "</td><td>" +
-      marko_escapeXml(cidadao.nome) +
-      "</td><td>" +
-      marko_escapeXml(cidadao.cpf) +
-      "</td><td>" +
-      marko_escapeXml(cidadao.telefone) +
-      "</td><td>" +
-      marko_escapeXml(cidadao.email) +
-      "</td><td><a href=\"/cidadao-altera/" +
-      marko_escapeXmlAttr(cidadao.id) +
-      "\">Editar</a></td><td><a class=\"text-danger\" href=\"#\" onclick=\"inativar();\" data-ref=\"" +
-      marko_escapeXmlAttr(cidadao.id) +
-      "\" data-type=\"remocao\">Deletar Conta</a></td><script>\r\n                                function inativar(){\r\n                                    var resp= window.confirm(\"Deseja deletar sua conta?\");\r\n                                    if(resp){\r\n                                        window.alert(\"Conta deletada com sucesso\");\r\n\r\n                                        window.location.href=\"/sair\";\r\n                                    }\r\n                                }\r\n                                </script></tr>");
-  });
+    marko_forEach(data.cidadaos, function(cidadao) {
+      var keyscope__31 = "[" + ((for__30++) + "]");
 
-  out.w("</tbody><script src=\"/estatico/js/remove-cidadao.js\"></script></table></main><footer><div class=\"container-fluid color text-center p-3\"><img class=\"logo-footer rounded img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"Logo 2 da prefeitura de Mogi Mirim\"><p class=\"mb-1\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p>Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");
+      out.w("<tr class=\"text-center\" id=\"cidadao_" +
+        marko_escapeXmlAttr(cidadao.id) +
+        "\"><td>" +
+        marko_escapeXml(cidadao.id) +
+        "</td><td>" +
+        marko_escapeXml(cidadao.nome) +
+        "</td><td>" +
+        marko_escapeXml(cidadao.cpf) +
+        "</td><td>" +
+        marko_escapeXml(cidadao.telefone) +
+        "</td><td>" +
+        marko_escapeXml(cidadao.email) +
+        "</td><td><a href=\"/cidadao-altera/" +
+        marko_escapeXmlAttr(cidadao.id) +
+        "\">Editar</a></td><td><a class=\"text-danger\" data-ref=\"" +
+        marko_escapeXmlAttr(cidadao.id) +
+        "\" data-type=\"remocao\">Deletar Conta</a></td></tr>");
+    });
+
+    out.w("</tbody><script src=\"/estatico/js/remove-cidadao.js\"></script></table></div>");
+  }
+
+  if (!data.adm) {
+    out.w("<div><table class=\"table table-bordered table-hover table-responsive-lg\" id=\"cidadaos\"><thead class=\"thead-light\"><tr class=\"text-center\"><th>ID</th><th>Nome</th><th>CPF</th><th>Telefone</th><th>Email</th></tr></thead><tbody>");
+
+    var for__53 = 0;
+
+    marko_forEach(data.cidadaos, function(cidadao) {
+      var keyscope__54 = "[" + ((for__53++) + "]");
+
+      out.w("<tr class=\"text-center\" id=\"cidadao_" +
+        marko_escapeXmlAttr(cidadao.id) +
+        "\"><td>" +
+        marko_escapeXml(cidadao.id) +
+        "</td><td>" +
+        marko_escapeXml(cidadao.nome) +
+        "</td><td>" +
+        marko_escapeXml(cidadao.cpf) +
+        "</td><td>" +
+        marko_escapeXml(cidadao.telefone) +
+        "</td><td>" +
+        marko_escapeXml(cidadao.email) +
+        "</td><td><a href=\"/cidadao-altera/" +
+        marko_escapeXmlAttr(cidadao.id) +
+        "\">Editar</a></td><td><a class=\"text-danger\" href=\"/sair\" data-ref=\"" +
+        marko_escapeXmlAttr(cidadao.id) +
+        "\" data-type=\"remocao\">Deletar Conta</a></td></tr>");
+    });
+
+    out.w("</tbody><script src=\"/estatico/js/remove-cidadao.js\"></script></table></div>");
+  }
+
+  out.w("</main><footer><div class=\"container-fluid color text-center p-3\"><img class=\"logo-footer rounded img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"Logo 2 da prefeitura de Mogi Mirim\"><p class=\"mb-1\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p>Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "48");
+  await_reorderer_tag({}, out, __component, "71");
 
   out.w("</body></html>");
 }

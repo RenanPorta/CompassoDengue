@@ -18,7 +18,7 @@ module.exports = (app) => {
         }
         nivelAcesso(userId, (administrador, agenteSaude) => {
             if(administrador){
-                UsuarioDAO.listaCid(res);
+                UsuarioDAO.listaCid(userId, res);
             }else if(agenteSaude){
                 res.redirect('/home');
             }else {

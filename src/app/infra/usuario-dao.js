@@ -76,17 +76,21 @@ class UsuarioDAO {
         });   
     }
 
-    listaCid(res){
+    listaCid(userId, res){
 
-        const sql = `SELECT * FROM usuario WHERE nivelAcesso='Cidadao' and senha<>'INATIVO'`
+        const sql = `SELECT * FROM usuario WHERE nivelAcesso='Cidadao'`
 
         conexao.query(sql, (erro, resultado) => {
 
             if(erro){
                 res.status(400).json(erro);
             }else{
+                const adm = {
+                    adm: userId
+                }
                 res.marko(require('../views/layouts/cidadao/listaCidadao.marko'),
                 {
+                    adm: adm,
                     cidadaos: resultado
                 })
             }
@@ -97,7 +101,7 @@ class UsuarioDAO {
     
     listaCidadaoLogado(userId ,res){
 
-        const sql = `SELECT * FROM usuario WHERE ? and senha<>'INATIVO'`
+        const sql = `SELECT * FROM usuario WHERE ?`
 
         conexao.query(sql, userId, (erro, resultado) => {
 
@@ -146,7 +150,7 @@ class UsuarioDAO {
             if(erro){
                 res.status(404).json(erro);
             }else{
-                res.redirect("/sair");
+                res.status(200).end();
             }
         })
     }

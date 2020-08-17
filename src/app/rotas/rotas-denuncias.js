@@ -44,6 +44,14 @@ module.exports = (app) => {
         DenunciasDAO.lista(res);
     });
 
+    app.get('/denuncia-minha', function(req, res) {
+        const usuario = req.session.passport.user;
+        const userId = {
+            id: usuario.id
+        }
+        DenunciasDAO.listaDenunciaUsuarioCpf(res, userId);
+    });
+
     app.get('/denuncia-visualiza/:id', function(req, res) {
         const id = req.params.id;
         DenunciasDAO.buscaPorId(id, res);

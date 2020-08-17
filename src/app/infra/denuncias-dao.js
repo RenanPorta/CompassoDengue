@@ -75,6 +75,31 @@ class DenunciasDAO {
         })
 
     }
+
+    listaDenunciaUsuarioCpf(res, id){
+
+        const sqlUsuario = `SELECT cpf FROM usuario WHERE ?`
+
+        conexao.query(sqlUsuario, id, (erro, usuario) => {
+            
+            const cpf = usuario[0];
+
+            const sql = `SELECT * FROM denuncias WHERE ?`
+
+            conexao.query(sql, cpf, (erro, resultado) => {
+                if(erro){
+                    res.status(400).json(erro);
+                }else{
+                    res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
+                    {
+                        usuario: cpf,
+                        denuncias: resultado
+                    });
+                }
+            });
+        });
+    }
+
     buscaPorId(id, res){
         const sql = `SELECT * FROM denuncias WHERE id=${id}`
         

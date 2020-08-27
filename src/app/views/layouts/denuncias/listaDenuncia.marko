@@ -27,6 +27,12 @@
         </header>
 
         <main class="container">
+
+            <div if(data.semDenuncia)>
+                <h1 class="font text-center display-4 py-4">Nenhum cadastro de denúncia foi encontrado!</h1>
+            </div>
+
+            <div if(data.comDenuncia)>
             <h1 class="font text-center display-4 py-4">Listagem de Denúncia</h1>
 
             <table class="table table-bordered table-hover table-responsive" id="denuncias">
@@ -41,6 +47,12 @@
                         <th>Imagem</th>
                         <th>Observações</th>
                         <th>Status</th>
+                        <div if(data.administrador)>
+                            <th>Alterar Status</th>
+                        </div>
+                        <div if(data.agenteSaude)>
+                            <th>Alterar Status</th>
+                        </div>
                     </tr>
                 </thead>
 
@@ -52,18 +64,19 @@
                         <td>${denuncia.telefone}</td>
                         <td>${denuncia.rua}</td>
                         <td>${denuncia.bairro}</td>
-                        <div if(denuncia.imagem)>
-                            <td><a href="/denuncia-visualiza/${denuncia.id}">Visualizar Imagem</a></td>
-                        </div>
-                        <div if(!denuncia.imagem)>
-                            <td></td>
-                        </div>
+                        <td><a href="/denuncia-visualiza/${denuncia.id}">Visualizar Imagem</a></td>
                         <td>${denuncia.observacoes}</td>
                         <td>${denuncia.status}</td>
-                        <td><a href="/denuncia-altera/${denuncia.id}">Alterar Status</a></td>
+                        <div if(data.administrador)>
+                            <td><a href="/denuncia-altera/${denuncia.id}">Alterar Status</a></td>
+                        </div>
+                        <div if(data.agenteSaude)>
+                            <td><a href="/denuncia-altera/${denuncia.id}">Alterar Status</a></td>
+                        </div>
                     </tr>
                 </tbody>
             </table>
+            </div>
         </main>
 
         <footer>

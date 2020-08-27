@@ -41,7 +41,13 @@ module.exports = (app) => {
     });
 
     app.get('/denuncia-consulta', function(req, res) {
-        DenunciasDAO.lista(res);
+        const usuario = req.session.passport.user;
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
+                DenunciasDAO.lista(res, administrador, agenteSaude);
+        });  
     });
 
     app.get('/denuncia-minha', function(req, res) {
@@ -49,12 +55,20 @@ module.exports = (app) => {
         const userId = {
             id: usuario.id
         }
-        DenunciasDAO.listaDenunciaUsuarioCpf(res, userId);
+        nivelAcesso(userId, (administrador, agenteSaude) => {
+                DenunciasDAO.listaDenunciaUsuarioCpf(res, userId, administrador, agenteSaude);
+        });  
     });
 
     app.get('/denuncia-visualiza/:id', function(req, res) {
         const id = req.params.id;
-        DenunciasDAO.buscaPorId(id, res);
+        const usuario = req.session.passport.user;
+        const userId = {
+            id: usuario.id
+        }
+        nivelAcesso(userId, (administrador, agenteSaude) => {
+                DenunciasDAO.buscaPorId(id, res, administrador, agenteSaude);
+        });  
     });
 
     app.get('/denuncia-altera/:id', function(req, res) {

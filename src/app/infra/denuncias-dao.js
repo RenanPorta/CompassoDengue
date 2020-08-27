@@ -60,23 +60,78 @@ class DenunciasDAO {
             });
     }
     
-    lista(res){
+    lista(res, administrador, agenteSaude){
         const sql = `SELECT * FROM denuncias`
 
         conexao.query(sql, res, (erro, resultado) => {
             if(erro){
                 res.status(400).json(erro);
             }else{
-                res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
-                {
-                    denuncias: resultado
-                });
+                if(administrador && resultado.length == 0){
+                    const qtdDenuncia = {
+                        semDenuncia: true
+                    };
+                    res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
+                    {
+                        semDenuncia: qtdDenuncia,
+                        administrador: administrador,
+                        denuncias: resultado
+                    });   
+                }else if(administrador && resultado.length > 0){
+                    const qtdDenuncia = {
+                        comDenuncia: true
+                    };
+                    res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
+                    {
+                        comDenuncia: qtdDenuncia,
+                        administrador: administrador,
+                        denuncias: resultado
+                    });
+                }else if(agenteSaude && resultado.length == 0){
+                    const qtdDenuncia = {
+                        semDenuncia: true
+                    };
+                    res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
+                    {
+                        semDenuncia: qtdDenuncia,
+                        agenteSaude: agenteSaude,
+                        denuncias: resultado
+                    }); 
+                }else if(agenteSaude && resultado.length > 0){
+                    const qtdDenuncia = {
+                        comDenuncia: true
+                    };
+                    res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
+                    {
+                        comDenuncia: qtdDenuncia,
+                        agenteSaude: agenteSaude,
+                        denuncias: resultado
+                    });
+                }else if(resultado.length == 0){
+                    const qtdDenuncia = {
+                        semDenuncia: true
+                    };
+                    res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
+                    {
+                        semDenuncia: qtdDenuncia,
+                        denuncias: resultado
+                    }); 
+                }else {
+                    const qtdDenuncia = {
+                        comDenuncia: true
+                    };
+                    res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
+                    {
+                        comDenuncia: qtdDenuncia,
+                        denuncias: resultado
+                    });
+                }
             }
         })
 
     }
 
-    listaDenunciaUsuarioCpf(res, id){
+    listaDenunciaUsuarioCpf(res, id, administrador, agenteSaude){
 
         const sqlUsuario = `SELECT cpf FROM usuario WHERE ?`
 
@@ -90,17 +145,71 @@ class DenunciasDAO {
                 if(erro){
                     res.status(400).json(erro);
                 }else{
-                    res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
-                    {
-                        usuario: cpf,
-                        denuncias: resultado
-                    });
+                    if(administrador && resultado.length == 0){
+                        const qtdDenuncia = {
+                            semDenuncia: true
+                        };
+                        res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
+                        {
+                            semDenuncia: qtdDenuncia,
+                            administrador: administrador,
+                            denuncias: resultado
+                        });   
+                    }else if(administrador && resultado.length > 0){
+                        const qtdDenuncia = {
+                            comDenuncia: true
+                        };
+                        res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
+                        {
+                            comDenuncia: qtdDenuncia,
+                            administrador: administrador,
+                            denuncias: resultado
+                        });
+                    }else if(agenteSaude && resultado.length == 0){
+                        const qtdDenuncia = {
+                            semDenuncia: true
+                        };
+                        res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
+                        {
+                            semDenuncia: qtdDenuncia,
+                            agenteSaude: agenteSaude,
+                            denuncias: resultado
+                        }); 
+                    }else if(agenteSaude && resultado.length > 0){
+                        const qtdDenuncia = {
+                            comDenuncia: true
+                        };
+                        res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
+                        {
+                            comDenuncia: qtdDenuncia,
+                            agenteSaude: agenteSaude,
+                            denuncias: resultado
+                        });
+                    }else if(resultado.length == 0){
+                        const qtdDenuncia = {
+                            semDenuncia: true
+                        };
+                        res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
+                        {
+                            semDenuncia: qtdDenuncia,
+                            denuncias: resultado
+                        }); 
+                    }else {
+                        const qtdDenuncia = {
+                            comDenuncia: true
+                        };
+                        res.marko(require('../views/layouts/denuncias/listaDenuncia.marko'),
+                        {
+                            comDenuncia: qtdDenuncia,
+                            denuncias: resultado
+                        });
+                    }
                 }
             });
         });
     }
 
-    buscaPorId(id, res){
+    buscaPorId(id, res, administrador, agenteSaude){
         const sql = `SELECT * FROM denuncias WHERE id=${id}`
         
         conexao.query(sql, (erro, resultado)=> {
@@ -119,10 +228,19 @@ class DenunciasDAO {
             if(erro){
                 res.status(404).json(erro);
             }else{
-                res.marko(require('../views/layouts/denuncias/visualizaDenuncia.marko'),
-                {
-                    denuncia: novaDenuncia
-                });
+                if(administrador){
+                    res.marko(require('../views/layouts/denuncias/visualizaDenuncia.marko'),
+                    {
+                        administrador: administrador,
+                        denuncia: novaDenuncia
+                    });   
+                }else{
+                    res.marko(require('../views/layouts/denuncias/visualizaDenuncia.marko'),
+                    {
+                        agenteSaude: agenteSaude,
+                        denuncia: novaDenuncia
+                    });
+                }
             }
         })
     }

@@ -87,12 +87,23 @@
                     <input type="text" class="form-control" id="statusDenuncia" name="statusDenuncia"
                         value="${data.denuncia.status}" readonly />
                 </div>
-
+                
+                <div if(data.administrador)>
                 <div class="row">
                     <div class="col-md-4 col-lg-2">
                         <button type="submit" class="btn btn-warning btn-lg btn-block" onsubmit="unmask()">Alterar
                             Status</button>
                     </div>
+                </div>
+                </div>
+
+                <div if(data.agenteSaude)>
+                <div class="row">
+                    <div class="col-md-4 col-lg-2">
+                        <button type="submit" class="btn btn-warning btn-lg btn-block" onsubmit="unmask()">Alterar
+                            Status</button>
+                    </div>
+                </div>
                 </div>
             </form>
         </main>

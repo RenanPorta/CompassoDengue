@@ -22,12 +22,12 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<header><nav class=\"color nav navbar-expand-md justify-content-between\"><img class=\"logo-header rounded p-3\" src=\"/estatico/img/logo.png\" alt=\"Logo da prefeitura de Mogi Mirim\"><div class=\"nav justify-content-center align-self-center\"><a class=\"btn-principal nav-item btn m-1\" href=\"/home\">Voltar</a> </div> </nav></header><main class=\"container\"><h1 class=\"font text-center display-4 py-4\">Listagem de Funcionários</h1><table class=\"table table-bordered table-hover table-responsive-lg\" id=\"funcionarios\"><thead class=\"thead-light\"><tr class=\"text-center\"><th>ID</th><th>Nome</th><th>CPF</th><th>Telefone</th><th>Email</th><th>Cargo</th></tr></thead><tbody>");
+  out.w("<header><nav class=\"color nav navbar-expand-md justify-content-between\"><img class=\"logo-header rounded p-3\" src=\"/estatico/img/logo.png\" alt=\"Logo da prefeitura de Mogi Mirim\"><div class=\"nav justify-content-center align-self-center\"><a class=\"btn-principal nav-item btn m-1\" href=\"/home\">Voltar</a> </div> </nav></header><main class=\"container\"><h1 class=\"font text-center display-4 py-4\">Listagem de Funcionários</h1><table class=\"table table-bordered table-hover table-responsive-lg\" id=\"funcionarios\"><thead class=\"thead-light\"><tr class=\"text-center\"><th>ID</th><th>Nome</th><th>CPF</th><th>Telefone</th><th>Email</th><th>Cargo</th><th>Editar</th><th>Deletar</th></tr></thead><tbody>");
 
-  var for__30 = 0;
+  var for__32 = 0;
 
   marko_forEach(data.funcionarios, function(funcionario) {
-    var keyscope__31 = "[" + ((for__30++) + "]");
+    var keyscope__33 = "[" + ((for__32++) + "]");
 
     out.w("<tr class=\"text-center\" id=\"funcionario_" +
       marko_escapeXmlAttr(funcionario.id) +
@@ -54,7 +54,7 @@ function render(input, out, __component, component, state) {
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "49");
+  await_reorderer_tag({}, out, __component, "51");
 
   out.w("</body></html>");
 }

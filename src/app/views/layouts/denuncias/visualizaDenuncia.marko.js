@@ -41,11 +41,21 @@ function render(input, out, __component, component, state) {
     marko_escapeXml(data.denuncia.observacoes) +
     "</textarea></div><div class=\"form-group\"><label for=\"statusDenuncia\">Status</label><input type=\"text\" class=\"form-control\" id=\"statusDenuncia\" name=\"statusDenuncia\" value=\"" +
     marko_escapeXmlAttr(data.denuncia.status) +
-    "\" readonly></div><div class=\"row\"><div class=\"col-md-4 col-lg-2\"><button type=\"submit\" class=\"btn btn-warning btn-lg btn-block\" onsubmit=\"unmask()\">Alterar Status</button></div></div></form></main><footer><div class=\"container-fluid color text-center p-3\"><img class=\"logo-footer rounded img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"Logo 2 da prefeitura de Mogi Mirim\"><p class=\"mb-1\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p>Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer><script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script> <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js\"></script><script>\r\n            function unmask() {\r\n                $('#cpfCidadao').unmask()\r\n                $('#telefoneCidadao').unmask()\r\n            }\r\n\r\n            $(function () {\r\n                $('#cpfCidadao').mask('000.000.000-00')\r\n                $('#telefoneCidadao').mask('(00) 00000-0000')\r\n            })\r\n        </script>");
+    "\" readonly></div>");
+
+  if (data.administrador) {
+    out.w("<div><div class=\"row\"><div class=\"col-md-4 col-lg-2\"><button type=\"submit\" class=\"btn btn-warning btn-lg btn-block\" onsubmit=\"unmask()\">Alterar Status</button></div></div></div>");
+  }
+
+  if (data.agenteSaude) {
+    out.w("<div><div class=\"row\"><div class=\"col-md-4 col-lg-2\"><button type=\"submit\" class=\"btn btn-warning btn-lg btn-block\" onsubmit=\"unmask()\">Alterar Status</button></div></div></div>");
+  }
+
+  out.w("</form></main><footer><div class=\"container-fluid color text-center p-3\"><img class=\"logo-footer rounded img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"Logo 2 da prefeitura de Mogi Mirim\"><p class=\"mb-1\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p>Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer><script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script> <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js\"></script><script>\r\n            function unmask() {\r\n                $('#cpfCidadao').unmask()\r\n                $('#telefoneCidadao').unmask()\r\n            }\r\n\r\n            $(function () {\r\n                $('#cpfCidadao').mask('000.000.000-00')\r\n                $('#telefoneCidadao').mask('(00) 00000-0000')\r\n            })\r\n        </script>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "60");
+  await_reorderer_tag({}, out, __component, "65");
 
   out.w("</body></html>");
 }

@@ -22,53 +22,75 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<header><nav class=\"color nav navbar-expand-md justify-content-between\"><img class=\"logo-header rounded p-3\" src=\"/estatico/img/logo.png\" alt=\"Logo da prefeitura de Mogi Mirim\"><div class=\"nav justify-content-center align-self-center\"><a class=\"btn-principal nav-item btn m-1\" href=\"/home\">Voltar</a> </div> </nav></header><main class=\"container\"><h1 class=\"font text-center display-4 py-4\">Listagem de Denúncia</h1><table class=\"table table-bordered table-hover table-responsive\" id=\"denuncias\"><thead class=\"thead-light\"><tr class=\"text-center\"><th>ID</th><th>Nome Cidadão</th><th>CPF</th><th>Telefone</th><th>Rua</th><th>Bairro</th><th>Imagem</th><th>Observações</th><th>Status</th></tr></thead><tbody>");
+  out.w("<header><nav class=\"color nav navbar-expand-md justify-content-between\"><img class=\"logo-header rounded p-3\" src=\"/estatico/img/logo.png\" alt=\"Logo da prefeitura de Mogi Mirim\"><div class=\"nav justify-content-center align-self-center\"><a class=\"btn-principal nav-item btn m-1\" href=\"/home\">Voltar</a> </div> </nav></header><main class=\"container\">");
 
-  var for__33 = 0;
+  if (data.semDenuncia) {
+    out.w("<div><h1 class=\"font text-center display-4 py-4\">Nenhum cadastro de denúncia foi encontrado!</h1></div>");
+  }
 
-  marko_forEach(data.denuncias, function(denuncia) {
-    var keyscope__34 = "[" + ((for__33++) + "]");
+  if (data.comDenuncia) {
+    out.w("<div><h1 class=\"font text-center display-4 py-4\">Listagem de Denúncia</h1><table class=\"table table-bordered table-hover table-responsive\" id=\"denuncias\"><thead class=\"thead-light\"><tr class=\"text-center\"><th>ID</th><th>Nome Cidadão</th><th>CPF</th><th>Telefone</th><th>Rua</th><th>Bairro</th><th>Imagem</th><th>Observações</th><th>Status</th>");
 
-    out.w("<tr id=\"denuncia_" +
-      marko_escapeXmlAttr(denuncia.id) +
-      "\"><td>" +
-      marko_escapeXml(denuncia.id) +
-      "</td><td>" +
-      marko_escapeXml(denuncia.cidadao) +
-      "</td><td>" +
-      marko_escapeXml(denuncia.cpf) +
-      "</td><td>" +
-      marko_escapeXml(denuncia.telefone) +
-      "</td><td>" +
-      marko_escapeXml(denuncia.rua) +
-      "</td><td>" +
-      marko_escapeXml(denuncia.bairro) +
-      "</td>");
+    if (data.administrador) {
+      out.w("<div><th>Alterar Status</th></div>");
+    }
 
-    if (denuncia.imagem) {
-      out.w("<div><td><a href=\"/denuncia-visualiza/" +
+    if (data.agenteSaude) {
+      out.w("<div><th>Alterar Status</th></div>");
+    }
+
+    out.w("</tr></thead><tbody>");
+
+    var for__40 = 0;
+
+    marko_forEach(data.denuncias, function(denuncia) {
+      var keyscope__41 = "[" + ((for__40++) + "]");
+
+      out.w("<tr id=\"denuncia_" +
         marko_escapeXmlAttr(denuncia.id) +
-        "\">Visualizar Imagem</a></td></div>");
-    }
+        "\"><td>" +
+        marko_escapeXml(denuncia.id) +
+        "</td><td>" +
+        marko_escapeXml(denuncia.cidadao) +
+        "</td><td>" +
+        marko_escapeXml(denuncia.cpf) +
+        "</td><td>" +
+        marko_escapeXml(denuncia.telefone) +
+        "</td><td>" +
+        marko_escapeXml(denuncia.rua) +
+        "</td><td>" +
+        marko_escapeXml(denuncia.bairro) +
+        "</td><td><a href=\"/denuncia-visualiza/" +
+        marko_escapeXmlAttr(denuncia.id) +
+        "\">Visualizar Imagem</a></td><td>" +
+        marko_escapeXml(denuncia.observacoes) +
+        "</td><td>" +
+        marko_escapeXml(denuncia.status) +
+        "</td>");
 
-    if (!denuncia.imagem) {
-      out.w("<div><td></td></div>");
-    }
+      if (data.administrador) {
+        out.w("<div><td><a href=\"/denuncia-altera/" +
+          marko_escapeXmlAttr(denuncia.id) +
+          "\">Alterar Status</a></td></div>");
+      }
 
-    out.w("<td>" +
-      marko_escapeXml(denuncia.observacoes) +
-      "</td><td>" +
-      marko_escapeXml(denuncia.status) +
-      "</td><td><a href=\"/denuncia-altera/" +
-      marko_escapeXmlAttr(denuncia.id) +
-      "\">Alterar Status</a></td></tr>");
-  });
+      if (data.agenteSaude) {
+        out.w("<div><td><a href=\"/denuncia-altera/" +
+          marko_escapeXmlAttr(denuncia.id) +
+          "\">Alterar Status</a></td></div>");
+      }
 
-  out.w("</tbody></table></main><footer><div class=\"container-fluid color text-center p-3\"><img class=\"logo-footer rounded img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"Logo 2 da prefeitura de Mogi Mirim\"><p class=\"mb-1\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p>Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");
+      out.w("</tr>");
+    });
+
+    out.w("</tbody></table></div>");
+  }
+
+  out.w("</main><footer><div class=\"container-fluid color text-center p-3\"><img class=\"logo-footer rounded img-fluid\" src=\"/estatico/img/logo-2.png\" alt=\"Logo 2 da prefeitura de Mogi Mirim\"><p class=\"mb-1\">Copyright © 2020 | Todos os direitos reservados. Prefeitura de Mogi Mirim.</p><p>Rua Doutor José Alves, 129 - Centro - 13800-900 - Mogi Mirim - SP - Brasil. Tel.19 3814.1000</p></div></footer>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "56");
+  await_reorderer_tag({}, out, __component, "64");
 
   out.w("</body></html>");
 }

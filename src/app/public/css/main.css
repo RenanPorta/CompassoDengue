@@ -69,6 +69,10 @@ p.p-sintomas {
     height: 275px;
 }
 
+.table-bordered {
+    border: none;
+}
+
 @media screen and (min-width: 768px) {
     .font {
         font-size: 5vw;
